@@ -1,6 +1,6 @@
 var request = require('supertest');
 var expect = require('chai').expect;
-var server = require('./server');
+var server = require('../server');
 
 describe('loading express', function() {
   it('responds to /', function (done) {
