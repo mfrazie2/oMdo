@@ -1,15 +1,12 @@
 var express = require('express');
+var middleware = require('./middleware');
+require('dotenv').config();
 
 var app = express();
+middleware(app, express);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT;
 
-app.get('/', function(req, res) {
-  res.send('Hello Birdcage & Sleet');
-});
-
-app.listen(port, function() {
-  console.log('Listening on port ' + port);
-});
+app.listen(port, console.log.bind(console, 'Listening on port', port));
 
 module.exports = app;
