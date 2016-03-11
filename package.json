@@ -4,21 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/serverSpec.js"
+    "test": "mocha server/*"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BirdcageSleet/skynet.git"
   },
-  "author": "",
+  "author": "Mike Frazier",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BirdcageSleet/skynet/issues"
   },
   "homepage": "https://github.com/BirdcageSleet/skynet#readme",
   "dependencies": {
-    "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^2.4.5",
     "supertest": "^1.2.0"
   }
