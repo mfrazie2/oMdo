@@ -9,7 +9,7 @@ var app = express();
 describe('Middleware', function() {
 
   it('Doesn\'t return anything', function(done) {
-    app.listen(port, console.log.bind(console, 'Tests listening on port', port));
+    app.listen(port);
     expect(middleware(app)).to.equal(undefined);
     done();
   });
