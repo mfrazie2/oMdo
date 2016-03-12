@@ -1,10 +1,12 @@
 var React = require('react');
+var NavbarContainer = require('../containers/navbarContainer');
 
 var Main = React.createClass({
   render: function() {
     return(
       <div>
-        {/*navbar}*/}
+        <NavbarContainer />
+        ANYTHING
         {this.props.children}
       </div>
     )
