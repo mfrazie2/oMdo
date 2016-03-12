@@ -21,6 +21,7 @@ var Auth = function(props) {
   )
 };
 
+
 Auth.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onUpdateUsername: PropTypes.func.isRequired,
@@ -29,4 +30,5 @@ Auth.propTypes = {
   username: PropTypes.string,
   password: PropTypes.string
 };
+
 module.exports = Auth;
