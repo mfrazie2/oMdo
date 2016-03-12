@@ -1,9 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-var SurveyContainer = require('./containers/surveyContainer');
+var routes = require('./config/routes');
 
 ReactDOM.render(
-  <SurveyContainer />,
+  routes,
   document.getElementById('app')
 )
