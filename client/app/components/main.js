@@ -8,7 +8,6 @@ var Main = React.createClass({
         {this.props.children}
       </div>
     )
-  } 
 })
 
 module.exports = Main;
