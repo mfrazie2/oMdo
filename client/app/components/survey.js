@@ -27,7 +27,7 @@ function Survey(props) {
       </form>
     </div>
   )
-} 
+}
 
 Survey.propTypes = {
 
