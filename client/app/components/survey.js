@@ -9,13 +9,13 @@ function Survey(props) {
         <div className='surveySlider'>
           How are you feeling?<br />
           Bad
-          <input type='range' />
+          <input type='range' name='generalMoodSlider' />
           Good
           <br />
         </div>
         <div className='surveyText'>
           Care to elaborate?<br />
-          <input className='surveyText' type='textarea' /><br />
+          <input className='surveyText' type='textarea' name='elaborate' /><br />
         </div>
         <div className='surveyLocation'>
           Where are you?  We only ask because we're not tracking you, at all.<br />
