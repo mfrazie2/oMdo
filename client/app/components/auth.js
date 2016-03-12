@@ -1,6 +1,6 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-{/*TODO import styles*/}
+
 var Auth = function(props) {
   return (
     <div>
