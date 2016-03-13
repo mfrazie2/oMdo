@@ -13,7 +13,12 @@ var NavbarContainer = React.createClass({
       pathname: '/survey'
     });
   },
-  
+  handleToProfile: function(e) {
+    e.preventDefault();
+    this.context.router.push({
+      pathname: '/profile'
+    });
+  },
   
   render: function() {
     return (
