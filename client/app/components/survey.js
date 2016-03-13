@@ -27,10 +27,6 @@ function Survey(props) {
       </form>
     </div>
   )
-} 
-
-Survey.propTypes = {
-
 }
 
 module.exports = Survey;
