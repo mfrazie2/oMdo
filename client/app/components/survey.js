@@ -29,8 +29,4 @@ function Survey(props) {
   )
 }
 
-Survey.propTypes = {
-
-}
-
 module.exports = Survey;
