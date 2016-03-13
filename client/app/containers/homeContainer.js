@@ -5,13 +5,9 @@ var HomeContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  propTypes: {
-    username: React.PropTypes.string.isRequired
-  },
   getInitialState: function() {
-    console.log(this.props)
     return {
-      username: this.props.username
+      username: this.props.location.state.username
     }
   },
   handleSeeProfile: function(event) {
@@ -35,6 +31,7 @@ var HomeContainer = React.createClass({
   render: function() {
     return (
       <Home
+        username={this.state.username}
         onTakeSurvey={this.handleTakeSurvey}
         onSeeProfile={this.handleSeeProfile}/>
     )
