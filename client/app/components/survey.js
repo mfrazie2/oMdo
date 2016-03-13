@@ -19,8 +19,8 @@ function Survey(props) {
         </div>
         <div className='surveyLocation'>
           Where are you?  We only ask because we're not tracking you, at all.<br />
-          <input type="radio" name="activity" value="male" />Somewhere<br />
-          <input type="radio" name="activity" value="female" />Nowhere<br />
+          <input type="radio" name="activity" value="somewhere" />Somewhere<br />
+          <input type="radio" name="activity" value="nowhere" />Nowhere<br />
           <input type="radio" name="activity" value="other" />Other<br />
         </div>
         <button className='surveySubmit' type='submit'>Submit feelings!</button>
