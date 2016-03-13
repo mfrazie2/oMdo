@@ -7,12 +7,12 @@ var Auth = function(props) {
       <form onSubmit={props.onSubmit}>
         <input
           type="text"
-          onChange={props.onUpdate.bind(this)}
+          onChange={props.onUpdateUsername}
           value={props.username}
           placeholder="username" />
         <input
           type="text"
-          onChange={props.onUpdate.bind(this)}
+          onChange={props.onUpdatePassword}
           value={props.password}
           placeholder="password"/>
         <button type="submit">{props.text}</button>
@@ -23,7 +23,8 @@ var Auth = function(props) {
 
 Auth.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onUpdate: PropTypes.func.isRequired,
+  onUpdateUsername: PropTypes.func.isRequired,
+  onUpdatePassword: PropTypes.func.isRequired,
   text: PropTypes.string,
   username: PropTypes.string,
   password: PropTypes.string

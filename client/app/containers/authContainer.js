@@ -1,7 +1,6 @@
 var React = require('react');
 var Auth = require('../components/auth');
 
-
 var AuthContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -26,21 +25,24 @@ var AuthContainer = React.createClass({
       pathname: '/home',
       state: {
         username: this.state.username,
-        isUser: this.state.isUser
       }
     });
   },
-  handleUpdate: function (event){
-    console.log(event.target)
+  handleUpdateUsername: function(event) {
     this.setState({
-      username: event.target.value,
-      password: event.target.value
+      username: event.target.value
     });
+  },
+  handleUpdatePassword: function(event) {
+    this.setState({
+      password: event.target.value
+    })
   },
   render: function() {
     return (
       <Auth onSubmit={this.handleSubmit}
-        onUpdate={this.handleUpdate}
+        onUpdateUsername={this.handleUpdateUsername}
+        onUpdatePassword={this.handleUpdatePassword}
         username={this.state.username}
         password={this.state.password}
         text={this.state.buttonText} />
