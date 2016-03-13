@@ -1,6 +1,6 @@
 var express = require('express');
 var middleware = require('./middleware');
-require('dotenv').config();
+require('dotenv').config({path: '../.env'});
 
 var app = express();
 middleware(app, express);
