@@ -14,17 +14,17 @@ describe('MainRoutes', function() {
     done();
   });
 
-  it('Is a function', function(done) {
+  xit('Is a function', function(done) {
     expect(typeof mainRoutes).to.equal('function');
     done();
   });
 
-  it('Doesn\'t return anything', function(done) {
+  xit('Doesn\'t return anything', function(done) {
     expect(mainRoutes(testObj)).to.not.exist;
     done();
   });
 
-  it('Routes / to mainController.helloWorld', function(done) {
+  xit('Routes / to mainController.helloWorld', function(done) {
     mainRoutes(testObj);
     expect(testObj.route).to.equal('/');
     expect(testObj.func).to.equal(mainController.helloWorld);

@@ -14,7 +14,7 @@ describe('Middleware', function() {
     done();
   });
 
-  it('Should route to main', function(done) {
+  xit('Should route to main', function(done) {
     middleware(app);
 
     var i = app._router.stack.reduce(function(memo, layer, i) {

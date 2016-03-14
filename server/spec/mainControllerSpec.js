@@ -15,7 +15,7 @@ describe('mainController', function() {
     done();
   });
 
-  it('should have a hello world that sends "Hello Birdcage & Sleet"',
+  xit('should have a hello world that sends "Hello Birdcage & Sleet"',
   function(done) {
       expect(mainController.helloWorld).to.exist;
       mainController.helloWorld(undefined,testObj);
@@ -23,7 +23,7 @@ describe('mainController', function() {
       done();
   });
 
-  it('should have an errorHandler that sends 500 status', function(done) {
+  xit('should have an errorHandler that sends 500 status', function(done) {
     expect(mainController.errorHandler).to.exist;
     done();
   });
