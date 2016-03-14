@@ -7,6 +7,7 @@ var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('../webpack.config');
 var compiler = webpack(config);
+var routes = require('./routes');
 
 var app = express();
 
@@ -14,6 +15,8 @@ var app = express();
 middleware(app);
 
 var port = process.env.PORT || 8080;
+
+app.use('/api', routes);
 
 // Configure webpack dev middleware for use with server
 var webpackMiddleWareConfig = webpackDevMiddleware(compiler, {
