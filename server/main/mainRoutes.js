@@ -1,5 +1,5 @@
-var mainController = require('./mainController');
+// var mainController = require('./mainController');
 
-module.exports = function (app, express) {
-  app.get('/', mainController.helloWorld);
-};
+// module.exports = function (app, express) {
+//   app.get('/', mainController.helloWorld);
+// };
