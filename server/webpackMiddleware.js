@@ -4,16 +4,16 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('../webpack.config');
 var compiler = webpack(config);
 
-var webpackMiddlewareConfig = webpackDevMiddleware(compiler, {
+var devConfig = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     stats: {colors: true}
 });
 
-var webpackHotMiddlewareConfig = webpackHotMiddleware(compiler, {
+var hotConfig = webpackHotMiddleware(compiler, {
     log: console.log
 });
 
-module.exports = function(app) {
-  app.use(webpackMiddlewareConfig);
-  app.use(webpackHotMiddlewareConfig);
-}
+module.exports = {
+  devConfig,
+  hotConfig
+};
