@@ -1,8 +1,8 @@
 var express = require('express');
 
-var authRoutes = require('.auth/authRoutes');
-var surveyRoutes = require('.survey/surveyRoutes');
-var userRoutes = require('.user/userRoutes');
+var authRoutes = require('./auth/authRoutes');
+var surveyRoutes = require('./survey/surveyRoutes');
+var userRoutes = require('./user/userRoutes');
 
 var app = express.Router();
 
