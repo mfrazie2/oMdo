@@ -1,8 +1,8 @@
 module.exports = {
   dataTest: function(req, res) {
-    res.send('Data about your feelings!');
+    res.send({test: 'Data about your feelings!'});
   },
   diaryTest: function(req, res) {
-    res.send('A diary of your feelings!');
+    res.send({test: 'A diary of your feelings!'});
   }
 }

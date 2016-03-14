@@ -1,5 +1,5 @@
 module.exports = {
   surveyTest: function(req, res) {
-    res.send('Feelings noted!');
+    res.send({test: 'Feelings noted!'});
   }
 };
