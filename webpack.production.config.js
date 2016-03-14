@@ -1,5 +1,3 @@
-var path = require('path');
-var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/client/app/index.html',
@@ -8,13 +6,11 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?reload=true',
-    path.join(__dirname, './client/app/index.js')
+    './client/app/index.js'
   ],
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js',
-    publicPath: '/'
+    filename: 'index_bundle.js'
   },
   module: {
     loaders: [
@@ -22,11 +18,5 @@ module.exports = {
       {test: /\.css$/, loader: "style-loader!css-loader"}
     ]
   },
-  plugins: [
-      HtmlWebpackPluginConfig,
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ],
-  target: 'web'
+  plugins: [HtmlWebpackPluginConfig]
 };
