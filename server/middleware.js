@@ -4,6 +4,10 @@ var routes = require('./routes');
 var webpackMiddleware = require('./webpackMiddleware');
 var path = require('path');
 
+exports.isProduction = function() {
+  return process.env.NODE_ENV === 'production';
+};
+
 exports.configure = function(app, express) {
   app.use(bodyParser.urlencoded({
      extended: true
@@ -25,8 +29,4 @@ exports.configure = function(app, express) {
       res.sendFile(path.join(__dirname, '..dist/index.html'));
     });
   }
-};
-
-exports.isProduction = function() {
-  return process.env.NODE_ENV === 'production';
 };
