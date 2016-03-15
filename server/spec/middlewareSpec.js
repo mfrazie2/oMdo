@@ -10,22 +10,7 @@ describe('Middleware', function() {
 
   it('Doesn\'t return anything', function(done) {
     app.listen(port);
-    expect(middleware(app)).to.equal(undefined);
-    done();
-  });
-
-  xit('Should route to main', function(done) {
-    middleware(app);
-
-    var i = app._router.stack.reduce(function(memo, layer, i) {
-      if (!!layer.route) {
-        return layer.route.path === '/' ? i : memo;
-      }
-    }, -1);
-
-    expect(i).to.not.equal(-1);
-    expect(app._router.stack[i].route).to.exist;
-    expect(app._router.stack[i].route.path).to.equal('/');
+    expect(middleware.configure(app)).to.equal(undefined);
     done();
   });
 })
