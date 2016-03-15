@@ -7,11 +7,7 @@ var app = express();
 
 var port = middleware.isProduction() ? process.env.port : 8080;
 
-if(!middleware.isProduction()) {
-  middleware.devMiddleware(app);
-} else {
-  middleware.prodMiddleware(app, express);
-}
+middleware.middleware(app, express);
 
 app.listen(port, console.log.bind(console, 'Listening on port', port));
 
