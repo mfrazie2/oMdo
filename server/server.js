@@ -5,9 +5,9 @@ require('dotenv').config();
 
 var app = express();
 
-var port = middleware.isProduction() ? process.env.port : 8080;
+var port = middleware.isProduction() ? process.env.PORT : 3000;
 
-middleware.middleware(app, express);
+middleware.configure(app, express);
 
 app.listen(port, console.log.bind(console, 'Listening on port', port));
 
