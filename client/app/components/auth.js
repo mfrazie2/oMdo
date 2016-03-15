@@ -1,6 +1,6 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-{/*TODO import styles*/}
+
 var Auth = function(props) {
   return (
     <div>
@@ -21,6 +21,7 @@ var Auth = function(props) {
   )
 };
 
+
 Auth.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onUpdateUsername: PropTypes.func.isRequired,
@@ -29,4 +30,5 @@ Auth.propTypes = {
   username: PropTypes.string,
   password: PropTypes.string
 };
+
 module.exports = Auth;
