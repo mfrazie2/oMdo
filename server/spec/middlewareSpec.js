@@ -10,7 +10,7 @@ describe('Middleware', function() {
 
   it('Doesn\'t return anything', function(done) {
     app.listen(port);
-    expect(middleware.configure(app)).to.equal(undefined);
+    expect(middleware.configure(app, express)).to.equal(undefined);
     done();
   });
 })
