@@ -3,9 +3,9 @@ var expect = require('chai').expect;
 var server = require('../server');
 
 describe('test auth routing', function() {
-  it('responds to /api/auth', function(done) {
+  it('responds to /auth', function(done) {
     request(server)
-      .get('/api/auth')
+      .get('/auth')
       .expect(200)
       .end(function(err, res) {
         expect(err).to.not.exist;

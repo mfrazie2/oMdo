@@ -3,9 +3,9 @@ var expect = require('chai').expect;
 var server = require('../server');
 
 describe('test user routing', function() {
-  it('responds to /api/user/data', function(done) {
+  it('responds to /user/data', function(done) {
     request(server)
-      .get('/api/user/data')
+      .get('/user/data')
       .expect(200)
       .end(function(err, res) {
         expect(err).to.not.exist;
@@ -14,9 +14,9 @@ describe('test user routing', function() {
       });
   });
 
-  it('responds to /api/user/diary', function(done) {
+  it('responds to /user/diary', function(done) {
     request(server)
-      .get('/api/user/diary')
+      .get('/user/diary')
       .expect(200)
       .end(function(err, res) {
         expect(err).to.not.exist;
