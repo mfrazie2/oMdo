@@ -1,16 +1,5 @@
 @import "./config.css";
 
-@keyframes pulse {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  15% {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-  30% {
-    transform: scale3d(1, 1, 1);
-  }
-}
 .root {
   width: inherit;
   padding: 10px;
@@ -36,12 +25,13 @@
   cursor: pointer;
   user-select: none;
   outline: 0;
-  animation: pulse 4s 2s infinite;
+  transition: all 1s;
 }
 
 .navButton:hover {
   transition: all 1s;
   color: #F4F1BB;
+  font-size: 25px;
 }
 
 .currentQuestion {
