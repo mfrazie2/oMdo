@@ -3,6 +3,7 @@ var PropTypes = React.PropTypes;
 var Question = require('./question');
 
 function Survey(props) {
+  console.log(props);
   return (
     <div>
       <Question className='feelingQuestion surveySlider'>
