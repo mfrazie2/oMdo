@@ -4,19 +4,23 @@ describe('Home', function(){
   var React = require('react');
   var ReactDom = require('react-dom');
   var TestUtils = require('react-addons-test-utils');
+
   var Home;
   beforeEach(function() {
     Home = require('../app/components/home.js');
   });
   it('should exist', function() {
-    var mockOnTakeSurvey = function() {};
+    var mockOnTakeSurvey = function() {
+    };
     var mockOnSeeProfile = function() {};
     var mockUsername = 'TheFraz';
     var home = TestUtils.renderIntoDocument(<div>
       <Home
       onTakeSurvey={mockOnTakeSurvey}
       onSeeProfile={mockOnTakeSurvey}
-      username={mockUsername}/>
+      username={mockUsername}
+       />
+      }
       </div>);
     var button = TestUtils.renderIntoDocument(
       <button onClick={mockOnTakeSurvey} /> );
@@ -24,8 +28,6 @@ describe('Home', function(){
     expect(TestUtils.isDOMComponent(home)).toBeTruthy();
   });
 });
-
-
 
 
 
