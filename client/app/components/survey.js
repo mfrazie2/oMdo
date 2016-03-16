@@ -1,13 +1,11 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var Question = require('./question');
 
 function Survey(props) {
   return (
     <div>
-      <h1>How is your today?</h1>
-      <p>We're glad you're back!</p>
-      <form className='surveyForm' onSubmit={props.onSubmit}>
-        
+      <Question className='feelingQuestion surveySlider'>
         <div className='feelingQuestion surveySlider'>
           <p>How are you feeling in this moment? <em>(On a scale of 1-5)</em> </p>
           Sad
@@ -73,9 +71,7 @@ function Survey(props) {
             <input type="textarea" name="eventElaborate" onChange={props.onEventElaborateChange} />
           </div>
         </div>
-        
-        <button className='surveySubmit' type='submit'>Submit feelings!</button>
-      </form>
+          </Question>
     </div>
   )
 } 
