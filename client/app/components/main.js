@@ -6,7 +6,6 @@ var Main = React.createClass({
     return(
       <div>
         <NavbarContainer />
-        <p>To thine ownself, be true</p>
         {this.props.children}
       </div>
     )
