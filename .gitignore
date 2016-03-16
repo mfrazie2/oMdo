@@ -5,8 +5,7 @@ bower_components/
 build/
 dist/
 
-# forever logs and pids
-server/log
+# forever pids
 server/pid
 
 # Environment stuff
