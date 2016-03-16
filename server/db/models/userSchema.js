@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Q = require('q');
 var bcrypt = require('bcrypt-node.js');
+var Survey = require('./surveySchema.js');
 var SALT_WORK_FACTOR = 10;
 
 var UserSchema = new mongoose.Schema({
@@ -14,7 +15,7 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
   survey:[{type: Schema.Types.ObjectId, ref: 'Survey'}],
-  createdAt: {
+  createdOn: {
     type: Date,
     default: Date.now
   },
