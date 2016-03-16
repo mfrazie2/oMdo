@@ -1,0 +1,54 @@
+@import "./config.css";
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  30% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.root {
+  width: inherit;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  /*margin: 50px auto;*/
+  background-color: #5CA4A9;
+  border-radius: 50px;
+
+}
+
+.navButton {
+  flex: 1;
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+  background: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, .6);
+  font-weight: 100;
+  font-size: 20px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+  outline: 0;
+  animation: pulse 4s 2s infinite;
+}
+
+.navButton:hover {
+  transition: all 1s;
+  color: #F4F1BB;
+}
+
+.currentQuestion {
+  padding: 50px;
+  font-size: 20px;
+  font-weight: 100;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, .6);
+  color: white;
+  display: inline-block;
+}
