@@ -1,9 +1,9 @@
 @import "./config.css";
 
 .root {
-  width: inherit;
+  min-width: 99.9%;
   padding: 10px;
-  display: flex;
+  display: table;
   text-align: center;
   /*margin: 50px auto;*/
   background-color: #5CA4A9;
@@ -28,6 +28,16 @@
   transition: all 1s;
 }
 
+.prev {
+  composes: navButton;
+  float: left;
+}
+
+.next {
+  composes: navButton;
+  float: right;
+}
+
 .navButton:hover {
   transition: all 1s;
   color: #F4F1BB;
@@ -35,7 +45,10 @@
 }
 
 .currentQuestion {
-  padding: 50px;
+  width: inherit;
+  resize: inherit;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 20px;
   font-weight: 100;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, .6);

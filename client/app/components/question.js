@@ -16,11 +16,12 @@ function getChild(props, currentIndex) {
 }
 
 function Question(props) {
+  console.log(props);
   return(
     <div className={props.css.root}>
-      <button className={props.css.navButton} onClick={getChild(props, currentIndex-1)}>go back</button>
+      <button className={props.css.prev} onClick={getChild(props, currentIndex-1)}>last question</button>
       <span className={props.css.currentQuestion}>{getChild(props, currentIndex)}</span>
-      <button className={props.css.navButton} onClick={getChild(props, currentIndex+1)}>next question</button>
+      <button className={props.css.next} onClick={getChild(props, currentIndex+1)}>next question</button>
     </div>
   )
 }
