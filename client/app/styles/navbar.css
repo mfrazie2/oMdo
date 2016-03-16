@@ -1,0 +1,26 @@
+@import "./config.css";
+
+.root {
+  margin-bottom: 20px;
+  max-width: 100%;
+  padding: 10px;
+  /*margin: 50px auto;*/
+  background-color: #424B54;
+  border-radius: 20px;
+}
+
+.navItem {
+  color: white;
+  padding: 10px;
+  margin: 9px;
+  background-color: #ED6A5A;
+  border-style: solid;
+  border-color: white;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.navItem:hover {
+  transition: all 2s;
+  background-color: #cb2a16;
+}
