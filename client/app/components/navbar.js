@@ -8,7 +8,7 @@ console.log(typeof styleable)
 function Navbar(props) {
   return(
     <div className={props.css.root}>
-      <ul>
+      <ul className={props.css.ul}>
         <Link className={props.css.navItem} to='survey'> Talk about your Feelings </Link>
         <Link className={props.css.navItem}to='profile'> Look at your Feelings </Link>
         <Link className={props.css.navItem}to='/'> That's enough feelings for today </Link>
