@@ -7,6 +7,7 @@ var Auth = function(props) {
       <form onSubmit={props.onSubmit}>
         <input
           type="text"
+          name="username"
           onChange={props.onUpdateUsername}
           value={props.username}
           placeholder="username" />

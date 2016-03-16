@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/*"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,14 @@
     "url": "https://github.com/BirdcageSleet/skynet/issues"
   },
   "homepage": "https://github.com/BirdcageSleet/skynet#readme",
+  "jest" : {
+    "scriptPreprocessor":"<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": ["js", "es6"],
+    "moduleFileExtensions": ["js", "es6"],
+    "unmockedModulePathPatterns":[
+      "react", "react-dom", "react-addons-test-utils"
+    ]
+  },
   "dependencies": {
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
@@ -26,12 +34,16 @@
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
+    "babel-jest": "^9.0.3",
     "babel-loader": "^6.2.4",
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.10.0",
+    "jest": "^0.1.40",
+    "jest-cli": "^0.9.2",
     "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7",
     "style-loader": "^0.13.0",
     "supertest": "^1.2.0",
     "webpack": "^1.12.14"
