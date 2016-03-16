@@ -1,5 +1,13 @@
 var React = require('react');
 var Auth = require('../components/auth');
+var configureStore = require('../store/store').configureStore;
+
+var actions = require('../actions/actions');
+var store = configureStore();
+
+var signIn = function() {
+  store.dispatch(actions.signIn());
+}
 
 var AuthContainer = React.createClass({
   contextTypes: {
@@ -27,6 +35,7 @@ var AuthContainer = React.createClass({
         username: this.state.username,
       }
     });
+    signIn();
   },
   handleUpdateUsername: function(event) {
     this.setState({
@@ -50,4 +59,4 @@ var AuthContainer = React.createClass({
   }
 });
 
-module.exports = AuthContainer;
+module.exports = connect()(AuthContainer);
