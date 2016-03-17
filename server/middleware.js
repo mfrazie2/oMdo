@@ -24,7 +24,7 @@ exports.configure = function(app, express) {
     app.use(webpackMiddleware.devConfig);
     app.use(webpackMiddleware.hotConfig);
     app.get('*', function response(req, res) {
-      res.write(webpackMiddleware.devConfig.fileSystem.readFileSync(rootDir));
+      res.write(webpackMiddleware.devConfig.fileSystem.readFileSync(rootDir + 'index.html'));
       res.end();
     });
   }

@@ -9,7 +9,9 @@ var thunkMiddleware = require('redux-thunk').default;
 // var syncHistoryWithStore = require('react-router-redux').syncHistoryWithStore;
 // var reduxRouterMiddleware = syncHistoryWithStore(browserHistory);
 
-exports.configureStore = function(browserHistory) {
+
+
+var configureStore = function(browserHistory) {
   var midWare = applyMiddleware(
     thunkMiddleware
     // reduxRouterMiddleware(browserHistory)
@@ -18,4 +20,6 @@ exports.configureStore = function(browserHistory) {
   return createStore(rootReducer, midWare);
 };
 
+var store = configureStore();
 
+module.exports = store;
