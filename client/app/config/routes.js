@@ -19,7 +19,7 @@ var SurveyContainer = require('../containers/surveyContainer');
 var ProfileContainer = require('../containers/profileContainer');
 var About = require('../components/about');
 var reducers = require('../reducers/reducers');
-var store = require('../store/store').configureStore(browserHistory);
+var store = require('../store/store');
 console.log(store);
 // var store = createStore(
 //   combineReducers({

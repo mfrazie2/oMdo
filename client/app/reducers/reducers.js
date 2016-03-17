@@ -1,27 +1,30 @@
-var actions = require('../actions/actions');
+var authActions = require('../actions/authActions');
 var combineReducers = require('redux').combineReducers;
 var routerReducer = require('react-router-redux').routerReducer;
+var questionReducer = require('./surveyReducers').questionReducer;
+var profileReducer = require('./profileReducers').profileReducer;
 
 var initialState = {
   isLoading: false,
   data: [],
-  error: false
+  error: false,
+  currentIndex: 0
 }
 
 function authTestReducer(state, action) {
   if(state === undefined) {
-    state = initialState
+    state = initialState;    
   }
 
   switch(action.type) {
-    case actions.SIGN_IN_SUBMIT:
+    case authActions.SIGN_IN_SUBMIT:
       return _.assign({}, state, {isLoading: true})
-    case actions.SIGN_IN_SUCCESS:
+    case authActions.SIGN_IN_SUCCESS:
       return _.assign({}, state, {
         isLoading: false,
         data: data.concat(action.data)
       })
-    case actions.SIGN_IN_FAILURE:
+    case authActions.SIGN_IN_FAILURE:
       return _.assign({}, state, {
         isLoading: false,
         error: true
@@ -33,5 +36,7 @@ function authTestReducer(state, action) {
 
 exports.rootReducer =  combineReducers({
   authTestReducer,
+  questionReducer,
+  profileReducer,
   routing: routerReducer
 })

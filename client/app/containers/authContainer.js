@@ -1,13 +1,8 @@
 var React = require('react');
 var Auth = require('../components/auth');
-var configureStore = require('../store/store').configureStore;
+var connect = require('react-redux').connect
+var authActions = require('../actions/authActions');
 
-var actions = require('../actions/actions');
-var store = configureStore();
-
-var signIn = function() {
-  store.dispatch(actions.signIn());
-}
 
 var AuthContainer = React.createClass({
   contextTypes: {
