@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var User = require('./userSchema');
 
 var SurveySchema = new mongoose.Schema({
   feeling: Number,
@@ -10,13 +11,13 @@ var SurveySchema = new mongoose.Schema({
   moodElaborate: String,
   majorEvent: String, // ? Boolean ?
   eventElaborate: String,
-  createdBy: {Schema.Types.ObjectId, ref: 'User'},
-  createOn: {
+  createdBy: {type: Schema.Types.ObjectId, ref: 'User'},
+  createdOn: {
     type: Date,
     default: Date.now
   }
 });
 
-var Survey = moongoose('Survey', SurveySchema);
+var Survey = mongoose('Survey', SurveySchema);
 
 module.exports = Survey;
