@@ -1,0 +1,21 @@
+@import "./config.css";
+
+.root {
+  text-align: left;
+  margin: 15px;
+  color: #424B54;
+}
+
+.headers {
+  color: #676e76;
+  text-align: center;
+}
+
+.person {
+  list-style-type: none;
+  text-align: center;
+}
+
+.list {
+  padding: 0;
+}
