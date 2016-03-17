@@ -4,10 +4,15 @@ var React = require('react');
 function Profile(props) {
   return (
     <div>
+
         <h1> Profile Page to Come </h1>
+=======
+        <h1 onClick={consoleLogSomething()}> Profile Page to Come {reduxResult} </h1>
+
       </div>  
   );
 }
+
 
 
 // function Profile(props) {
@@ -22,5 +27,11 @@ function Profile(props) {
 // Profile.propTypes = {
 //   reduxTest: PropTypes.func
 // };
+
+// Profile.propTypes = {
+//   actions: PropTypes.object.isRequired,
+//   reduxResult: PropTypes.string.isRequired
+// };
+
 
 module.exports = Profile;

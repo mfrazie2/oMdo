@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 var Profile = require('../components/profile');
 // var consoleLogSomething = require('../actions/profileActions').consoleLogSomething;
 // var dispatch = require('../store/store').dispatch;
@@ -8,10 +9,15 @@ var Profile = require('../components/profile');
 var ProfileContainer = React.createClass({
   render: function() {
     return (
-      <Profile />
+
+      <Profile
+        consoleLogSomething={this.props.consoleLogSomething}
+        reduxResult={this.props.reduxResult}
+      />
     )
   }
 })
+
 
 
 // var ProfileContainer = React.createClass({
