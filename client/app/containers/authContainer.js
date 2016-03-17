@@ -4,6 +4,20 @@ var connect = require('react-redux').connect
 var authActions = require('../actions/authActions');
 var bindActionCreators = require('redux').bindActionCreators;
 
+// var connect = require('react-redux').connect
+// var authActions = require('../actions/authActions');
+// var configureStore = require('../store/store').configureStore;
+// var connect = require('react-redux').connect;
+// console.log(typeof connect)
+// var actions = require('../actions/actions');
+// var store = configureStore();
+
+// var signIn = function() {
+//   store.dispatch(actions.signIn());
+// }
+
+
+
 var AuthContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired,
