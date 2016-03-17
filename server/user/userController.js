@@ -56,9 +56,10 @@ module.exports = {
         password = req.body.password,
         findUser = Q.nbind(User.findOne, User);
 
-    findUser({username:username}) {
+    findUser({username:username})
+      .then(function(user) {
       if (!user) {
-        next(new Error("Can't find the user!"));
+        next(new Error('Cannot find the user!'));
       } else {
         return user.comparePassword(password)
         .then(function(foundUser) {
@@ -66,7 +67,7 @@ module.exports = {
             var token =jwt.encode(user, 'terminator');
             res.json({token: token});
           } else {
-            return next(new Error("There's no user by that name"))
+            return next(new Error('There is no user by that name'));
           }
         });
       }
@@ -77,11 +78,33 @@ module.exports = {
   },
 
   checkAuth: function(req,res,next) {
-    // TODO
+    var token = req.headers['x-acess-token'];
+    if (!token) {
+      next(new Error('No token found!'));
+    } else {
+      var user = jwt.decode(token, 'terminator');
+      var findUser = Q.nbind(User.findOne, User);
+      findUser({username: user.username})
+      .then(function(foundUser) {
+        if(foundUser) {
+          res.send(200);
+        } else {
+          res.send(401);
+        }
+      })
+      .fail(function(error) {
+        next(error);
+      });
+    }
   },
 
   getUser: function(req,res,next) {
-    // TODO
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token found!'));
+    } else {
+      var user =jwt.decode(token, 'terminator')
+    }
   },
 
 
