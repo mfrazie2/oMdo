@@ -2,7 +2,10 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var Question = require('./question');
 var store = require('../store/store');
-var Loading = require('../components/Loading');
+var Loading = require('../components/loading');
+// var store = this.context.store;
+var styleable = require('react-styleable').default;
+var css = require('../styles/survey.css');
 
 function Survey(props) {
   return (
@@ -82,4 +85,21 @@ function Survey(props) {
   )
 }
 
-module.exports = Survey;
+
+
+// Survey.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   onFeelingChange: PropTypes.func.isRequired,
+//   onAnxietyChange: PropTypes.func.isRequired,
+//   onEnergyChange: PropTypes.func.isRequired,
+//   onSleepChange: PropTypes.func.isRequired,
+//   onMoodChange: PropTypes.func.isRequired,
+//   onMajorEventChange: PropTypes.func.isRequired,
+//   onSleepElaborateChange: PropTypes.func.isRequired,
+//   onMoodElaborateChange: PropTypes.func.isRequired,
+//   onEventElaborateChange: PropTypes.func.isRequired,
+//   isLoading: PropTypes.bool.isRequired
+// };
+
+
+module.exports = styleable(css)(Survey);
