@@ -1,7 +1,7 @@
 var React = require('react');
 var Auth = require('../components/auth');
-var connect = require('react-redux').connect
-var authActions = require('../actions/authActions');
+// var connect = require('react-redux').connect
+// var authActions = require('../actions/authActions');
 
 
 var AuthContainer = React.createClass({
@@ -30,7 +30,6 @@ var AuthContainer = React.createClass({
         username: this.state.username,
       }
     });
-    signIn();
   },
   handleUpdateUsername: function(event) {
     this.setState({
@@ -54,4 +53,5 @@ var AuthContainer = React.createClass({
   }
 });
 
-module.exports = connect()(AuthContainer);
+// module.exports = connect()(AuthContainer);
+module.exports = AuthContainer;

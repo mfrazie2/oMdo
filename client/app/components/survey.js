@@ -6,7 +6,7 @@ function Survey(props) {
   console.log(props);
   return (
     <div>
-      <Question className='feelingQuestion surveySlider'>
+      <Question className='feelingQuestion surveySlider' test={props.state}>
         <div className='feelingQuestion surveySlider'>
           <p>How are you feeling in this moment? <em>(On a scale of 1-5)</em> </p>
           Sad
@@ -90,9 +90,9 @@ Survey.propTypes = {
   onEventElaborateChange: PropTypes.func.isRequired
 };
 
-Survey.propTypes = {
+// Survey.propTypes = {
 
 
-}
+// }
 
 module.exports = Survey;
