@@ -4,11 +4,7 @@ var React = require('react');
 function Profile(props) {
   return (
     <div>
-
-        <h1> Profile Page to Come </h1>
-=======
-        <h1 onClick={consoleLogSomething()}> Profile Page to Come {reduxResult} </h1>
-
+        <h1 onClick={props.consoleLogSomething}> Profile Page to Come {props.reduxResult} </h1>
       </div>  
   );
 }
