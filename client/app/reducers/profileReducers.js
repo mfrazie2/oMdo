@@ -2,7 +2,8 @@ var CONSOLE_LOG_SOMETHING = require('../actions/actions').CONSOLE_LOG_SOMETHING;
 
 
 var initialState = {
-  reduxResult: 'This is not working!'
+  isLoading: false,
+  errorReceived: false
 }
 
 exports.profileReducer = function(state, action) {
