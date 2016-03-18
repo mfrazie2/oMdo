@@ -120,6 +120,48 @@ module.exports = {
     }
   },
 
+  getUserSurvey: function(req,res,next) {
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token found!'));
+    } else {
+      var user =jwt.decode(token, 'terminator');
+      var findUser = Q.nbind(User.findOne, User);
+      findUser({username: user.username})
+      .then(function(foundUser) {
+        if (foundUser) {
+          var surveys = foundUser.surveys.reduce(function(memo, Survey) {
+            Survey.findOrCreate({_id: Survey._id}, function(err, foundSurvey, created) {
+              Survey.feeling = foundSurvey.feeling;
+              Survey.anxiety = foundSurvey.anxiety;
+              Survey.energy  = foundSurvey.energy;
+              Survey.sleep = foundSurvey.sleep;
+              Survey.sleepElaborate = foundSurvey.sleepElaborate;
+              Survey.mood = foundSurvey.mood;
+              Survey.moodElaborate = foundSurvey.moodElaborate;
+              Survey.majorEvent = foundSurvey.majorEvent;
+              memo.push(Survey);
+            });
+            return memo;
+          }, [])
+          foundUser.populate('surveys');
+          res.send({
+            username: foundUser.username,
+            surveys: foundUser.surveys
+          });
+        } else {
+          res.send(401);
+        }
+      })
+      .fail(function(error) {
+        next(error);
+      });
+    }
+  },
+
+  postUserSurvey: function(req,res,next) {
+
+  }
 
 
 };
