@@ -19,9 +19,15 @@ var AuthContainer = require('../containers/authContainer');
 var SurveyContainer = require('../containers/surveyContainer');
 var ProfileContainer = require('../containers/profileContainer');
 var About = require('../components/about');
+
 // var reducers = require('../reducers/reducers');
 // var store = require('../store/store');
 // console.log(store);
+
+var reducers = require('../reducers/reducers');
+var store = require('../store/store');
+console.log('store', store);
+
 // var store = createStore(
 //   combineReducers({
 //     reducers,
@@ -29,20 +35,21 @@ var About = require('../components/about');
 //   })
 // );
 
-var Routes = (
-  <Router history={HashHistory}>
-    <Route path='/' component={Main}>
-      <Route path='signin' component={AuthContainer} />
-      <Route path='signup' component={AuthContainer} />
-      {/*<Route path='home' component={HomeContainer} />*/}
-      <Route path='survey' component={SurveyContainer} />
-      <Route path='profile' component={ProfileContainer} />
-      <Route path='about' component={About} />
-    </Route>
-  </Router>
-)
 
-module.exports = Routes;
+// var Routes = (
+//   <Router history={HashHistory}>
+//     <Route path='/' component={Main}>
+//       <Route path='signin' component={AuthContainer} />
+//       <Route path='signup' component={AuthContainer} />
+//       {<Route path='home' component={HomeContainer} />}
+//       <Route path='survey' component={SurveyContainer} />
+//       <Route path='profile' component={ProfileContainer} />
+//       <Route path='about' component={About} />
+//     </Route>
+//   </Router>
+// )
+
+// module.exports = Routes;
 
 // var history = syncHistoryWithStore(browserHistory, store);
 
@@ -56,6 +63,23 @@ module.exports = Routes;
 //         <Route path='profile' component={ProfileContainer} />
 //         <Route path='about' component={About} />
 //       </Route>
+
+var history = syncHistoryWithStore(browserHistory, store);
+
+var Routes = (
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path='/' component={Main}>
+        <Route path='signin' component={AuthContainer} />
+        <Route path='signup' component={AuthContainer} />
+        {/*<Route path='home' component={HomeContainer} />*/}
+        <Route path='survey' component={SurveyContainer} />
+        <Route path='profile' component={ProfileContainer} />
+        <Route path='about' component={About} />
+      </Route>
+    </Router>
+  </Provider>
+
   
 // )
 
@@ -64,7 +88,11 @@ module.exports = Routes;
 //     return (
 //       <Provider store={store}>
 //       <div>
+
 //         <Router history={browserHistory} routes={Routes} />
+
+//         <Router history={history} routes={Routes} />
+
 //       </div>
 //       </Provider>
       
@@ -72,4 +100,8 @@ module.exports = Routes;
 //   }
 // })
 
+
 // module.exports = Root;
+
+module.exports = Routes;
+
