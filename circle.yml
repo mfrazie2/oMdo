@@ -4,6 +4,9 @@ machine:
 test:
   pre:
     - webpack
+dependencies:
+  override:
+    - npm install --production
 deployment:
   production:
     branch: master
