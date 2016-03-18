@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Q = require('q');
-var bcrypt = require('bcrypt-node.js');
+var bcrypt = require('bcrypt-nodejs');
 var Survey = require('./surveySchema.js');
 var SALT_WORK_FACTOR = 10;
 
@@ -14,7 +14,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  survey:[{type: Schema.Types.ObjectId, ref: 'Survey'}],
+  survey:[{type: mongoose.Schema.Types.ObjectId, ref: 'Survey'}],
   createdOn: {
     type: Date,
     default: Date.now
@@ -26,7 +26,7 @@ var UserSchema = new mongoose.Schema({
 // resources http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 // https://github.com/kriskowal/q
 
-UserSchema.pre('save', function() {
+UserSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) {
     return next();
@@ -35,7 +35,7 @@ UserSchema.pre('save', function() {
     if (err) {
       return next(err);
     }
-    bycrypt.hash(user.password, salt, null, function(err, hash) {
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) {
         return next(err);
       }
@@ -49,7 +49,7 @@ UserSchema.pre('save', function() {
 UserSchema.methods.comparePassword = function(passwordAttempt) {
   var defer = Q.defer();
   var hashed = this.password;
-  bycrypt.compare(passwordAttemp, hashed, function(err, isMatched) {
+  bcrypt.compare(passwordAttempt, hashed, function(err, isMatched) {
     if (err) {
       defer.reject(err);
     } else {

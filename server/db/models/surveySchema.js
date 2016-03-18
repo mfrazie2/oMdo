@@ -11,13 +11,13 @@ var SurveySchema = new mongoose.Schema({
   moodElaborate: String,
   majorEvent: String, // ? Boolean ?
   eventElaborate: String,
-  createdBy: {type: Schema.Types.ObjectId, ref: 'User'},
+  createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   createdOn: {
     type: Date,
     default: Date.now
   }
 });
 
-var Survey = mongoose('Survey', SurveySchema);
+var Survey = mongoose.model('Survey', SurveySchema);
 
 module.exports = Survey;

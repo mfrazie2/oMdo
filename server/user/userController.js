@@ -1,5 +1,5 @@
 var User = require('../db/models/userSchema.js');
-var Survey = require('../db.models/surveySchema.js');
+var Survey = require('../db/models/surveySchema.js');
 var jwt = require('jwt-simple');
 var Q = require('q');
 
@@ -26,7 +26,7 @@ module.exports = {
     var username = req.body.username,
         password = req.body.password,
         newUser,
-        create,
+        create = Q.nbind(User.create, User);
         findOne = Q.nbind(User.findOne, User);
 
     findOne({username: username})
@@ -34,12 +34,12 @@ module.exports = {
       if (user) {
         next(new Error('Already exists!'));
       } else {
-        create = Q.nbind(User.create, User);
         newUser = {
           username: username,
           password: password
         };
       }
+      console.log(newUser);
       return create(newUser);
     })
     .then(function(user) {
@@ -65,6 +65,7 @@ module.exports = {
         .then(function(foundUser) {
           if(foundUser) {
             var token =jwt.encode(user, 'terminator');
+            console.log({username: username, password: password, token: token});
             res.json({token: token});
           } else {
             return next(new Error('There is no user by that name'));

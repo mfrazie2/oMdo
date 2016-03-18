@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var path = require('path');
 var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost/skynet';
 mongoose.connect(dbURI);
 var db = mongoose.connection;
