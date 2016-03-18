@@ -103,10 +103,22 @@ module.exports = {
     if (!token) {
       next(new Error('No token found!'));
     } else {
-      var user =jwt.decode(token, 'terminator')
+      var user =jwt.decode(token, 'terminator');
+      var findUser =Q.nbind(User.findOne, User);
+      findUser({username: user.username})
+      .then(function(foundUser) {
+        if(foundUser) {
+          res.send({username:foundUser.username});
+        } else {
+          res.send(401);
+        }
+      })
+      .fail(function(error) {
+        next(error);
+      });
     }
   },
 
 
 
-}
+};
