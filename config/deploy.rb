@@ -10,7 +10,7 @@ namespace :deploy do
   desc "Stop Forever"
   task :started do
     on roles(:app) do
-      execute "forever stopall" 
+      execute "forever stopall"
     end
   end
 
@@ -20,7 +20,7 @@ namespace :deploy do
       execute "cd #{current_path} && npm install --production; webpack"
     end
   end
-  
+
   desc "CP .env to skynet directory"
   task :dotenv do
     on roles(:app) do
@@ -31,7 +31,7 @@ namespace :deploy do
   desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      # This assumes you are using upstart to startup your application 
+      # This assumes you are using upstart to startup your application
       # - be sure that your upstart script runs as the 'deploy' user
       execute "sudo start node-upstart-script", raise_on_non_zero_exit: false
     end

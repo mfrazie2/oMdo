@@ -54,7 +54,8 @@
     "webpack": "^1.12.14",
     "webpack-hot-middleware": "^2.10.0",
     "react-router": "^2.0.1",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
