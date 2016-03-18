@@ -58,15 +58,19 @@ module.exports = {
 
     findUser({username:username})
       .then(function(user) {
+      console.log("USER",user);
       if (!user) {
+        console.log("ANYTHING");
         next(new Error('Cannot find the user!'));
       } else {
         return user.comparePassword(password)
         .then(function(foundUser) {
+          console.log("found user", foundUser);
           if(foundUser) {
+            console.log("THis is the ",user);
             var token =jwt.encode(user, 'terminator');
             console.log({username: username, password: password, token: token});
-            res.json({token: token});
+            res.send({token: token});
           } else {
             return next(new Error('There is no user by that name'));
           }
@@ -79,7 +83,7 @@ module.exports = {
   },
 
   checkAuth: function(req,res,next) {
-    var token = req.headers['x-acess-token'];
+    var token = req.headers['x-access-token'];
     if (!token) {
       next(new Error('No token found!'));
     } else {
@@ -160,8 +164,36 @@ module.exports = {
   },
 
   postUserSurvey: function(req,res,next) {
-
-  }
-
-
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('Token not found while trying to post to survey'));
+      }
+    var surveyData = req.body.survey;
+    var user = jwt.decode(token, 'terminator');
+    User.findOne({username: user.username})
+      .exec(function(err, foundUser) {
+        if (err) {
+          next(new Error('Could not find user when attempting to post survey:', err));
+        }
+        Survey.findOrCreate({surveyId: survey.surveyId}, function(err, foundSurvey, created) {
+          if (err) {
+            next(new Error('There is an error in posting the survey: ', err));
+          }
+          foundUser.surveys.addToSet(foundSurvey);
+          foundUser.save()
+            .then(function(result) {
+              res.send(result);
+            })
+            .catch(function(err) {
+              next(new Error('Theres is an error saving survey', err));
+            });
+        });
+      })
+      .catch(function(error){
+        if (error) {
+          console.log('there is error adding to the users survey');
+          res.sendStatus(500);
+        }
+      });
+    }
 };
