@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var actions = require('../../app/actions/authActions');
+var actions = require('../app/actions/authActions');
 ​
 describe('sign up', function(){
   it('should have a function signUpSubmit that returns an action type \
