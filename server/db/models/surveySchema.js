@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate');
 var User = require('./userSchema');
 
 var SurveySchema = new mongoose.Schema({
@@ -17,6 +18,8 @@ var SurveySchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+SurveySchema.plugin(findOrCreate);
 
 var Survey = mongoose.model('Survey', SurveySchema);
 
