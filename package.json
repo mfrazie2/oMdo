@@ -17,19 +17,31 @@
     "url": "https://github.com/BirdcageSleet/skynet/issues"
   },
   "homepage": "https://github.com/BirdcageSleet/skynet#readme",
-  "jest" : {
-    "scriptPreprocessor":"<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["js", "es6"],
-    "moduleFileExtensions": ["js", "es6"],
-    "unmockedModulePathPatterns":[
-      "react", "react-dom", "react-addons-test-utils"
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "js",
+      "es6"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "es6"
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-dom",
+      "react-addons-test-utils"
     ]
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "jwt-simple": "^0.5.0",
+    "mongoose": "^4.4.7",
     "morgan": "^1.7.0",
+    "q": "^1.4.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.1"
