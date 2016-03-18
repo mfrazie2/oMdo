@@ -34,9 +34,18 @@
 //   }
 // }
 
+
 // exports.rootReducer =  combineReducers({
 //   authTestReducer,
 //   questionReducer,
 //   profileReducer,
 //   routing: routerReducer
 // })
+
+exports.rootReducer =  combineReducers({
+  authTestReducer: authTestReducer,
+  questionReducer: questionReducer,
+  profileReducer: profileReducer,
+  routing: routerReducer
+})
+
