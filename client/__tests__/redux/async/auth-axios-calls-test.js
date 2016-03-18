@@ -101,29 +101,3 @@ describe('auth axios calls', function(){
       store.dispatch(actions.signInSubmit());
   });
 })
-
-// exports.signIn = function() {
-//   return function(dispatch) {
-//     dispatch(signInSubmit());
-//     axios.get('/auth')
-//     .then(function(response) {
-//       dispatch(signInSuccess(response.data));
-//     })
-//     .catch(function(response) {
-//       dispatch(signInFailure(response.data));
-//     });
-//   }
-// }
-
-// exports.signUp = function() {
-//   return function(dispatch) {
-//     dispatch(signUpSubmit());
-//     axios.get('/auth')
-//     .then(function(response) {
-//       dispatch(signUpSuccess(response.data));
-//     })
-//     .catch(function(response) {
-//       dispatch(signUpFailure(response.data));
-//     });
-//   }
-// }
