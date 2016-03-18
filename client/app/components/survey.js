@@ -73,6 +73,7 @@ function Survey(props) {
           </div>
         </div>
           </Question>
+          <button className="surveySubmit" type="Submit">Submit</button>
     </div>
   )
 } 
