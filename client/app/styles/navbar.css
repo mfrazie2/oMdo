@@ -1,0 +1,37 @@
+@import "./config.css";
+
+.root {
+  margin-bottom: 20px;
+  min-width: 99.9%;
+  padding: 10px;
+  display:table;
+  /*margin: 50px auto;*/
+  background-color: #424B54;
+  border-radius: 20px;
+}
+
+.ul {
+  width: inherit;
+  padding-left: 0;
+}
+
+.navItem {
+  resize: inherit;
+  color: white;
+  padding: 8px;
+  margin: 9px;
+  display: inline-block;
+  background-color: #ED6A5A;
+  border-style: solid;
+  border-color: white;
+  font-weight: 100;
+  font-size: 20px;
+  transition: all 1s;
+  text-decoration: none;
+}
+
+.navItem:hover {
+  transition: all 2s;
+  border-radius: 20px;
+  background-color: #cb2a16;
+}
