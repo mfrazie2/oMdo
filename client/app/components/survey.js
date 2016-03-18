@@ -1,13 +1,12 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var Question = require('./question');
 
 function Survey(props) {
+  console.log(props);
   return (
     <div>
-      <h1>How is your today?</h1>
-      <p>We're glad you're back!</p>
-      <form className='surveyForm' onSubmit={props.onSubmit}>
-        
+      <Question className='feelingQuestion surveySlider' test={props.state}>
         <div className='feelingQuestion surveySlider'>
           <p>How are you feeling in this moment? <em>(On a scale of 1-5)</em> </p>
           Sad
@@ -73,9 +72,8 @@ function Survey(props) {
             <input type="textarea" name="eventElaborate" onChange={props.onEventElaborateChange} />
           </div>
         </div>
-        
-        <button className='surveySubmit' type='submit'>Submit feelings!</button>
-      </form>
+          </Question>
+          <button className="surveySubmit" type="Submit">Submit</button>
     </div>
   )
 } 
@@ -93,9 +91,9 @@ Survey.propTypes = {
   onEventElaborateChange: PropTypes.func.isRequired
 };
 
-Survey.propTypes = {
+// Survey.propTypes = {
 
 
-}
+// }
 
 module.exports = Survey;
