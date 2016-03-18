@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
 var findOrCreate = require('mongoose-findorcreate');
 var User = require('./userSchema');
-
+var autoIncrement = require('mongoose-auto-increment');
+var db = require('../config.js');
+autoIncrement.initialize(db);
 var SurveySchema = new mongoose.Schema({
+  surveyId: Number,
   feeling: Number,
   anxiety: Number,
   energy: Number,
@@ -19,6 +22,7 @@ var SurveySchema = new mongoose.Schema({
   }
 });
 
+SurveySchema.plugin(autoIncrement.plugin, {model:'Survey', field:'surveyId'});
 SurveySchema.plugin(findOrCreate);
 
 var Survey = mongoose.model('Survey', SurveySchema);
