@@ -40,7 +40,6 @@ module.exports = {
           password: password
         };
       }
-      console.log(newUser);
       return create(newUser);
     })
     .then(function(user) {
