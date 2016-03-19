@@ -31,7 +31,14 @@ module.exports = {
     return {type: actions.MOOD_ELABORATE_CHANGE, moodDetail: moodDetail}
   },
   // Survey submission handling
-  surveySubmit: function() {
+  surveySubmit: function(survey) {
+    axios.post('/user/userData', survey)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
     return {type: actions.SURVEY_SUBMIT};
   },
   surveySuccess: function() {
