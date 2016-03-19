@@ -34,7 +34,7 @@ function configureStore() {
 
         dispatch: function dispatch(action) {
           actions.push(action);
-
+          // Here is the fix. It used to only return action
           return Promise.resolve(action);
         },
 
