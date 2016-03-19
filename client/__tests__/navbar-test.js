@@ -1,6 +1,6 @@
 jest.unmock('../app/components/navbar.js');
 
-describe('Profile', function() {
+describe('Navbar', function() {
   var React = require('react');
   var ReactDom = require('react-dom');
   var TestUtils = require('react-addons-test-utils');
