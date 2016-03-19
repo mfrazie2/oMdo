@@ -39,12 +39,11 @@ module.exports = {
           password: password
         };
       }
-      console.log(newUser);
       return create(newUser);
     })
     .then(function(user) {
       var token = jwt.encode(user, 'terminator');
-      res.json({token:token});
+      res.json({username:user.username, token:token});
     })
     .fail(function(error) {
       next(error);
