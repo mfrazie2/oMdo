@@ -2,6 +2,7 @@ var User = require('../db/models/userSchema.js');
 var Survey = require('../db/models/surveySchema.js');
 var jwt = require('jwt-simple');
 var Q = require('q');
+var dotenv = require('dotenv').config();
 
 module.exports = {
   /*
@@ -43,7 +44,7 @@ module.exports = {
       return create(newUser);
     })
     .then(function(user) {
-      var token = jwt.encode(user, 'terminator');
+      var token = jwt.encode(user, process.env.JWT_SECRET);
       res.json({token:token});
     })
     .fail(function(error) {
@@ -68,7 +69,7 @@ module.exports = {
           console.log("found user", foundUser);
           if(foundUser) {
             console.log("THis is the ",user);
-            var token =jwt.encode(user, 'terminator');
+            var token =jwt.encode(user, process.env.JWT_SECRET);
             console.log({username: username, password: password, token: token});
             res.send({token: token});
           } else {
@@ -87,7 +88,7 @@ module.exports = {
     if (!token) {
       next(new Error('No token found!'));
     } else {
-      var user = jwt.decode(token, 'terminator');
+      var user = jwt.decode(token, process.env.JWT_SECRET);
       var findUser = Q.nbind(User.findOne, User);
       findUser({username: user.username})
       .then(function(foundUser) {
@@ -108,7 +109,7 @@ module.exports = {
     if (!token) {
       next(new Error('No token found!'));
     } else {
-      var user =jwt.decode(token, 'terminator');
+      var user =jwt.decode(token, process.env.JWT_SECRET);
       var findUser =Q.nbind(User.findOne, User);
       findUser({username: user.username})
       .then(function(foundUser) {
@@ -129,7 +130,7 @@ module.exports = {
     if (!token) {
       next(new Error('No token found!'));
     } else {
-      var user =jwt.decode(token, 'terminator');
+      var user =jwt.decode(token, process.env.JWT_SECRET);
       var findUser = Q.nbind(User.findOne, User);
       findUser({username: user.username})
       .then(function(foundUser) {
@@ -168,8 +169,8 @@ module.exports = {
     if (!token) {
       next(new Error('Token not found while trying to post to survey'));
       }
-    var surveyData = req.body.survey;
-    var user = jwt.decode(token, 'terminator');
+    var survey = req.body.survey;
+    var user = jwt.decode(token, process.env.JWT_SECRET);
     User.findOne({username: user.username})
       .exec(function(err, foundUser) {
         if (err) {

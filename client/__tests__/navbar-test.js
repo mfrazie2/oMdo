@@ -4,6 +4,8 @@ describe('Profile', function() {
   var React = require('react');
   var ReactDom = require('react-dom');
   var TestUtils = require('react-addons-test-utils');
+  var styleable = require('react-styleable');
+  var navCss = require('../app/styles/navbar.css');
 
   var Navbar;
   beforeEach(function() {
