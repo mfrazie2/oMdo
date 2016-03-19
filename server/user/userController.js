@@ -26,7 +26,7 @@ module.exports = {
     var username = req.body.username,
         password = req.body.password,
         newUser,
-        create = Q.nbind(User.create, User);
+        create = Q.nbind(User.create, User),
         findOne = Q.nbind(User.findOne, User);
 
     findOne({username: username})
