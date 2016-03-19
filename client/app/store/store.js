@@ -34,9 +34,6 @@ var configureStore = function(browserHistory) {
     thunkMiddleware,
     routerMiddleware(browserHistory)
   );
-
-
-
   return createStore(rootReducer, midWare);
 };
 
