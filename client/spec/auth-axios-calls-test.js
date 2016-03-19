@@ -2,12 +2,12 @@ var expect = require('chai').expect;
 var actions = require('../app/actions/authActions');
 var nock = require('nock');
 var thunk = require('redux-thunk');
-var configureMockStore = require('redux-mock-store').configureMockStore;
+var configureMockStore = require('./mockStore');
 
-var middlewares = [thunk];
-var mockStore = configureMockStore(middlwares);
 
 describe('auth axios calls', function(){
+  var middlewares = [thunk];
+  var mockStore = configureMockStore(middlewares);
 
   afterEach(function() {
     nock.cleanAll();
@@ -25,9 +25,8 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_IN_SUBMIT },
-        { type: actions.SIGN_IN_SUCCESS, body {
-          username: ['alon'],
-          password: ['grits']
+        { type: actions.SIGN_IN_SUCCESS, body: {
+          username: ['alon']
         } }
       ];
 
@@ -47,9 +46,8 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_IN_SUBMIT },
-        { type: actions.SIGN_IN_FAILURE, body {
-          username: ['leslie'],
-          password: ['theD']
+        { type: actions.SIGN_IN_FAILURE, body: {
+          username: ['leslie']
         } }
       ];
 
@@ -69,9 +67,8 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_UP_SUBMIT },
-        { type: actions.SIGN_UP_SUCCESS, body {
-          username: ['alon'],
-          password: ['grits']
+        { type: actions.SIGN_UP_SUCCESS, body: {
+          username: ['alon']
         } }
       ];
 
@@ -90,10 +87,9 @@ describe('auth axios calls', function(){
       }});
 
       var expectedActions = [
-        { type: actions.SIGN_IN_SUBMIT },
-        { type: actions.SIGN_IN_FAILURE, body {
-          username: ['leslie'],
-          password: ['theD']
+        { type: actions.SIGN_UP_SUBMIT },
+        { type: actions.SIGN_UP_FAILURE, body: {
+          username: ['leslie']
         } }
       ];
 
@@ -101,29 +97,3 @@ describe('auth axios calls', function(){
       store.dispatch(actions.signInSubmit());
   });
 })
-
-// exports.signIn = function() {
-//   return function(dispatch) {
-//     dispatch(signInSubmit());
-//     axios.get('/auth')
-//     .then(function(response) {
-//       dispatch(signInSuccess(response.data));
-//     })
-//     .catch(function(response) {
-//       dispatch(signInFailure(response.data));
-//     });
-//   }
-// }
-
-// exports.signUp = function() {
-//   return function(dispatch) {
-//     dispatch(signUpSubmit());
-//     axios.get('/auth')
-//     .then(function(response) {
-//       dispatch(signUpSuccess(response.data));
-//     })
-//     .catch(function(response) {
-//       dispatch(signUpFailure(response.data));
-//     });
-//   }
-// }
