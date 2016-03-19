@@ -2,7 +2,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var routes = require('./routes');
 var path = require('path');
-
+var db = require('./db/config.js');
 var rootDir = path.join(__dirname, '../dist/');
 
 exports.isProduction = function() {

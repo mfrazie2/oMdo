@@ -1,6 +1,6 @@
 var React = require('react');
 var Survey = require('../components/survey');
-
+var connect = require('react-redux').connect;
 var SurveyContainer = React.createClass({
   getInitialState: function() {
     return {
@@ -30,7 +30,7 @@ var SurveyContainer = React.createClass({
     //   eventElaborate: ''
     // });
   },
-  
+
   handleFeelingChange: function(e) {
     // console.log('new mood level: ', e.target.value);
     // this.setState({
@@ -100,10 +100,10 @@ var SurveyContainer = React.createClass({
     var eventDetail = e.target.value;
     dispatch(eventElaborateChange(eventDetail));
   },
-  
+
   render: function() {
     return (
-      <Survey 
+      <Survey
         onSubmit={this.handleSurveySubmit}
         onFeelingChange={this.handleFeelingChange}
         onAnxietyChange={this.handleAnxietyChange}
