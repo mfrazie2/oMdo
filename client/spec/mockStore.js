@@ -1,3 +1,4 @@
+// Note this is a fixed version of redux-mock-store. Please treat it as a dependency
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
