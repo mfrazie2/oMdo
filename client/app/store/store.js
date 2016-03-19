@@ -33,13 +33,13 @@ var configureStore = function(browserHistory) {
   var midWare = applyMiddleware(
     thunkMiddleware,
     routerMiddleware(browserHistory)
-  )
+  );
+
+
+
+  return createStore(rootReducer, midWare);
 };
 
+var store = configureStore();
 
-//   return createStore(rootReducer, midWare);
-// };
-
-// var store = configureStore();
-
-// module.exports = store;
+module.exports = store;
