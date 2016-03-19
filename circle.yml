@@ -1,15 +1,11 @@
 machine:
   ruby:
     version: 2.1.5
-dependencies:
-  override:
-    - npm install --production
+  node:
+    version: 5.8.0
 test:
   pre:
     - webpack
-dependencies:
-  override:
-    - npm install --production
 deployment:
   production:
     branch: master
