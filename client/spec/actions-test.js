@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var actions = require('../../app/actions/actions');
+var actions = require('../app/actions/actions');
 
 var expectedActions = {
   SURVEY_SUBMIT: 'SURVEY_SUBMIT',
@@ -22,6 +22,11 @@ describe('actions', function() {
   });
 
   it('should contain all expected actions', function() {
-    expect(actions).to.deeply.equal(expectedActions);
+    Object.keys(expectedActions).forEach(function(action) {
+      expect(actions[action]).to.equal(expectedActions[action]);
+    });
+    Object.keys(actions).forEach(function(action) {
+      expect(actions[action]).to.equal(expectedActions[action]);
+    })
   });
 });

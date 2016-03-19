@@ -2,12 +2,12 @@ var expect = require('chai').expect;
 var actions = require('../app/actions/authActions');
 var nock = require('nock');
 var thunk = require('redux-thunk');
-var configureMockStore = require('redux-mock-store').configureMockStore;
+var configureMockStore = require('./mockStore');
 
-var middlewares = [thunk];
-var mockStore = configureMockStore(middlwares);
 
 describe('auth axios calls', function(){
+  var middlewares = [thunk];
+  var mockStore = configureMockStore(middlewares);
 
   afterEach(function() {
     nock.cleanAll();
@@ -25,7 +25,7 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_IN_SUBMIT },
-        { type: actions.SIGN_IN_SUCCESS, body {
+        { type: actions.SIGN_IN_SUCCESS, body: {
           username: ['alon']
         } }
       ];
@@ -46,7 +46,7 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_IN_SUBMIT },
-        { type: actions.SIGN_IN_FAILURE, body {
+        { type: actions.SIGN_IN_FAILURE, body: {
           username: ['leslie']
         } }
       ];
@@ -67,7 +67,7 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_UP_SUBMIT },
-        { type: actions.SIGN_UP_SUCCESS, body {
+        { type: actions.SIGN_UP_SUCCESS, body: {
           username: ['alon']
         } }
       ];
@@ -88,7 +88,7 @@ describe('auth axios calls', function(){
 
       var expectedActions = [
         { type: actions.SIGN_UP_SUBMIT },
-        { type: actions.SIGN_UP_FAILURE, body {
+        { type: actions.SIGN_UP_FAILURE, body: {
           username: ['leslie']
         } }
       ];
