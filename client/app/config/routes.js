@@ -54,7 +54,7 @@ console.log('store', store);
 // var history = syncHistoryWithStore(browserHistory, store);
 
 // var Routes = (
-  
+
 //       <Route path='/' component={Main}>
 //         <Route path='signin' component={AuthContainer} />
 //         <Route path='signup' component={AuthContainer} />
@@ -79,8 +79,8 @@ var Routes = (
       </Route>
     </Router>
   </Provider>
+)
 
-  
 // )
 
 // var Root = React.createClass({
@@ -95,7 +95,7 @@ var Routes = (
 
 //       </div>
 //       </Provider>
-      
+
 //     )
 //   }
 // })
@@ -104,4 +104,3 @@ var Routes = (
 // module.exports = Root;
 
 module.exports = Routes;
-
