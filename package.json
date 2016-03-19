@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "jest"
+    "test": "jest; mocha server/spec/*; mocha client/__test__/redux/**/*"
   },
   "repository": {
     "type": "git",
@@ -35,9 +35,13 @@
   },
   "dependencies": {
     "axios": "^0.9.1",
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
     "body-parser": "^1.15.0",
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
+    "html-webpack-plugin": "^2.10.0",
     "morgan": "^1.7.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -45,7 +49,13 @@
     "react-router": "^2.0.1",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "react-router": "^2.0.1",
+    "webpack": "^1.12.14",
+    "webpack-hot-middleware": "^2.10.0",
+    "react-router": "^2.0.1",
+    "webpack": "^1.12.14",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
@@ -66,5 +76,8 @@
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"
+  },
+  "optionalDependencies": {
+    "forever": "^0.15.1"
   }
 }

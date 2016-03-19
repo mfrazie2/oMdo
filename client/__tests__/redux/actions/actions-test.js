@@ -1,4 +1,7 @@
-module.exports = {
+var expect = require('chai').expect;
+var actions = require('../../app/actions/actions');
+
+var expectedActions = {
   SURVEY_SUBMIT: 'SURVEY_SUBMIT',
   SURVEY_SUCCESS: 'SURVEY_SUCCESS',
   SURVEY_FAILURE: 'SURVEY_FAILURE',
@@ -12,3 +15,13 @@ module.exports = {
   SLEEP_ELABORATE_CHANGE: 'SLEEP_ELABORATE_CHANGE',
   MOOD_ELABORATE_CHANGE: 'MOOD_ELABORATE_CHANGE'
 };
+
+describe('actions', function() {
+  it('should contain 12 actions', function() {
+    expect(Object.keys(actions).length).to.equal(12);
+  });
+
+  it('should contain all expected actions', function() {
+    expect(actions).to.deeply.equal(expectedActions);
+  });
+});
