@@ -11,6 +11,8 @@ server/pid
 # Environment stuff
 .env
 node-upstart-script.conf
+.DS_Store
+client/.DS_Store
 
 # Floobits related stuff
 .floo
