@@ -18,11 +18,11 @@ var db = mongoose.connection;
  });
 
  // logs when user terminates app
- process.on('SIGINIT', function() {
-   mongoose.connection.close(function() {
-     console.log('Mongoose disconnected through app termination');
-     process.exit(0);
-   });
- });
+ // process.on('SIGINIT', function() {
+ //   mongoose.connection.close(function() {
+ //     console.log('Mongoose disconnected through app termination');
+ //     process.exit(0);
+ //   });
+ // });
 
 module.exports = db;
