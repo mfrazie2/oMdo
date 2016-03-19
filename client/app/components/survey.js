@@ -1,12 +1,20 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var Question = require('./question');
+var store = require('../store/store');
+var Loading = require('../components/Loading');
+// var store = this.context.store;
 
 function Survey(props) {
-  console.log(props);
+  console.log('context ', this.context);
+  console.log('where am i? ', props);
+  // console.log('props.isLoading ', this.props.isLoading);
   return (
+    props.isLoading === true ?
+    <Loading /> :
+
     <div>
-      <Question className='feelingQuestion surveySlider' test={props.state}>
+      <Question className='feelingQuestion surveySlider'>
         <div className='feelingQuestion surveySlider'>
           <p>How are you feeling in this moment? <em>(On a scale of 1-5)</em> </p>
           Sad
@@ -73,23 +81,26 @@ function Survey(props) {
           </div>
         </div>
           </Question>
-          <button className="surveySubmit" type="Submit">Submit</button>
+          <button className="surveySubmit" type="Submit" onClick={props.onSubmit}>Submit</button>
     </div>
   )
 } 
 
-Survey.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onFeelingChange: PropTypes.func.isRequired,
-  onAnxietyChange: PropTypes.func.isRequired,
-  onEnergyChange: PropTypes.func.isRequired,
-  onSleepChange: PropTypes.func.isRequired,
-  onMoodChange: PropTypes.func.isRequired,
-  onMajorEventChange: PropTypes.func.isRequired,
-  onSleepElaborateChange: PropTypes.func.isRequired,
-  onMoodElaborateChange: PropTypes.func.isRequired,
-  onEventElaborateChange: PropTypes.func.isRequired
-};
+
+
+// Survey.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   onFeelingChange: PropTypes.func.isRequired,
+//   onAnxietyChange: PropTypes.func.isRequired,
+//   onEnergyChange: PropTypes.func.isRequired,
+//   onSleepChange: PropTypes.func.isRequired,
+//   onMoodChange: PropTypes.func.isRequired,
+//   onMajorEventChange: PropTypes.func.isRequired,
+//   onSleepElaborateChange: PropTypes.func.isRequired,
+//   onMoodElaborateChange: PropTypes.func.isRequired,
+//   onEventElaborateChange: PropTypes.func.isRequired,
+//   isLoading: PropTypes.bool.isRequired
+// };
 
 // Survey.propTypes = {
 
