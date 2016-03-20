@@ -28,7 +28,7 @@ var SurveyContainer = React.createClass({
     // console.log('getState ', store.getState().surveyReducer); 
     var survey = store.getState().surveyReducer;
     dispatch(surveyActions.surveySubmit(survey));
-    this.props.history.push('/profile');
+    // this.props.history.push('/profile');
     // console.log('getState ', store.getState().surveyReducer); 
 
     // this.setState({
@@ -116,7 +116,7 @@ var SurveyContainer = React.createClass({
 
   render: function() {
     console.log('getState ', store.getState());
-    console.log('routing ', this.props);
+    console.log('routing ', this.props.routes);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}

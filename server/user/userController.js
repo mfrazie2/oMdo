@@ -175,11 +175,12 @@ module.exports = {
         if (err) {
           next(new Error('Could not find user when attempting to post survey:', err));
         }
-        Survey.findOrCreate({surveyId: survey.surveyId}, function(err, foundSurvey, created) {
+        Survey.create(req.body, function(err, survey) {
           if (err) {
             next(new Error('There is an error in posting the survey: ', err));
           }
-          foundUser.surveys.addToSet(foundSurvey);
+          console.log(survey);
+          foundUser.survey.push(survey);
           foundUser.save()
             .then(function(result) {
               res.send(result);
@@ -187,7 +188,10 @@ module.exports = {
             .catch(function(err) {
               next(new Error('Theres is an error saving survey', err));
             });
-        });
+        })
+          .catch(function(err) {
+              next(new Error('Theres is an error saving survey', err));
+            });
       })
       .catch(function(error){
         if (error) {

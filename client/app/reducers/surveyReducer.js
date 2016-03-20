@@ -15,7 +15,7 @@ var initialState = {
   error: false
 }
 
-function surveyReducer(state, action) {
+function surveyReducer(state, action, request, result) {
   if(state === undefined) {
     state = initialState;
   }
@@ -31,7 +31,7 @@ function surveyReducer(state, action) {
         moodElaborate: '',
         sleepElaborate: '',
         eventElaborate: '',
-        isLoading: true
+        isLoading: !result
       })
     case actions.SURVEY_SUCCESS:
       return Object.assign({}, state, {
