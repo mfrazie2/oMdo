@@ -53,5 +53,11 @@ var AuthContainer = React.createClass({
   }
 });
 
-// module.exports = connect()(AuthContainer);
+// function mapStateToProps(state) {
+//   username: state.authReducer.username,
+//   password: state.authReducer.password,
+//   error: state.authReducer.error
+// };
+
+// module.exports = connect(mapStateToProps)(AuthContainer);
 module.exports = AuthContainer;

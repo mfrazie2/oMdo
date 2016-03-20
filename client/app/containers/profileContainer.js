@@ -19,12 +19,10 @@ var ProfileContainer = React.createClass({
   // reduxResult: 'Do not throw a fit, website!',
   consoleLogSomething: function() {
     // dispatch(push('/survey'));
-    console.log(store);
     this.props.history.push('/survey');
     // dispatch(consoleLogSomething());
   },
   render: function() {
-    console.log('profile container ', this.props)
     return (
 
       <Profile

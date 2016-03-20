@@ -75,7 +75,6 @@ function testFunc() {
 }
 
 function Question(props) {
-  console.log('Question ', props);
   return(
     <div className={props.css.root}>
       {/*<button className={props.css.prev} onClick={testFunc()}>last question</button>*/}

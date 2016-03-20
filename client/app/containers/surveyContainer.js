@@ -1,23 +1,36 @@
 var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
+var surveyActions = require('../actions/surveyActions');
+var store = require('../store/store');
+var dispatch = store.dispatch;
+// var store = this.context.store;
+
+
 var SurveyContainer = React.createClass({
-  getInitialState: function() {
-    return {
-      generalFeel: undefined,
-      anxietyLevel: undefined,
-      energyLevel: undefined,
-      sleepQuality: undefined,
-      currentMood: undefined,
-      majorEvent: undefined,
-      moodElaborate: '',
-      sleepElaborate: '',
-      eventElaborate: ''
-    }
-  },
+  // getInitialState: function() {
+  //   return {
+  //     generalFeel: undefined,
+  //     anxietyLevel: undefined,
+  //     energyLevel: undefined,
+  //     sleepQuality: undefined,
+  //     currentMood: undefined,
+  //     majorEvent: undefined,
+  //     moodElaborate: '',
+  //     sleepElaborate: '',
+  //     eventElaborate: ''
+  //   }
+  // },
   handleSurveySubmit: function(e) {
     e.preventDefault();
-    console.log(this.state);
+    console.log('context ', this.context);
+    // Where do we submit post request?
+    // console.log('getState ', store.getState().surveyReducer); 
+    var survey = store.getState().surveyReducer;
+    dispatch(surveyActions.surveySubmit(survey));
+    // this.props.history.push('/profile');
+    // console.log('getState ', store.getState().surveyReducer); 
+
     // this.setState({
     //   generalFeel: undefined,
     //   anxietyLevel: undefined,
@@ -37,7 +50,7 @@ var SurveyContainer = React.createClass({
     //   generalFeel: e.target.value
     // });
     var feeling = e.target.value;
-    dispatch(feelingChange(feeling));
+    dispatch(surveyActions.feelingChange(feeling));
   },
   handleAnxietyChange: function(e) {
     // console.log('new anxiety level: ', e.target.value);
@@ -45,7 +58,7 @@ var SurveyContainer = React.createClass({
     //   anxietyLevel: e.target.value
     // });
     var anxiety = e.target.value;
-    dispatch(anxietyChange(anxiety));
+    dispatch(surveyActions.anxietyChange(anxiety));
   },
   handleEnergyChange: function(e) {
     // console.log('new energy level: ', e.target.value);
@@ -53,7 +66,7 @@ var SurveyContainer = React.createClass({
     //   energyLevel: e.target.value
     // });
     var energy = e.target.value;
-    dispatch(energyChange(energy));
+    dispatch(surveyActions.energyChange(energy));
   },
   handleSleepChange: function(e) {
     // console.log('new sleep quality: ', e.target.value);
@@ -61,14 +74,14 @@ var SurveyContainer = React.createClass({
     //   sleepQuality: e.target.value
     // });
     var sleep = e.target.value;
-    dispatch(sleepChange(sleep));
+    dispatch(surveyActions.sleepChange(sleep));
   },
   handleSleepElaborateChange: function(e) {
     // this.setState({
     //   sleepElaborate: e.target.value
     // });
     var sleepDetail = e.target.value;
-    dispatch(sleepElaborateChange(sleepDetail))
+    dispatch(surveyActions.sleepElaborateChange(sleepDetail))
   },
   handleMoodChange: function(e) {
     // console.log('new sleep quality: ', e.target.value);
@@ -76,14 +89,14 @@ var SurveyContainer = React.createClass({
     //   currentMood: e.target.value
     // });
     var mood = e.target.value;
-    dispatch(moodChange(mood));
+    dispatch(surveyActions.moodChange(mood));
   },
   handleMoodElaborateChange: function(e) {
     // this.setState({
     //   moodElaborate: e.target.value
     // });
     var moodDetail = e.target.value;
-    dispatch(moodElaborateChange(moodDetail));
+    dispatch(surveyActions.moodElaborateChange(moodDetail));
   },
   handleMajorEventChange: function(e) {
     // console.log('new sleep quality: ', e.target.value);
@@ -91,17 +104,19 @@ var SurveyContainer = React.createClass({
     //   majorEvent: e.target.value
     // });
     var eventChange = e.target.value;
-    dispatch(majorEventChange(eventChange));
+    dispatch(surveyActions.majorEventChange(eventChange));  
   },
   handleEventElaborateChange: function(e) {
     // this.setState({
     //   eventElaborate: e.target.value
     // });
     var eventDetail = e.target.value;
-    dispatch(eventElaborateChange(eventDetail));
+    dispatch(surveyActions.eventElaborateChange(eventDetail));
   },
 
   render: function() {
+    console.log('getState ', store.getState());
+    console.log('routing ', this.props.routes);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}
@@ -113,15 +128,28 @@ var SurveyContainer = React.createClass({
         onMajorEventChange={this.handleMajorEventChange}
         onSleepElaborateChange={this.handleSleepElaborateChange}
         onMoodElaborateChange={this.handleMoodElaborateChange}
-        onEventElaborateChange={this.handleEventElaborateChange} />
+        onEventElaborateChange={this.handleEventElaborateChange}
+        isLoading={this.props.isLoading} 
+      />
     )
   }
 })
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    isLoading: state.isLoading,
-    error: state.error
+    generalFeel: state.surveyReducer.generalFeel,
+    anxietyLevel: state.surveyReducer.anxietyLevel,
+    energyLevel: state.surveyReducer.energyLevel,
+    sleepQuality: state.surveyReducer.sleepQuality,
+    currentMood: state.surveyReducer.currentMood,
+    majorEvent: state.surveyReducer.majorEvent,
+    moodElaborate: state.surveyReducer.moodElaborate,
+    sleepElaborate: state.surveyReducer.sleepElaborate,
+    eventElaborate: state.surveyReducer.eventElaborate,
+    isLoading: state.surveyReducer.isLoading,
+    error: state.surveyReducer.error,
+    id: ownProps.params.id,
+    filter: ownProps.location.query.filter
   };
 };
 
