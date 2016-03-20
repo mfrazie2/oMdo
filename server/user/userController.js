@@ -25,8 +25,7 @@ module.exports = {
                   USER CONTROLLER
     ========================================
   */
-
-  signUp: function(req, res, next) {
+ function(req, res, next) {
     var username = req.body.username,
         password = req.body.password,
         newUser,
@@ -70,7 +69,7 @@ module.exports = {
         .then(function(foundUser) {
           if(foundUser) {
             var token =jwt.encode(user, process.env.JWT_SECRET);
-            res.send({token: token});
+            res.json({token: token});
           } else {
             return next(new Error('There is no user by that name'));
           }
@@ -124,7 +123,7 @@ module.exports = {
     }
   },
 
-  getUserSurvey: function(req,res,next) {
+  getUserSurveys: function(req,res,next) {
     var token = req.headers['x-access-token'];
     if (!token) {
       next(new Error('No token found!'));
@@ -138,11 +137,10 @@ module.exports = {
         .catch(function(error) {
           next(new Error(error));
         });
-
     }
   },
 
-  postUserSurvey: function(req,res,next) {
+  postUserSurveys: function(req,res,next) {
     var token = req.headers['x-access-token'];
     if (!token) {
       next(new Error('Token not found while trying to post to survey'));
