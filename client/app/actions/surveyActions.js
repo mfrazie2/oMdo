@@ -1,4 +1,5 @@
 var actions = require('../actions/actions')
+var axios = require('axios');
 
 // Survey question changes
 module.exports = {
@@ -30,8 +31,19 @@ module.exports = {
     return {type: actions.MOOD_ELABORATE_CHANGE, moodDetail: moodDetail}
   },
   // Survey submission handling
-  surveySubmit: function() {
-    return {type: actions.SURVEY_SUBMIT};
+  surveySubmit: function(survey) {
+    var result;
+    axios.defaults.headers.post['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdSIsInVzZXJuYW1lIjoibmFtZTEyIiwicGFzc3dvcmQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdW1laEVqWWNhR2NBTG56UTI2L2ZmVXJxZGVtNnRaOU8iLCJfaWQiOiI1NmVkZTAyYzI4ZmI3OWZiMzgyOWIxYmUiLCJjcmVhdGVkT24iOiIyMDE2LTAzLTE5VDIzOjI2OjM2LjEyM1oiLCJzdXJ2ZXkiOltdfQ.rNj1OVvgJTGoSmaJj2fJuQqwhE1pNXzWZiDzg9-IOyo"
+    var request = axios.post('/user/userData', survey)
+      .then(function(response) {
+        console.log(response);
+        var result = true;
+      })
+      .catch(function(error) {
+        console.log(error);
+        var result = false;
+      });
+    return {type: actions.SURVEY_SUBMIT, request, result};
   },
   surveySuccess: function() {
     return {type: actions.SURVEY_SUCCESS};

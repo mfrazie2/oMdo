@@ -7,8 +7,9 @@ var ReactRouter = require('react-router');
 var Provider = require('react-redux').Provider;
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute; var browserHistory = ReactRouter.browserHistory;
-var HashHistory = ReactRouter.HashHistory;
+var IndexRoute = ReactRouter.IndexRoute;
+var browserHistory = ReactRouter.browserHistory;
+// var HashHistory = ReactRouter.HashHistory;
 var ReactRouterRedux = require('react-router-redux');
 var syncHistoryWithStore = ReactRouterRedux.syncHistoryWithStore;
 // var routerReducer = ReactRouterRedux.routerReducer;
@@ -80,7 +81,6 @@ var Routes = (
   </Provider>
 )
 
-// )
 
 // var Root = React.createClass({
 //   render: function() {
