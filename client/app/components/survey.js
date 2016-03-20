@@ -7,11 +7,12 @@ var Loading = require('../components/Loading');
 
 function Survey(props) {
   console.log('context ', this.context);
-  console.log('where am i? ', props);
+  // console.log('where am i? ', props);
+  console.log('survey component props ', this.params);
   // console.log('props.isLoading ', this.props.isLoading);
   return (
-    props.isLoading === true ?
-    <Loading /> :
+    // props.isLoading === true ?
+    // <Loading /> :
 
     <div>
       <Question className='feelingQuestion surveySlider'>
