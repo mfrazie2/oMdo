@@ -27,7 +27,8 @@ var SurveyContainer = React.createClass({
     // Where do we submit post request?
     // console.log('getState ', store.getState().surveyReducer); 
     var survey = store.getState().surveyReducer;
-    dispatch(surveyActions.surveySubmit(survey));
+    dispatch(surveyActions.surveySubmit());
+    dispatch(surveyActions.surveyResponse(survey));
     // this.props.history.push('/profile');
     // console.log('getState ', store.getState().surveyReducer); 
 
