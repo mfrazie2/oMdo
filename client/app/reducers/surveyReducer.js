@@ -20,7 +20,6 @@ function surveyReducer(state, action) {
   }
   switch(action.type) {
     case actions.SURVEY_SUBMIT:
-      console.log('IN SURVEY_SUBMIT switch!')
       return Object.assign({}, state, {
         generalFeel: undefined,
         anxietyLevel: undefined,

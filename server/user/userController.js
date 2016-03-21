@@ -29,26 +29,25 @@ module.exports = {
         newUser,
         create = Q.nbind(User.create, User),
         findOne = Q.nbind(User.findOne, User);
-
     findOne({username: username})
-    .then(function(user) {
-      if (user) {
-        next(new Error('Already exists!'));
-      } else {
-        newUser = {
-          username: username,
-          password: password
-        };
-      }
-      return create(newUser);
-    })
-    .then(function(user) {
-      var token = jwt.encode(user, process.env.JWT_SECRET);
-      res.json({token:token});
-    })
-    .fail(function(error) {
-      next(error);
-    });
+      .then(function(user) {
+        if (user) {
+          next(new Error('Already exists!'));
+        } else {
+          newUser = {
+            username: username,
+            password: password
+          };
+        }
+        return create(newUser);
+      })
+      .then(function(user) {
+        var token = jwt.encode(user, process.env.JWT_SECRET);
+        res.json({token:token});
+      })
+      .fail(function(error) {
+        next(error);
+      });
   },
 
   signIn: function(req, res, next) {
@@ -58,18 +57,13 @@ module.exports = {
 
     findUser({username:username})
       .then(function(user) {
-      console.log("USER",user);
       if (!user) {
-        console.log("ANYTHING");
         next(new Error('Cannot find the user!'));
       } else {
         return user.comparePassword(password)
         .then(function(foundUser) {
-          console.log("found user", foundUser);
           if(foundUser) {
-            console.log("THis is the ",user);
             var token =jwt.encode(user, process.env.JWT_SECRET);
-            console.log({username: username, password: password, token: token});
             res.send({token: token});
           } else {
             return next(new Error('There is no user by that name'));
@@ -134,20 +128,22 @@ module.exports = {
       findUser({username: user.username})
       .then(function(foundUser) {
         if (foundUser) {
-          var surveys = foundUser.surveys.reduce(function(memo, Survey) {
-            Survey.findOrCreate({_id: Survey._id}, function(err, foundSurvey, created) {
-              Survey.feeling = foundSurvey.feeling;
-              Survey.anxiety = foundSurvey.anxiety;
-              Survey.energy  = foundSurvey.energy;
-              Survey.sleep = foundSurvey.sleep;
-              Survey.sleepElaborate = foundSurvey.sleepElaborate;
-              Survey.mood = foundSurvey.mood;
-              Survey.moodElaborate = foundSurvey.moodElaborate;
-              Survey.majorEvent = foundSurvey.majorEvent;
-              memo.push(Survey);
-            });
-            return memo;
-          }, [])
+          // Use populate instead of this reduce
+          // var surveys = foundUser.surveys.reduce(function(memo, survey) {
+          //   console.log(survey)
+          //   Survey.findOne({_id: survey._id}, function(err, foundSurvey, created) {
+          //     survey.feeling = foundSurvey.feeling;
+          //     survey.anxiety = foundSurvey.anxiety;
+          //     survey.energy  = foundSurvey.energy;
+          //     survey.sleep = foundSurvey.sleep;
+          //     survey.sleepElaborate = foundSurvey.sleepElaborate;
+          //     survey.mood = foundSurvey.mood;
+          //     survey.moodElaborate = foundSurvey.moodElaborate;
+          //     survey.majorEvent = foundSurvey.majorEvent;
+          //     memo.push(survey);
+          //   });
+          //   return memo;
+          // }, []);
           foundUser.populate('surveys');
           res.send({
             username: foundUser.username,
@@ -179,8 +175,7 @@ module.exports = {
           if (err) {
             next(new Error('There is an error in posting the survey: ', err));
           }
-          console.log(survey);
-          foundUser.survey.push(survey);
+          foundUser.surveys.push(survey);
           foundUser.save()
             .then(function(result) {
               res.send(result);

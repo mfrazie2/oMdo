@@ -14,14 +14,13 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  survey:[{type: mongoose.Schema.Types.ObjectId, ref: 'Survey'}],
+  surveys:[{type: mongoose.Schema.Types.ObjectId, ref: 'Survey'}],
   createdOn: {
     type: Date,
     default: Date.now
   },
   salt: String
 });
-
 
 // resources http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 // https://github.com/kriskowal/q

@@ -3,7 +3,7 @@ var axios = require('axios');
 var dispatch = require('../store/store').dispatch;
 var browserHistory = require('react-router').browserHistory;
 
-axios.defaults.headers.post['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdSIsInVzZXJuYW1lIjoibmFtZTEyIiwicGFzc3dvcmQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdW1laEVqWWNhR2NBTG56UTI2L2ZmVXJxZGVtNnRaOU8iLCJfaWQiOiI1NmVkZTAyYzI4ZmI3OWZiMzgyOWIxYmUiLCJjcmVhdGVkT24iOiIyMDE2LTAzLTE5VDIzOjI2OjM2LjEyM1oiLCJzdXJ2ZXkiOltdfQ.rNj1OVvgJTGoSmaJj2fJuQqwhE1pNXzWZiDzg9-IOyo";
+axios.defaults.headers.common['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkbHFKbXhselhqWFZVSkg4cGZJM2JYLiIsInVzZXJuYW1lIjoiam9obiIsInBhc3N3b3JkIjoiJDJhJDEwJGxxSm14bHpYalhWVUpIOHBmSTNiWC4wM1FPQy9qb2U5VVRyc1E0OFgwbllUL056WkZPbVRHIiwiX2lkIjoiNTZmMDViMzA2NWNiNDk2MTBlNTEyNDYwIiwiY3JlYXRlZE9uIjoiMjAxNi0wMy0yMVQyMDozNjowMC44MDdaIiwic3VydmV5IjpbXX0.u8i5jXhAw3tYkgAc0uRnxPZ0eul5D8yOSTxKvNVl3f0";
 
 module.exports = {
   // Survey question changes
@@ -49,15 +49,13 @@ module.exports = {
     var surveySuccess = this.surveySuccess;
     var surveyFailure = this.surveyFailure;
     return function(dispatch) {
-      dispatch(surveySubmit())
+      dispatch(surveySubmit());
       axios.post('/user/userData', survey)
         .then(function(response) {
-          console.log('axios response ', response);
           dispatch(surveySuccess())
         })
         .then(browserHistory.push('/profile'))
         .catch(function(error) {
-          console.log('axios error ', error);
           dispatch(surveyFailure());
         });
     }
