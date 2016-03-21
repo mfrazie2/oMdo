@@ -2,58 +2,53 @@ var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
 var surveyActions = require('../actions/surveyActions');
-var store = require('../store/store');
-var dispatch = store.dispatch;
+var bindActionCreators = require('redux').bindActionCreators;
 
 var SurveyContainer = React.createClass({
+  contextTypes: {
+    store: React.PropTypes.object.isRequired,
+    router: React.PropTypes.object.isRequired
+  },
   handleSurveySubmit: function(e) {
     e.preventDefault();
-    console.log('context ', this.context);
-    var survey = store.getState().surveyReducer;
-    dispatch(surveyActions.submitSurvey(survey));
+    var survey = this.context.store.getState().surveyReducer;
+    this.props.actions.submitSurvey(survey);
   },
-
   handleFeelingChange: function(e) {
     var feeling = e.target.value;
-    dispatch(surveyActions.feelingChange(feeling));
+    this.props.actions.feelingChange(feeling);
   },
   handleAnxietyChange: function(e) {
     var anxiety = e.target.value;
-    dispatch(surveyActions.anxietyChange(anxiety));
+    this.props.actions.anxietyChange(anxiety);
   },
   handleEnergyChange: function(e) {
     var energy = e.target.value;
-    dispatch(surveyActions.energyChange(energy));
-  },
-  handleSleepChange: function(e) {
-    var sleep = e.target.value;
-    dispatch(surveyActions.sleepChange(sleep));
+    this.props.actions.energyChange(energy);
   },
   handleSleepElaborateChange: function(e) {
     var sleepDetail = e.target.value;
-    dispatch(surveyActions.sleepElaborateChange(sleepDetail))
+    this.props.actions.sleepElaborateChange(sleepDetail);
   },
   handleMoodChange: function(e) {
     var mood = e.target.value;
-    dispatch(surveyActions.moodChange(mood));
+    this.props.actions.moodChange(mood);
   },
   handleMoodElaborateChange: function(e) {
     var moodDetail = e.target.value;
-    dispatch(surveyActions.moodElaborateChange(moodDetail));
+    this.props.actions.moodElaborateChange(moodDetail);
   },
   handleMajorEventChange: function(e) {
     var eventChange = e.target.value;
-    dispatch(surveyActions.majorEventChange(eventChange));
+    this.props.actions.majorEventChange(eventChange);  
   },
   handleEventElaborateChange: function(e) {
     var eventDetail = e.target.value;
-    dispatch(surveyActions.eventElaborateChange(eventDetail));
+    this.props.actions.eventElaborateChange(eventDetail);
   },
 
   render: function() {
-    console.log('getState ', store.getState());
-    console.log('survey container props', this.props);
-    console.log('context ', this.context.router);
+    console.log('survey container props ', this.props);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}
@@ -66,7 +61,7 @@ var SurveyContainer = React.createClass({
         onSleepElaborateChange={this.handleSleepElaborateChange}
         onMoodElaborateChange={this.handleMoodElaborateChange}
         onEventElaborateChange={this.handleEventElaborateChange}
-        isLoading={this.props.isLoading}
+        isLoading={this.props.isLoading} 
       />
     )
   }
@@ -88,4 +83,10 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-module.exports = connect(mapStateToProps)(SurveyContainer);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(surveyActions, dispatch)
+  }
+};
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(SurveyContainer);

@@ -1,12 +1,20 @@
-var actions = require('../actions/actions');
+var actions = require('../actions/actions')
 var axios = require('axios');
-var dispatch = require('../store/store').dispatch;
 var browserHistory = require('react-router').browserHistory;
 
-axios.defaults.headers.common['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkcEFrMmgvMmVzTlp5d3N2Q1huelA3TyIsInVzZXJuYW1lIjoiam9obiIsInBhc3N3b3JkIjoiJDJhJDEwJHBBazJoLzJlc05aeXdzdkNYbnpQN09uL2dHYmp2dmJlbWdWSTB3Y1NhV2FFRlhIY0tqQTVlIiwiX2lkIjoiNTZmMDc2MjVkY2YxN2JlYTQ4NTE0ZThjIiwiY3JlYXRlZE9uIjoiMjAxNi0wMy0yMVQyMjozMTowMS4wMzJaIiwic3VydmV5cyI6W119.lBpkMXw0oToARP2gZfrQPL81mauOQSixLF-c5q2abWA";
+// Survey submission handling
+function surveySubmit() {
+  return {type: actions.SURVEY_SUBMIT};
+}
+function surveySuccess() {
+  return {type: actions.SURVEY_SUCCESS};
+}
+function surveyFailure() {
+  return {type: actions.SURVEY_FAILURE};
+}
 
+// Survey question changes
 module.exports = {
-  // Survey question changes
   feelingChange: function(feeling) {
     return {type: actions.FEELING_CHANGE, feeling: feeling}
   },
@@ -34,30 +42,19 @@ module.exports = {
   moodElaborateChange: function(moodDetail) {
     return {type: actions.MOOD_ELABORATE_CHANGE, moodDetail: moodDetail}
   },
-  // Survey submission handling
-  surveySubmit: function() {
-    return {type: actions.SURVEY_SUBMIT};
-  },
-  surveySuccess: function() {
-    return {type: actions.SURVEY_SUCCESS};
-  },
-  surveyFailure: function() {
-    return {type: actions.SURVEY_FAILURE};
-  },
   submitSurvey: function(survey) {
-    var surveySubmit = this.surveySubmit;
-    var surveySuccess = this.surveySuccess;
-    var surveyFailure = this.surveyFailure;
     return function(dispatch) {
       dispatch(surveySubmit());
-      axios.post('/user/userData', survey)
-        .then(function(response) {
-          dispatch(surveySuccess())
-          browserHistory.push('/profile');
-        })
-        .catch(function(error) {
-          dispatch(surveyFailure());
-        });
+          axios.post('/user/userData', survey)
+            .then(function(response) {
+              console.log('axios response ', response);
+              dispatch(surveySuccess());
+              browserHistory.push('/profile');
+            })
+            .catch(function(error) {
+              console.log('axios error ', error);
+              dispatch(surveyFailure());
+            });
     }
   }
 };

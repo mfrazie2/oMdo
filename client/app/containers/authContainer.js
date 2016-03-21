@@ -22,12 +22,10 @@ var AuthContainer = React.createClass({
   //     buttonText: text || 'Submit'
   //   };
   // },
-  handleSubmit: function(e) {
+  handleSignInSubmit: function(e) {
     e.preventDefault();
-    console.log('event', event);
-    console.log('form ', event.target.value);
     var login = store.getState().authReducer;
-    store.dispatch(authActions.signInRequest(login))
+    store.dispatch(authActions.signInRequest(login));
     // this.context.router.push({
     //   pathname: '/home',
     //   state: {
@@ -35,16 +33,21 @@ var AuthContainer = React.createClass({
     //   }
     // });
   },
+  handleSignUpSubmit: function(e) {
+    e.preventDefault();
+    var login = store.getState().authReducer;
+    store.dispatch(authActions.signUpRequest(login));
+  },
   handleUpdateUsername: function(e) {
     var username = e.target.value;
-    dispatch(authActions.username(updateUsername))
+    store.dispatch(authActions.updateUsername(username))
     // this.setState({
     //   username: event.target.value
     // });
   },
   handleUpdatePassword: function(e) {
     var password = e.target.value;
-    dispatch(authActions.updatePassword);
+    store.dispatch(authActions.updatePassword(password));
     // this.setState({
     //   password: event.target.value
     // })
@@ -53,15 +56,21 @@ var AuthContainer = React.createClass({
     if(this.props.location.pathname === '/signin') {
       return (
         <Auth 
-          onSubmit={this.handleSubmit}
+          onSignInSubmit={this.handleSignInSubmit}
+          onUpdateUsername={this.handleUpdateUsername}
+          onUpdatePassword={this.handleUpdatePassword}
           path={this.props.location.pathname}
+          isLoading={this.props.isLoading}
         />
       )
     } else {
       return (
         <Auth 
-          onSubmit={this.handleSubmit}
+          onSignUpSubmit={this.handleSignUpSubmit}
+          onUpdateUsername={this.handleUpdateUsername}
+          onUpdatePassword={this.handleUpdatePassword}
           path={this.props.location.pathname}
+          isLoading={this.props.isLoading}
         />
       )
     }
@@ -78,7 +87,7 @@ function mapStateToProps(state) {
   return {
     username: state.authReducer.username,
     password: state.authReducer.password,
-    isLoading: state.authReducer.password,
+    isLoading: state.authReducer.isLoading,
     error: state.authReducer.error
   }
 };
