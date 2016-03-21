@@ -1,33 +1,13 @@
-  var React = require('react');
-// var PropTypes = React.PropTypes;
+var React = require('react');
+var PropTypes = React.PropTypes;
 
 function Profile(props) {
   return (
     <div>
-        <h1 onClick={props.consoleLogSomething}> Profile Page to Come {props.reduxResult} </h1>
-      </div>  
+        <h1>{props.username}</h1>
+        {props.children}
+    </div>
   );
 }
-
-
-
-// function Profile(props) {
-//   return (
-//     <div>
-//         <h1 onClick={props.reduxTest}> Profile Page to Come {props.reduxResult} </h1>
-//       </div>  
-//   );
-// }
-
-
-// Profile.propTypes = {
-//   reduxTest: PropTypes.func
-// };
-
-// Profile.propTypes = {
-//   actions: PropTypes.object.isRequired,
-//   reduxResult: PropTypes.string.isRequired
-// };
-
 
 module.exports = Profile;
