@@ -4,9 +4,6 @@ var connect = require('react-redux').connect;
 var surveyActions = require('../actions/surveyActions');
 var store = require('../store/store');
 var dispatch = store.dispatch;
-var history = require('../config/routes');
-// var store = this.context.store;
-
 
 var SurveyContainer = React.createClass({
   // getInitialState: function() {
@@ -24,6 +21,8 @@ var SurveyContainer = React.createClass({
   // },
   handleSurveySubmit: function(e) {
     e.preventDefault();
+    console.log('e ', e);
+    console.log('context ', this.context);
     var survey = store.getState().surveyReducer;
     // var reroute = this.props.history.push('profile');
     // dispatch(surveyActions.surveySubmit());
@@ -117,6 +116,7 @@ var SurveyContainer = React.createClass({
   render: function() {
     console.log('getState ', store.getState());
     console.log('survey container props', this.props);
+    console.log('context ', this.context.router);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}

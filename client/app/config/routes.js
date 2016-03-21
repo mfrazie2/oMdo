@@ -9,7 +9,7 @@ var browserHistory = ReactRouter.browserHistory;
 // var syncHistoryWithStore = ReactRouterRedux.syncHistoryWithStore;
 var Main = require('../components/main');
 var AuthContainer = require('../containers/authContainer');
-// var HomeContainer = require('../containers/homeContainer');
+var HomeContainer = require('../containers/homeContainer');
 var SurveyContainer = require('../containers/surveyContainer');
 var ProfileContainer = require('../containers/profileContainer');
 var About = require('../components/about');
@@ -24,7 +24,7 @@ var Routes = (
       <Route path='/' component={Main}>
         <Route path='signin' component={AuthContainer} />
         <Route path='signup' component={AuthContainer} />
-        {/*<Route path='home' component={HomeContainer} />*/}
+        <Route path='home' component={HomeContainer} />
         <Route path='survey' component={SurveyContainer} />
         <Route path='profile' component={ProfileContainer} />
         <Route path='about' component={About} />
