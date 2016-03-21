@@ -1,5 +1,4 @@
 var actions = require('../actions/actions');
-var axios = require('axios');
 
 var initialState = {
   generalFeel: undefined,

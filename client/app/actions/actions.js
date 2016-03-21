@@ -5,7 +5,7 @@ module.exports = {
   AUTH_SUBMIT: 'SIGN_IN_SUBMIT',
   AUTH_SUCCESS: 'SIGN_IN_SUCCESS',
   AUTH_FAILURE: 'SIGN_IN_FAILURE',
-
+  
 
   // Survey actions
   SURVEY_SUBMIT: 'SURVEY_SUBMIT',
