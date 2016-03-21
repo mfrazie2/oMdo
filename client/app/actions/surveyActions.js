@@ -50,17 +50,16 @@ module.exports = {
     var surveyFailure = this.surveyFailure;
     return function(dispatch) {
       dispatch(surveySubmit())
-        .then(
           axios.post('/user/userData', survey)
             .then(function(response) {
               console.log('axios response ', response);
-              dispatch(surveySuccess());
-              browserHistory.push('/profile');
+              dispatch(surveySuccess())
             })
-        .catch(function(error) {
-          console.log('axios error ', error);
-          dispatch(surveyFailure());
-        }))
+              .then(browserHistory.push('/profile'))
+            .catch(function(error) {
+              console.log('axios error ', error);
+              dispatch(surveyFailure());
+            });
     }
   }
 };
