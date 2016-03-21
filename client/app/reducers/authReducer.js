@@ -2,6 +2,7 @@ var actions = require('../actions/actions');
 
 var initialState = {
   username: '',
+  password: '',
   false: '',
   isLoading: false,
   error: false

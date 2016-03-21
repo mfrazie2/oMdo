@@ -11,8 +11,8 @@ function Survey(props) {
   console.log('survey component props ', this.params);
   // console.log('props.isLoading ', this.props.isLoading);
   return (
-    // props.isLoading === true ?
-    // <Loading /> :
+    props.isLoading === true ?
+    <Loading /> :
 
     <div>
       <Question className='feelingQuestion surveySlider'>
