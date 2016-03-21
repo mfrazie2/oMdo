@@ -11,6 +11,4 @@ var configureStore = function(browserHistory) {
 
 var store = configureStore();
 
-console.log('store from the store ', store);
-
 module.exports = store;

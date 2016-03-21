@@ -8,7 +8,7 @@ var Loading = require('../components/loading');
 function Survey(props) {
   console.log('context ', this.context);
   // console.log('where am i? ', props);
-  console.log('survey component props ', this.params);
+  console.log('survey component props ', props);
   // console.log('props.isLoading ', this.props.isLoading);
   return (
     props.isLoading === true ?
