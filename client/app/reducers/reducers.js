@@ -1,13 +1,11 @@
 var combineReducers = require('redux').combineReducers;
 var routerReducer = require('react-router-redux').routerReducer;
-
-var profileReducer = require('./profileReducers').profileReducer;
+var authReducer = require('./authReducer');
+var profileReducer = require('./profileReducers');
 var surveyReducer = require('./surveyReducer')
 
 exports.rootReducer =  combineReducers({
-  // authTestReducer: authTestReducer,
-  // questionReducer: questionReducer,
-  // profileReducer: profileReducer,
+  authReducer: authReducer,
   surveyReducer: surveyReducer,
   routing: routerReducer
 });

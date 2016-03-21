@@ -4,8 +4,6 @@ var connect = require('react-redux').connect;
 var surveyActions = require('../actions/surveyActions');
 var store = require('../store/store');
 var dispatch = store.dispatch;
-// var store = this.context.store;
-
 
 var SurveyContainer = React.createClass({
   // getInitialState: function() {
@@ -24,10 +22,10 @@ var SurveyContainer = React.createClass({
   handleSurveySubmit: function(e) {
     e.preventDefault();
     console.log('context ', this.context);
-    // Where do we submit post request?
-    // console.log('getState ', store.getState().surveyReducer); 
     var survey = store.getState().surveyReducer;
-    dispatch(surveyActions.surveySubmit(survey));
+    // var reroute = this.props.history.push('profile');
+    // dispatch(surveyActions.surveySubmit());
+    dispatch(surveyActions.submitSurvey(survey));
     // this.props.history.push('/profile');
     // console.log('getState ', store.getState().surveyReducer); 
 
@@ -116,7 +114,8 @@ var SurveyContainer = React.createClass({
 
   render: function() {
     console.log('getState ', store.getState());
-    console.log('routing ', this.props.routes);
+    console.log('survey container props', this.props);
+    console.log('context ', this.context.router);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}
@@ -147,10 +146,13 @@ function mapStateToProps(state, ownProps) {
     sleepElaborate: state.surveyReducer.sleepElaborate,
     eventElaborate: state.surveyReducer.eventElaborate,
     isLoading: state.surveyReducer.isLoading,
-    error: state.surveyReducer.error,
-    id: ownProps.params.id,
-    filter: ownProps.location.query.filter
+    error: state.surveyReducer.error
+    // ,
+    // id: ownProps.params.id,
+    // filter: ownProps.location.query.filter
   };
 };
 
 module.exports = connect(mapStateToProps)(SurveyContainer);
+
+// module.exports = SurveyContainer;

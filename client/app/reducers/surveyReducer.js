@@ -1,5 +1,4 @@
 var actions = require('../actions/actions');
-var axios = require('axios');
 
 var initialState = {
   generalFeel: undefined,
@@ -15,12 +14,13 @@ var initialState = {
   error: false
 }
 
-function surveyReducer(state, action, request, result) {
+function surveyReducer(state, action) {
   if(state === undefined) {
     state = initialState;
   }
   switch(action.type) {
     case actions.SURVEY_SUBMIT:
+    console.log('IN SURVEY_SUBMIT switch!')
       return Object.assign({}, state, {
         generalFeel: undefined,
         anxietyLevel: undefined,
@@ -31,13 +31,15 @@ function surveyReducer(state, action, request, result) {
         moodElaborate: '',
         sleepElaborate: '',
         eventElaborate: '',
-        isLoading: !result
+        isLoading: true
       })
     case actions.SURVEY_SUCCESS:
+    console.log('IN SURVEY_SUCCESS switch!')
       return Object.assign({}, state, {
         isLoading: false
       })
     case actions.SURVEY_FAILURE:
+    console.log('IN SURVEY_FAILURE switch!')
       return Object.assign({}, state, {
         isLoading: false,
         error: true
