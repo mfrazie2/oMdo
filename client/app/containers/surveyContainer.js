@@ -21,7 +21,6 @@ var SurveyContainer = React.createClass({
   // },
   handleSurveySubmit: function(e) {
     e.preventDefault();
-    console.log('e ', e);
     console.log('context ', this.context);
     var survey = store.getState().surveyReducer;
     // var reroute = this.props.history.push('profile');
