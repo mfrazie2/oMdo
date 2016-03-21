@@ -1,6 +1,6 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-var Loading = require('../components/Loading');
+var Loading = require('../components/loading');
 
 function Auth(props) {
   return (
@@ -16,7 +16,7 @@ function Auth(props) {
           name='password'
           onChange={props.onUpdatePassword}
         />
-        
+
         <button type='submit'>Sign in</button>
       </form>
     </div>

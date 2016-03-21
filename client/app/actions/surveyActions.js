@@ -1,12 +1,12 @@
-var actions = require('../actions/actions')
+var actions = require('../actions/actions');
 var axios = require('axios');
 var dispatch = require('../store/store').dispatch;
 var browserHistory = require('react-router').browserHistory;
 
 axios.defaults.headers.post['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdSIsInVzZXJuYW1lIjoibmFtZTEyIiwicGFzc3dvcmQiOiIkMmEkMTAkSE1BRlkxMGNkMW8uT1VTRGdnc1lJdW1laEVqWWNhR2NBTG56UTI2L2ZmVXJxZGVtNnRaOU8iLCJfaWQiOiI1NmVkZTAyYzI4ZmI3OWZiMzgyOWIxYmUiLCJjcmVhdGVkT24iOiIyMDE2LTAzLTE5VDIzOjI2OjM2LjEyM1oiLCJzdXJ2ZXkiOltdfQ.rNj1OVvgJTGoSmaJj2fJuQqwhE1pNXzWZiDzg9-IOyo";
 
-// Survey question changes
 module.exports = {
+  // Survey question changes
   feelingChange: function(feeling) {
     return {type: actions.FEELING_CHANGE, feeling: feeling}
   },
@@ -50,16 +50,16 @@ module.exports = {
     var surveyFailure = this.surveyFailure;
     return function(dispatch) {
       dispatch(surveySubmit())
-          axios.post('/user/userData', survey)
-            .then(function(response) {
-              console.log('axios response ', response);
-              dispatch(surveySuccess())
-            })
-              .then(browserHistory.push('/profile'))
-            .catch(function(error) {
-              console.log('axios error ', error);
-              dispatch(surveyFailure());
-            });
+      axios.post('/user/userData', survey)
+        .then(function(response) {
+          console.log('axios response ', response);
+          dispatch(surveySuccess())
+        })
+        .then(browserHistory.push('/profile'))
+        .catch(function(error) {
+          console.log('axios error ', error);
+          dispatch(surveyFailure());
+        });
     }
   }
 };
