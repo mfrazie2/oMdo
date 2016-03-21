@@ -1,8 +1,8 @@
 var React = require('react');
 var Auth = require('../components/auth');
-// var connect = require('react-redux').connect
-// var authActions = require('../actions/authActions');
-
+var connect = require('react-redux').connect
+var authActions = require('../actions/authActions');
+var store = require('../store/store');
 
 var AuthContainer = React.createClass({
   // contextTypes: {
@@ -22,10 +22,12 @@ var AuthContainer = React.createClass({
   //     buttonText: text || 'Submit'
   //   };
   // },
-  handleSubmit: function(event) {
-    event.preventDefault();
+  handleSubmit: function(e) {
+    e.preventDefault();
     console.log('event', event);
     console.log('form ', event.target.value);
+    var login = store.getState().authReducer;
+    store.dispatch(authActions.signInRequest(login))
     // this.context.router.push({
     //   pathname: '/home',
     //   state: {
@@ -33,21 +35,36 @@ var AuthContainer = React.createClass({
     //   }
     // });
   },
-  handleUpdateUsername: function(event) {
+  handleUpdateUsername: function(e) {
+    var username = e.target.value;
+    dispatch(authActions.username(updateUsername))
     // this.setState({
     //   username: event.target.value
     // });
   },
-  handleUpdatePassword: function(event) {
+  handleUpdatePassword: function(e) {
+    var password = e.target.value;
+    dispatch(authActions.updatePassword);
     // this.setState({
     //   password: event.target.value
     // })
   },
   render: function() {
-    return (
-      <Auth onSubmit={this.handleSubmit}
-      />
-    )
+    if(this.props.location.pathname === '/signin') {
+      return (
+        <Auth 
+          onSubmit={this.handleSubmit}
+          path={this.props.location.pathname}
+        />
+      )
+    } else {
+      return (
+        <Auth 
+          onSubmit={this.handleSubmit}
+          path={this.props.location.pathname}
+        />
+      )
+    }
   }
 });
 
@@ -57,11 +74,14 @@ var AuthContainer = React.createClass({
         password={this.state.password}
         text={this.state.buttonText}*/}
 
-// function mapStateToProps(state) {
-//   username: state.authReducer.username,
-//   password: state.authReducer.password,
-//   error: state.authReducer.error
-// };
+function mapStateToProps(state) {
+  return {
+    username: state.authReducer.username,
+    password: state.authReducer.password,
+    isLoading: state.authReducer.password,
+    error: state.authReducer.error
+  }
+};
 
-// module.exports = connect(mapStateToProps)(AuthContainer);
-module.exports = AuthContainer;
+module.exports = connect(mapStateToProps)(AuthContainer);
+// module.exports = AuthContainer;
