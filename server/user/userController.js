@@ -2,6 +2,7 @@ var User = require('../db/models/userSchema.js');
 var Survey = require('../db/models/surveySchema.js');
 var jwt = require('jwt-simple');
 var Q = require('q');
+var mongoose = require('mongoose');
 var dotenv = require('dotenv').config();
 
 module.exports = {
@@ -124,38 +125,15 @@ module.exports = {
       next(new Error('No token found!'));
     } else {
       var user =jwt.decode(token, process.env.JWT_SECRET);
-      var findUser = Q.nbind(User.findOne, User);
-      findUser({username: user.username})
-      .then(function(foundUser) {
-        if (foundUser) {
-          // Use populate instead of this reduce
-          // var surveys = foundUser.surveys.reduce(function(memo, survey) {
-          //   console.log(survey)
-          //   Survey.findOne({_id: survey._id}, function(err, foundSurvey, created) {
-          //     survey.feeling = foundSurvey.feeling;
-          //     survey.anxiety = foundSurvey.anxiety;
-          //     survey.energy  = foundSurvey.energy;
-          //     survey.sleep = foundSurvey.sleep;
-          //     survey.sleepElaborate = foundSurvey.sleepElaborate;
-          //     survey.mood = foundSurvey.mood;
-          //     survey.moodElaborate = foundSurvey.moodElaborate;
-          //     survey.majorEvent = foundSurvey.majorEvent;
-          //     memo.push(survey);
-          //   });
-          //   return memo;
-          // }, []);
-          foundUser.populate('surveys');
-          res.send({
-            username: foundUser.username,
-            surveys: foundUser.surveys
-          });
-        } else {
-          res.send(401);
-        }
-      })
-      .fail(function(error) {
-        next(error);
-      });
+      User.findOne({username: user.username})
+        .populate('surveys')
+        .exec(function(err, result) {
+          res.send(result.surveys);
+        })
+        .catch(function(error) {
+          next(new Error(error));
+        });
+
     }
   },
 

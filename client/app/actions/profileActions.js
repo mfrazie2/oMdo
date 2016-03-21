@@ -3,7 +3,7 @@ var axios = require('axios');
 var dispatch = require('../store/store').dispatch;
 var browserHistory = require('react-router').browserHistory;
 
-axios.defaults.headers.common['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkbHFKbXhselhqWFZVSkg4cGZJM2JYLiIsInVzZXJuYW1lIjoiam9obiIsInBhc3N3b3JkIjoiJDJhJDEwJGxxSm14bHpYalhWVUpIOHBmSTNiWC4wM1FPQy9qb2U5VVRyc1E0OFgwbllUL056WkZPbVRHIiwiX2lkIjoiNTZmMDViMzA2NWNiNDk2MTBlNTEyNDYwIiwiY3JlYXRlZE9uIjoiMjAxNi0wMy0yMVQyMDozNjowMC44MDdaIiwic3VydmV5IjpbXX0.u8i5jXhAw3tYkgAc0uRnxPZ0eul5D8yOSTxKvNVl3f0";
+axios.defaults.headers.common['x-access-token'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsInNhbHQiOiIkMmEkMTAkcEFrMmgvMmVzTlp5d3N2Q1huelA3TyIsInVzZXJuYW1lIjoiam9obiIsInBhc3N3b3JkIjoiJDJhJDEwJHBBazJoLzJlc05aeXdzdkNYbnpQN09uL2dHYmp2dmJlbWdWSTB3Y1NhV2FFRlhIY0tqQTVlIiwiX2lkIjoiNTZmMDc2MjVkY2YxN2JlYTQ4NTE0ZThjIiwiY3JlYXRlZE9uIjoiMjAxNi0wMy0yMVQyMjozMTowMS4wMzJaIiwic3VydmV5cyI6W119.lBpkMXw0oToARP2gZfrQPL81mauOQSixLF-c5q2abWA";
 
 module.exports = {
   surveysLoading: function() {
@@ -23,11 +23,11 @@ module.exports = {
       dispatch(surveysLoading());
       axios.get('/user/userData')
         .then(function(response) {
-          dispatch(surveysLoaded(response));
+          dispatch(surveysLoaded(response.data));
         })
         .catch(function(error) {
           console.log('There was an error querying for data:', error);
-          dispatch(surveysNotLoaded());
+          // dispatch(surveysNotLoaded());
         });
     }
   }
