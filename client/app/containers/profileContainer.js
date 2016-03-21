@@ -8,10 +8,10 @@ var Diary = require('../components/diary');
 var Visualization = require('../components/visualization');
 var Loading = require('../components/loading');
 
-
 var ProfileContainer = React.createClass({
   getInitialState: function() {
-    dispatch(profileActions.loadSurveys())
+    dispatch(profileActions.loadSurveys());
+    return null;
   },
   render: function() {
     return store.getState().profileReducer.isLoading
