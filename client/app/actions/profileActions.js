@@ -12,7 +12,7 @@ module.exports = {
   surveysNotLoaded: function() {
     return {type: actions.SURVEYS_NOT_LOADED}
   },
-  surveysLoadeded: function(surveys) {
+  surveysLoaded: function(surveys) {
     return {type: actions.SURVEYS_LOADED, surveys: surveys}
   },
   loadSurveys: function() {
