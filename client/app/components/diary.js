@@ -12,3 +12,5 @@ function Diary (props) {
     </ol>
   )
 }
+
+module.exports = Diary;

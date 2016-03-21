@@ -1,9 +1,17 @@
 var React = require('react');
 
+var puke = function(props) {
+    return (
+      <pre>
+        {props}
+      </pre>
+    )
+}
+
 function Entry (props) {
   return (
     <li>
-      <h4>{props.date}</h4>
+      {puke(props)}
     </li>
   )
 }
