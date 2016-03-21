@@ -6,108 +6,46 @@ var store = require('../store/store');
 var dispatch = store.dispatch;
 
 var SurveyContainer = React.createClass({
-  // getInitialState: function() {
-  //   return {
-  //     generalFeel: undefined,
-  //     anxietyLevel: undefined,
-  //     energyLevel: undefined,
-  //     sleepQuality: undefined,
-  //     currentMood: undefined,
-  //     majorEvent: undefined,
-  //     moodElaborate: '',
-  //     sleepElaborate: '',
-  //     eventElaborate: ''
-  //   }
-  // },
   handleSurveySubmit: function(e) {
     e.preventDefault();
     console.log('context ', this.context);
     var survey = store.getState().surveyReducer;
-    // var reroute = this.props.history.push('profile');
-    // dispatch(surveyActions.surveySubmit());
     dispatch(surveyActions.submitSurvey(survey));
-    // this.props.history.push('/profile');
-    // console.log('getState ', store.getState().surveyReducer); 
-
-    // this.setState({
-    //   generalFeel: undefined,
-    //   anxietyLevel: undefined,
-    //   energyLevel: undefined,
-    //   sleepQuality: undefined,
-    //   currentMood: undefined,
-    //   majorEvent: undefined,
-    //   moodElaborate: '',
-    //   sleepElaborate: '',
-    //   eventElaborate: ''
-    // });
   },
 
   handleFeelingChange: function(e) {
-    // console.log('new mood level: ', e.target.value);
-    // this.setState({
-    //   generalFeel: e.target.value
-    // });
     var feeling = e.target.value;
     dispatch(surveyActions.feelingChange(feeling));
   },
   handleAnxietyChange: function(e) {
-    // console.log('new anxiety level: ', e.target.value);
-    // this.setState({
-    //   anxietyLevel: e.target.value
-    // });
     var anxiety = e.target.value;
     dispatch(surveyActions.anxietyChange(anxiety));
   },
   handleEnergyChange: function(e) {
-    // console.log('new energy level: ', e.target.value);
-    // this.setState({
-    //   energyLevel: e.target.value
-    // });
     var energy = e.target.value;
     dispatch(surveyActions.energyChange(energy));
   },
   handleSleepChange: function(e) {
-    // console.log('new sleep quality: ', e.target.value);
-    // this.setState({
-    //   sleepQuality: e.target.value
-    // });
     var sleep = e.target.value;
     dispatch(surveyActions.sleepChange(sleep));
   },
   handleSleepElaborateChange: function(e) {
-    // this.setState({
-    //   sleepElaborate: e.target.value
-    // });
     var sleepDetail = e.target.value;
     dispatch(surveyActions.sleepElaborateChange(sleepDetail))
   },
   handleMoodChange: function(e) {
-    // console.log('new sleep quality: ', e.target.value);
-    // this.setState({
-    //   currentMood: e.target.value
-    // });
     var mood = e.target.value;
     dispatch(surveyActions.moodChange(mood));
   },
   handleMoodElaborateChange: function(e) {
-    // this.setState({
-    //   moodElaborate: e.target.value
-    // });
     var moodDetail = e.target.value;
     dispatch(surveyActions.moodElaborateChange(moodDetail));
   },
   handleMajorEventChange: function(e) {
-    // console.log('new sleep quality: ', e.target.value);
-    // this.setState({
-    //   majorEvent: e.target.value
-    // });
     var eventChange = e.target.value;
-    dispatch(surveyActions.majorEventChange(eventChange));  
+    dispatch(surveyActions.majorEventChange(eventChange));
   },
   handleEventElaborateChange: function(e) {
-    // this.setState({
-    //   eventElaborate: e.target.value
-    // });
     var eventDetail = e.target.value;
     dispatch(surveyActions.eventElaborateChange(eventDetail));
   },
@@ -128,7 +66,7 @@ var SurveyContainer = React.createClass({
         onSleepElaborateChange={this.handleSleepElaborateChange}
         onMoodElaborateChange={this.handleMoodElaborateChange}
         onEventElaborateChange={this.handleEventElaborateChange}
-        isLoading={this.props.isLoading} 
+        isLoading={this.props.isLoading}
       />
     )
   }
@@ -147,12 +85,7 @@ function mapStateToProps(state, ownProps) {
     eventElaborate: state.surveyReducer.eventElaborate,
     isLoading: state.surveyReducer.isLoading,
     error: state.surveyReducer.error
-    // ,
-    // id: ownProps.params.id,
-    // filter: ownProps.location.query.filter
   };
 };
 
 module.exports = connect(mapStateToProps)(SurveyContainer);
-
-// module.exports = SurveyContainer;
