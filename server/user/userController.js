@@ -8,24 +8,7 @@ var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 module.exports = {
-  /*
-    ========================================
-                     TESTS
-    ========================================
-  */
-
-  dataTest: function(req, res) {
-    res.send({test: 'Data about your feelings!'});
-  },
-  diaryTest: function(req, res) {
-    res.send({test: 'A diary of your feelings!'});
-  },
-  /*
-    ========================================
-                  USER CONTROLLER
-    ========================================
-  */
- function(req, res, next) {
+ signUp: function(req, res, next) {
     var username = req.body.username,
         password = req.body.password,
         newUser,
@@ -140,7 +123,7 @@ module.exports = {
     }
   },
 
-  postUserSurveys: function(req,res,next) {
+  postUserSurvey: function(req,res,next) {
     var token = req.headers['x-access-token'];
     if (!token) {
       next(new Error('Token not found while trying to post to survey'));
