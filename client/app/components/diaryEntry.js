@@ -3,14 +3,6 @@ var Radar = require('react-chartjs').Radar;
 var styleable = require('react-styleable').default;
 var css = require('../styles/question.css');
 
-var puke = function(data) {
-    return (
-      <pre>
-        {JSON.stringify(data, null, ' ')}
-      </pre>
-    )
-}
-
 var irrelevantFields = {
   'surveyId': true,
   '__v': true,
@@ -47,7 +39,6 @@ function Entry (props) {
   return (
     <li key={props.key} className={props.css.root}>
       <Radar data={radarData} width='100%' height='100%' />
-      {puke(props.data)}
     </li>
   )
 }
