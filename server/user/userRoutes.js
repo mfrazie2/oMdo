@@ -3,7 +3,6 @@ var express = require('express');
 
 var app = express.Router();
 
-app.get('/', userController.getUser);
 app.post('/signIn',userController.signIn);
 app.post('/signUp', userController.signUp);
 app.get('/signedIn', userController.checkAuth);
