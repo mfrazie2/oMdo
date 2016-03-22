@@ -8,6 +8,9 @@ dist/
 # forever pids
 server/pid
 
+# keys
+api_key.txt
+
 # Environment stuff
 .env
 node-upstart-script.conf
