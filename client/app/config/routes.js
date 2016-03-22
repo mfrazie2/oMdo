@@ -23,7 +23,5 @@ var Routes = (
         <Route path='about' component={About} />
       </Route>
 )
-console.log('history from the routing page ', history);
-console.log('store from the routing page', Router.props);
 
 module.exports = Routes;

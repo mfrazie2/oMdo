@@ -14,20 +14,17 @@ function authReducer(state, action) {
   }
   switch(action.type) {
     case actions.AUTH_SUBMIT:
-    console.log('IN AUTH_SUBMIT switch!')
       return Object.assign({}, state, {
         username: '',
         password: '',
         isLoading: true
       })
     case actions.AUTH_SUCCESS:
-    console.log('IN AUTH_SUCCESS switch!')
       return Object.assign({}, state, {
         isLoading: false,
         isLoggedIn: true
       })
     case actions.AUTH_FAILURE:
-    console.log('IN AUTH_FAILURE switch!')
       return Object.assign({}, state, {
         isLoading: false,
         error: true
