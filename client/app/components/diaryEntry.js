@@ -14,6 +14,17 @@ var irrelevantFields = {
   'sleepElaborate': true
 };
 
+var irrelevantFields = {
+  'surveyId': true,
+  '__v': true,
+  '_id': true,
+  'createdOn': true,
+  'createdBy': true,
+  'eventElaborate': true,
+  'moodElaborate': true,
+  'sleepElaborate': true
+};
+
 function Entry (props) {
   var relevantLabels = Object.keys(props.data).filter(function(field) {
     return !irrelevantFields[field];
