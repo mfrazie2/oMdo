@@ -95,7 +95,7 @@ module.exports = {
       .fail(function(error) {
         next(error);
       });
-    // }
+    }
   },
 
   getUser: function(req,res,next) {
