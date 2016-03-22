@@ -2,7 +2,6 @@ var axios = require('axios');
 var actions = require('./actions')
 var browserHistory = require('react-router').browserHistory;
 
-
 function authSubmit() {
   return {type: actions.AUTH_SUBMIT}
 }
@@ -12,6 +11,9 @@ function authSuccess() {
 function authFailure() {
   return {type: actions.AUTH_FAILURE}
 }
+
+//axios.defaults.headers.common['x-access-token'] = window.localStorage.getItem('x-access-token');
+
 
 module.exports = {
   updateUsername: function(username) {
@@ -26,7 +28,7 @@ module.exports = {
           axios.post('/user/signIn', login)
             .then(function(response) {
               console.log('axios response ', response)
-              localStorage.setItem('token', response.data.token);
+              window.localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
             })
@@ -42,7 +44,7 @@ module.exports = {
           axios.post('/user/signUp', signUp)
             .then(function(response) {
               console.log('axios response ', response);
-              localStorage.setItem('token', response.data.token);
+              window.localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
             })

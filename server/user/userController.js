@@ -43,10 +43,13 @@ module.exports = {
         return create(newUser);
       })
       .then(function(user) {
+        console.log('FUCKING A', process.env.JWT_SECRET);
         var token = jwt.encode(user, process.env.JWT_SECRET);
+        console.log(token);
         res.json({token:token});
       })
       .fail(function(error) {
+        console.log(error)
         next(error);
       });
   },

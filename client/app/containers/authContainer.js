@@ -3,7 +3,8 @@ var Auth = require('../components/auth');
 var connect = require('react-redux').connect
 var authActions = require('../actions/authActions');
 var bindActionCreators = require('redux').bindActionCreators;
-
+var store = require('../store/store');
+var dispatch = store.dispatch;
 // var connect = require('react-redux').connect
 // var authActions = require('../actions/authActions');
 // var configureStore = require('../store/store').configureStore;
@@ -40,6 +41,20 @@ var AuthContainer = React.createClass({
   handleUpdatePassword: function(e) {
     var password = e.target.value;
     this.props.actions.updatePassword(password);
+    var login = store.getState().authReducer;
+    var path = this.props.location.pathname;
+    if(path === '/signin'){
+      store.dispatch(authActions.signInRequest(login))
+    } else {
+      console.log('signup', login);
+      store.dispatch(authActions.signUpRequest(login))
+    }
+    // this.context.router.push({
+    //   pathname: '/home',
+    //   state: {
+    //     username: this.state.username,
+    //   }
+    // });
   },
   render: function() {
     if(this.props.location.pathname === '/signin') {
@@ -60,6 +75,8 @@ var AuthContainer = React.createClass({
           onUpdatePassword={this.handleUpdatePassword}
           path={this.props.location.pathname}
           isLoading={this.props.isLoading}
+          onUpdateUsername={this.handleUpdateUsername}
+          onUpdatePassword={this.handleUpdatePassword}
         />
       )
     }
