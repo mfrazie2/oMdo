@@ -1,12 +1,17 @@
 var React = require('react');
 var Navbar = require('../components/navbar');
+var connect = require('react-redux').connect;
+var dispatch = require('../store/store').dispatch;
+var requestSignOut = require('../actions/navActions').requestSignOut;
 
 var NavbarContainer = React.createClass({
   
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  
+  handleSignOut: function() {
+    dispatch(requestSignOut());
+  },
   handleToSurvey: function(e) {
     e.preventDefault();
     this.context.router.push({
@@ -22,9 +27,19 @@ var NavbarContainer = React.createClass({
   
   render: function() {
     return (
-      <Navbar />  
+      <Navbar 
+        onSignOut={this.handleSignOut}
+      />  
     )
   }
 });
 
-module.exports = NavbarContainer;
+function mapStateToProps(state, ownProps) {
+  return {
+    isLoggedIn: state.homeReducer.isLoggedIn,
+    isLoading: state.homeReducer.isLoading
+  }
+}
+
+module.exports = connect(mapStateToProps)(NavbarContainer);
+// module.exports = NavbarContainer;
