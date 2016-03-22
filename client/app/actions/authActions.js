@@ -36,7 +36,6 @@ module.exports = {
         });
     }
   },
-  signUpRequest: function(signUp) {
     return function(dispatch) {
       dispatch(authSubmit())
           axios.post('/user/signUp', signUp)

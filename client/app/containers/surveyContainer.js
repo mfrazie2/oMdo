@@ -46,7 +46,7 @@ var SurveyContainer = React.createClass({
   },
   handleMajorEventChange: function(e) {
     var eventChange = e.target.value;
-    this.props.actions.majorEventChange(eventChange);  
+    this.props.actions.majorEventChange(eventChange);
   },
   handleEventElaborateChange: function(e) {
     var eventDetail = e.target.value;
@@ -67,7 +67,7 @@ var SurveyContainer = React.createClass({
         onSleepElaborateChange={this.handleSleepElaborateChange}
         onMoodElaborateChange={this.handleMoodElaborateChange}
         onEventElaborateChange={this.handleEventElaborateChange}
-        isLoading={this.props.isLoading} 
+        isLoading={this.props.isLoading}
       />
     )
   }
@@ -75,12 +75,12 @@ var SurveyContainer = React.createClass({
 
 function mapStateToProps(state, ownProps) {
   return {
-    generalFeel: state.surveyReducer.generalFeel,
-    anxietyLevel: state.surveyReducer.anxietyLevel,
-    energyLevel: state.surveyReducer.energyLevel,
-    sleepQuality: state.surveyReducer.sleepQuality,
-    currentMood: state.surveyReducer.currentMood,
+    feeling: state.surveyReducer.feeling,
+    anxiety: state.surveyReducer.anxiety,
+    energy: state.surveyReducer.energy,
+    sleep: state.surveyReducer.sleep,
     majorEvent: state.surveyReducer.majorEvent,
+    mood: state.surveyReducer.mood,
     moodElaborate: state.surveyReducer.moodElaborate,
     sleepElaborate: state.surveyReducer.sleepElaborate,
     eventElaborate: state.surveyReducer.eventElaborate,
