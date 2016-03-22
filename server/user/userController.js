@@ -4,6 +4,8 @@ var jwt = require('jwt-simple');
 var Q = require('q');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv').config();
+var AlchemyAPI = require('../alchemyapi');
+var alchemyapi = new AlchemyAPI();
 
 module.exports = {
   /*
@@ -156,6 +158,10 @@ module.exports = {
           if (err) {
             next(new Error('There is an error in posting the survey: ', err));
           }
+          console.log('DISDASURVEY', survey);
+          alchemyapi.sentiment('text', survey.eventElaborate, {}, function(response){
+            console.log(JSON.stringify(response, null, 4));
+          })
           foundUser.surveys.push(survey);
           foundUser.save()
             .then(function(result) {
