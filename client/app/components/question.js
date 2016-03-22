@@ -5,7 +5,6 @@ var styleable = require('react-styleable').default
 var css = require('../styles/question.css');
 var dispatch = require('../store/store').dispatch;
 console.log(typeof styleable)
-
 var currentIndex = currentIndex || 0;
 
 
