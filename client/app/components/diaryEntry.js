@@ -1,9 +1,17 @@
 var React = require('react');
 
+var puke = function(data) {
+    return (
+      <pre>
+        {JSON.stringify(data, null, ' ')}
+      </pre>
+    )
+}
+
 function Entry (props) {
   return (
-    <li>
-      <h4>{props.date}</h4>
+    <li key={props.key}>
+      {puke(props.data)}
     </li>
   )
 }

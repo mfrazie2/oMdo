@@ -9,6 +9,10 @@ var Visualization = require('../components/visualization');
 var Loading = require('../components/loading');
 
 var ProfileContainer = React.createClass({
+  propTypes: {
+    username: React.PropTypes.string,
+    surveys: React.PropTypes.array
+  },
   getInitialState: function() {
     dispatch(profileActions.loadSurveys());
     return null;
@@ -21,9 +25,9 @@ var ProfileContainer = React.createClass({
       </Profile>
     )
     : (
-      <Profile username={store.getState().profileReducer.username}>
+      <Profile username={this.props.username}>
         <Visualization />
-        <Diary surveys={store.getState().profileReducer.surveys} />
+        <Diary surveys={this.props.surveys} />
       </Profile>
     )
   }
@@ -31,7 +35,6 @@ var ProfileContainer = React.createClass({
 
 function mapStateToProps(state, ownProps) {
   return {
-    // token: localStorage.get('token'),
     surveys: state.profileReducer.surveys,
     isLoading: state.profileReducer.isLoading
   }
