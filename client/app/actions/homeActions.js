@@ -28,5 +28,3 @@ exports.checkAuth = function() {
         })
     }
   }
-
-// {headers: {'x-access-token': localStorage.token}}
