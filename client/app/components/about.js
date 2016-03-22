@@ -3,7 +3,6 @@ var styleable = require('react-styleable').default;
 var css = require('../styles/about.css');
 
 function About(props) {
-  console.log('About props ', props);
   return (
     <div className={props.css.root}>      
         <h1 className={props.css.headers}>About oMdo</h1>
