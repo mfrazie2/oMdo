@@ -6,14 +6,14 @@ var db = require('../config.js');
 autoIncrement.initialize(db);
 var SurveySchema = new mongoose.Schema({
   surveyId: Number,
-  generalFeeling: Number,
-  anxietyLevel: Number,
-  energyLevel: Number,
-  sleepQuality: String, // ?
+  feeling: Number,
+  anxiety: Number,
+  energy: Number,
+  sleep: Number, // ?
   sleepElaborate: String,
-  currentMood: String, // ?
+  mood: Number, // ?
   moodElaborate: String,
-  majorEvent: String, // ? Boolean ?
+  majorEvent: Boolean, // ? Boolean ?
   eventElaborate: String,
   createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   createdOn: {
