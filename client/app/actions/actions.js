@@ -10,9 +10,6 @@ module.exports = {
   NOT_AUTHORIZED: 'NOT_AUTHORIZED',
   SIGN_OUT: 'SIGN_OUT',
 
-  // Nav actions:
-  SIGN_OUT: 'SIGN_OUT',
-
   // Survey actions
   SURVEY_SUBMIT: 'SURVEY_SUBMIT',
   SURVEY_SUCCESS: 'SURVEY_SUCCESS',
