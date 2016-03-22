@@ -3,6 +3,8 @@ var axios = require('axios');
 var dispatch = require('../store/store').dispatch;
 var browserHistory = require('react-router').browserHistory;
 
+axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
+
 function surveysLoading() {
   return {type: actions.SURVEYS_LOADING}
 }
@@ -17,7 +19,7 @@ module.exports = {
   loadSurveys: function() {
     return function(dispatch) {
       dispatch(surveysLoading());
-      axios.get('/user/userData', {headers: {'x-access-token': localStorage.token}})
+      axios.get('/user/userData')
         .then(function(response) {
           dispatch(surveysLoaded(response.data));
         })

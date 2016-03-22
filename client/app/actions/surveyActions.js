@@ -2,6 +2,8 @@ var actions = require('../actions/actions')
 var axios = require('axios');
 var browserHistory = require('react-router').browserHistory;
 
+axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
+
 // Survey submission handling
 function surveySubmit() {
   return {type: actions.SURVEY_SUBMIT};
@@ -45,7 +47,7 @@ module.exports = {
   submitSurvey: function(survey) {
     return function(dispatch) {
       dispatch(surveySubmit());
-          axios.post('/user/userData', {headers: {'x-access-token': localStorage.token, survey: survey}})
+          axios.post('/user/userData', survey)
             .then(function(response) {
               console.log('axios response ', response);
               dispatch(surveySuccess());
