@@ -41,13 +41,8 @@
     "babel-preset-react": "^6.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
-<<<<<<< 8a746d459fe21d179c559f87c63f5b4dffc0fc3f
     "consolidate": "^0.14.0",
-||||||| merged common ancestors
-=======
     "chart.js": "^1.0.2",
-    "chartjs": "^0.3.7",
->>>>>>> (feat)Adds charts to diary entries
     "css-loader": "^0.23.1",
     "cssnext-loader": "^1.0.1",
     "dotenv": "^2.0.0",

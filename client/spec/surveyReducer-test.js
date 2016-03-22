@@ -17,5 +17,7 @@ describe('survey reducer', function() {
       error: false
     }])
   });
-  it('should')
+  it('should exist' {
+    expect(reducer).to.exist;
+  });
 });

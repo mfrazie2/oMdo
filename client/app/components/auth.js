@@ -18,7 +18,7 @@ function Auth(props) {
             name='password'
             onChange={props.onUpdatePassword}
           />
-          
+
           <button type='submit'>Sign in</button>
         </form>
       </div>
@@ -38,7 +38,7 @@ function Auth(props) {
             name='password'
             onChange={props.onUpdatePassword}
           />
-          
+
           <button type='submit'>Sign in</button>
         </form>
       </div>
