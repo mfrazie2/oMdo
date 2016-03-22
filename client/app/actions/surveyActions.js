@@ -48,9 +48,6 @@ module.exports = {
   },
   submitSurvey: function(survey) {
     axios.defaults.headers.common['x-access-token'] = window.localStorage.getItem('x-access-token');
-    var surveySubmit = this.surveySubmit;
-    var surveySuccess = this.surveySuccess;
-    var surveyFailure = this.surveyFailure;
     return function(dispatch) {
       dispatch(surveySubmit());
           axios.post('/user/userData', survey)
