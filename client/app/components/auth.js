@@ -1,6 +1,6 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-var Loading = require('../components/Loading');
+var Loading = require('../components/loading');
 
 function Auth(props) {
   if(props.path === '/signin' && !props.isLoading) {
