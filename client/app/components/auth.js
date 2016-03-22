@@ -1,49 +1,54 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-var Loading = require('../components/loading');
+var Loading = require('../components/Loading');
 
 function Auth(props) {
-  return (
-    <div>
-      <form onSubmit={props.onSubmit} path={props.pathname}>
-        <input
-          type='text'
-          name='username'
-          onChange={props.onUpdateUsername}
-        />
-        <input
-          type='text'
-          name='password'
-          onChange={props.onUpdatePassword}
-        />
-
-        <button type='submit'>Sign in</button>
-      </form>
-    </div>
-  )
+  if(props.path === '/signin' && !props.isLoading) {
+    return (
+      <div>
+        <h1>Sign In</h1>
+        <form onSubmit={props.onSignInSubmit} path={props.pathname}>
+          <input
+            type='text'
+            name='username'
+            onChange={props.onUpdateUsername}
+          />
+          <input
+            type='text'
+            name='password'
+            onChange={props.onUpdatePassword}
+          />
+          
+          <button type='submit'>Sign in</button>
+        </form>
+      </div>
+    )
+  } else if(props.path === '/signup' && !props.isLoading) {
+    return (
+      <div>
+        <h1>Sign Up</h1>
+        <form onSubmit={props.onSignUpSubmit} path={props.pathname}>
+          <input
+            type='text'
+            name='username'
+            onChange={props.onUpdateUsername}
+          />
+          <input
+            type='text'
+            name='password'
+            onChange={props.onUpdatePassword}
+          />
+          
+          <button type='submit'>Sign in</button>
+        </form>
+      </div>
+    )
+  } else {
+    return (
+      <Loading />
+    )
+  }
+  
 };
-
-
-{/*<input
-          type="text"
-          name="username"
-          onChange={props.onUpdateUsername}
-          value={props.username}
-          placeholder="username" />
-        <input
-          type="text"
-          onChange={props.onUpdatePassword}
-          value={props.password}
-          placeholder="password"/>
-        <button type="submit">{props.text}</button>*/}
-
-// Auth.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   // onUpdateUsername: PropTypes.func.isRequired,
-//   // onUpdatePassword: PropTypes.func.isRequired,
-//   // text: PropTypes.string,
-//   // username: PropTypes.string,
-//   // password: PropTypes.string
-// };
 
 module.exports = Auth;

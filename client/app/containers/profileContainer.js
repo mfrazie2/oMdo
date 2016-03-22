@@ -1,7 +1,13 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
+var Profile = require('../components/profile');
+
+var consoleLogSomething = require('../actions/profileActions').consoleLogSomething;
+// var dispatch = require('../store/store').dispatch;
 var connect = require('react-redux').connect;
-var store = require('../store/store');
-var dispatch = store.dispatch;
+var bindActionCreators = require('redux').bindActionCreators;
+// var store = require('../store/store');
+// var dispatch = store.dispatch;
 var profileActions = require('../actions/profileActions');
 var Profile = require('../components/profile');
 var Diary = require('../components/diary');
@@ -13,18 +19,19 @@ var ProfileContainer = React.createClass({
     username: React.PropTypes.string,
     surveys: React.PropTypes.array
   },
-  getInitialState: function() {
-    dispatch(profileActions.loadSurveys());
-    return null;
+  componentDidMount: function() {
+    this.props.actions.loadSurveys();
   },
   render: function() {
-    return store.getState().profileReducer.isLoading
-    ? (
-      <Profile>
-        <Loading />
-      </Profile>
-    )
-    : (
+    return (
+
+
+    !!this.props.isLoading ? 
+
+    <Loading />
+    
+    :
+
       <Profile username={this.props.username}>
         <Visualization />
         <Diary surveys={this.props.surveys} />
@@ -40,4 +47,10 @@ function mapStateToProps(state, ownProps) {
   }
 };
 
-module.exports = connect(mapStateToProps)(ProfileContainer);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(profileActions, dispatch)
+  }
+}
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

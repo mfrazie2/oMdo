@@ -4,9 +4,11 @@ var authReducer = require('./authReducer');
 var profileReducer = require('./profileReducer');
 var surveyReducer = require('./surveyReducer')
 
+var actions = require('../actions/actions');
+
 exports.rootReducer =  combineReducers({
-  authReducer: authReducer,
-  surveyReducer: surveyReducer,
   profileReducer: profileReducer,
-  routing: routerReducer
+  authReducer: authReducer,
+  surveyReducer: surveyReducer
+  // routing: routerReducer
 });
