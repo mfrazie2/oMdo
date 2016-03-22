@@ -2,7 +2,8 @@ var React = require('react');
 var styleable = require('react-styleable').default;
 var css = require('../styles/about.css');
 
-var Loading = React.createClass({
+var Loading
+ = React.createClass({
   render: function() {
     return (
       <div>
