@@ -25,7 +25,7 @@ module.exports = {
       dispatch(authSubmit())
           axios.post('/user/signIn', login)
             .then(function(response) {
-              console.log('axios response ', response.data.token);
+              console.log('axios response ', response)
               localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
@@ -44,16 +44,11 @@ module.exports = {
       dispatch(authSubmit())
           axios.post('/user/signUp', signUp)
             .then(function(response) {
-              // if(error) {
-              //   console.log('axios error ', error);
-              //   dispatch(authFailure());
-              // }
-              console.log('axios response ', response.data.token);
+              console.log('axios response ', response);
               localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
             })
-            // .then(browserHistory.push('/home'))
         .catch(function(error) {
           console.log('axios error ', error);
           dispatch(authFailure());

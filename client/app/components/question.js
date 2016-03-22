@@ -71,7 +71,7 @@ function nextChild(props, currentIndex) {
 }
 
 function testFunc() {
-  console.log('What is happening here?');
+  
 }
 
 function Question(props) {

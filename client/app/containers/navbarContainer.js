@@ -26,7 +26,6 @@ var NavbarContainer = React.createClass({
   },
   
   render: function() {
-    console.log('navbar context ', this.props);
     return (
       <Navbar 
         onSignOut={this.handleSignOut}

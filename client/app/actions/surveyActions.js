@@ -45,7 +45,7 @@ module.exports = {
   submitSurvey: function(survey) {
     return function(dispatch) {
       dispatch(surveySubmit());
-          axios.post('/user/userData', survey)
+          axios.post('/user/userData', {headers: {'x-access-token': localStorage.token, survey: survey}})
             .then(function(response) {
               console.log('axios response ', response);
               dispatch(surveySuccess());
