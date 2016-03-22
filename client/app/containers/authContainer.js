@@ -2,55 +2,30 @@ var React = require('react');
 var Auth = require('../components/auth');
 var connect = require('react-redux').connect
 var authActions = require('../actions/authActions');
-var store = require('../store/store');
+var bindActionCreators = require('redux').bindActionCreators;
 
 var AuthContainer = React.createClass({
-  // contextTypes: {
-  //   router: React.PropTypes.object.isRequired
-  // },
-  // getInitialState: function() {
-  //   var text;
-  //   if (this.props.location.pathname === '/signin') {
-  //     text = 'Sign in';
-  //   }
-  //   if (this.props.location.pathname === '/signup') {
-  //     text = 'Sign up';
-  //   }
-  //   return {
-  //     username: '',
-  //     password: '',
-  //     buttonText: text || 'Submit'
-  //   };
-  // },
+  contextTypes: {
+    router: React.PropTypes.object.isRequired,
+    store: React.PropTypes.object.isRequired
+  },
   handleSignInSubmit: function(e) {
     e.preventDefault();
-    var login = store.getState().authReducer;
-    store.dispatch(authActions.signInRequest(login));
-    // this.context.router.push({
-    //   pathname: '/home',
-    //   state: {
-    //     username: this.state.username,
-    //   }
-    // });
+    var login = this.context.store.getState().authReducer;
+    this.props.actions.signInRequest(login);
   },
   handleSignUpSubmit: function(e) {
     e.preventDefault();
-    var login = store.getState().authReducer;
-    store.dispatch(authActions.signUpRequest(login));
+    var login = this.context.store.getState().authReducer;
+    this.props.actions.signUpRequest(login);
   },
   handleUpdateUsername: function(e) {
     var username = e.target.value;
-    store.dispatch(authActions.updateUsername(username))
-    // this.setState({
-    //   username: event.target.value
-    // });
+    this.props.actions.updateUsername(username);
   },
   handleUpdatePassword: function(e) {
     var password = e.target.value;
-    store.dispatch(authActions.updatePassword(password));
-    // this.setState({
-    //   password: event.target.value
-    // })
+    this.props.actions.updatePassword(password);
   },
   render: function() {
     if(this.props.location.pathname === '/signin') {
@@ -77,12 +52,6 @@ var AuthContainer = React.createClass({
   }
 });
 
-{/*onUpdateUsername={this.handleUpdateUsername}
-        onUpdatePassword={this.handleUpdatePassword}
-        username={this.state.username}
-        password={this.state.password}
-        text={this.state.buttonText}*/}
-
 function mapStateToProps(state) {
   return {
     username: state.authReducer.username,
@@ -92,5 +61,10 @@ function mapStateToProps(state) {
   }
 };
 
-module.exports = connect(mapStateToProps)(AuthContainer);
-// module.exports = AuthContainer;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+}
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

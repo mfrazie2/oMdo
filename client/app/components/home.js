@@ -8,14 +8,4 @@ function Home (props) {
   )
 };
 
-{/*<h1>Hello {props.username}</h1>
-      <button onTakeSurvey={props.onTakeSurvey}>Know thyself</button>
-      <button onSeeProfile={props.onSeeProfile}>Know thyself more</button>*/}
-
-// Home.propTypes = {
-//   onTakeSurvey: React.PropTypes.func.isRequired,
-//   onSeeProfile: React.PropTypes.func.isRequired,
-//   username: React.PropTypes.string.isRequired
-// }
-
 module.exports = Home;

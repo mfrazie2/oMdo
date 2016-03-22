@@ -2,6 +2,7 @@ var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
 var surveyActions = require('../actions/surveyActions');
+var checkAuth = require('../actions/authActions').checkAuth;
 var bindActionCreators = require('redux').bindActionCreators;
 
 var SurveyContainer = React.createClass({
@@ -14,6 +15,7 @@ var SurveyContainer = React.createClass({
     var survey = this.context.store.getState().surveyReducer;
     this.props.actions.submitSurvey(survey);
   },
+
   handleFeelingChange: function(e) {
     var feeling = e.target.value;
     this.props.actions.feelingChange(feeling);
@@ -25,6 +27,10 @@ var SurveyContainer = React.createClass({
   handleEnergyChange: function(e) {
     var energy = e.target.value;
     this.props.actions.energyChange(energy);
+  },
+  handleSleepChange: function(e) {
+    var sleep = e.target.value;
+    this.props.actions.sleepChange(sleep);
   },
   handleSleepElaborateChange: function(e) {
     var sleepDetail = e.target.value;

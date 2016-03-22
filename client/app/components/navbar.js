@@ -6,19 +6,27 @@ var css = require('../styles/navbar.css');
 console.log(typeof styleable)
 
 function Navbar(props) {
+  console.log('navbar props ', props);
   return(
+
+    !props.isLoggedIn ?
+
+    <div className={props.css.root}>
+      <ul className={props.css.ul}>
+        <Link className={props.css.navItem} to='about'> What is this about? </Link>
+      </ul>
+    </div>
+
+    :
+
     <div className={props.css.root}>
       <ul className={props.css.ul}>
         <Link className={props.css.navItem} to='survey'> Talk about your Feelings </Link>
         <Link className={props.css.navItem} to='profile'> Look at your Feelings </Link>
-        <li onClick={props.onSignOut}>
-          <Link className={props.css.navItem} to='/'> That's enough feelings for today </Link>
-        </li>
+        <Link className={props.css.navItem} to='/signin' onClick={props.onSignOut}> That's enough feelings for today </Link>
         <Link className={props.css.navItem} to='about'> What is this about? </Link>
       </ul>
     </div>
   )
 }
-
-
 module.exports = styleable(css)(Navbar)

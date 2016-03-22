@@ -1,8 +1,8 @@
 var React = require('react');
 var Navbar = require('../components/navbar');
 var connect = require('react-redux').connect;
-var dispatch = require('../store/store').dispatch;
-var requestSignOut = require('../actions/navActions').requestSignOut;
+var bindActionCreators = require('redux').bindActionCreators;
+var navActions = require('../actions/navActions');
 
 var NavbarContainer = React.createClass({
   
@@ -10,7 +10,7 @@ var NavbarContainer = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   handleSignOut: function() {
-    dispatch(requestSignOut());
+    this.props.actions.requestSignOut();
   },
   handleToSurvey: function(e) {
     e.preventDefault();
@@ -26,9 +26,11 @@ var NavbarContainer = React.createClass({
   },
   
   render: function() {
+    console.log('navbar context ', this.props);
     return (
       <Navbar 
         onSignOut={this.handleSignOut}
+        isLoggedIn={this.props.isLoggedIn}
       />  
     )
   }
@@ -36,10 +38,15 @@ var NavbarContainer = React.createClass({
 
 function mapStateToProps(state, ownProps) {
   return {
-    isLoggedIn: state.homeReducer.isLoggedIn,
-    isLoading: state.homeReducer.isLoading
+    isLoggedIn: state.authReducer.isLoggedIn,
+    isLoading: state.authReducer.isLoading
   }
 }
 
-module.exports = connect(mapStateToProps)(NavbarContainer);
-// module.exports = NavbarContainer;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(navActions, dispatch)
+  }
+}
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(NavbarContainer);

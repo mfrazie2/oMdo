@@ -7,11 +7,9 @@ function signOut() {
 
 module.exports = {
   requestSignOut: function() {
-    // var signOut = this.signOut;
     return function(dispatch) {
       dispatch(signOut());
       localStorage.setItem('token', '');
-      browserHistory.push('/signin');
     }
   }
 }

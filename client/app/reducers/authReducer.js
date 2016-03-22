@@ -3,10 +3,10 @@ var actions = require('../actions/actions');
 var initialState = {
   username: '',
   password: '',
-  false: '',
-  isLoading: false,
-  error: false
-}
+  error: false,
+  isLoggedIn: false,
+  isLoading: false
+};
 
 function authReducer(state, action) {
   if(state === undefined) {
@@ -23,7 +23,8 @@ function authReducer(state, action) {
     case actions.AUTH_SUCCESS:
     console.log('IN AUTH_SUCCESS switch!')
       return Object.assign({}, state, {
-        isLoading: false
+        isLoading: false,
+        isLoggedIn: true
       })
     case actions.AUTH_FAILURE:
     console.log('IN AUTH_FAILURE switch!')
@@ -39,9 +40,28 @@ function authReducer(state, action) {
       return Object.assign({}, state, {
         password: action.password
       })
+    case actions.AUTH_REQUEST:
+      return Object.assign({}, state, {
+        isLoading: true
+      })
+    case actions.AUTHORIZED:
+      return Object.assign({}, state, {
+        isLoggedIn: true,
+        isLoading: false
+      })
+    case actions.NOT_AUTHORIZED:
+      return Object.assign({}, state, {
+        isLoading: false
+      })
+    case actions.SIGN_OUT:
+      return Object.assign({}, state, {
+        isLoggedIn: false
+      })
     default:
       return state
   }
 }
 
+
 module.exports = authReducer;
+
