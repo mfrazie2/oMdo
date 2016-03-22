@@ -2,7 +2,7 @@ var axios = require('axios');
 var actions = require('./actions')
 var browserHistory = require('react-router').browserHistory;
 
-axios.defaults.headers.post['x-access-token'] = window.localStorage.token;
+axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
 
 
 function authRequest() {
@@ -16,10 +16,9 @@ function notAuthorized() {
 }
   
 exports.checkAuth = function() {
-    console.log(window.localStorage.token);
     return function(dispatch) {
       dispatch(authRequest());
-      axios.get('/user/signedIn', {headers: {'x-access-token': localStorage.token}})
+      axios.get('/user/signedIn')
         .then(function(response) {
           console.log('home/axios ', response);
           dispatch(authorized());
@@ -31,3 +30,5 @@ exports.checkAuth = function() {
         })
     }
   }
+
+// {headers: {'x-access-token': localStorage.token}}
