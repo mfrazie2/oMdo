@@ -2,14 +2,9 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var Question = require('./question');
 var store = require('../store/store');
-var Loading = require('../components/loading');
-// var store = this.context.store;
+var Loading = require('../components/Loading');
 
 function Survey(props) {
-  console.log('context ', this.context);
-  // console.log('where am i? ', props);
-  console.log('survey component props ', props);
-  // console.log('props.isLoading ', this.props.isLoading);
   return (
     props.isLoading === true ?
     <Loading /> :
@@ -23,7 +18,7 @@ function Survey(props) {
           Happy
           <br />
         </div>
-
+        
         <div className='anxietyQuestion surveySlider'>
           <p>What is your anxiety level right now? <em>(On a scale of 1-5)</em> </p>
           Low/none
@@ -31,7 +26,7 @@ function Survey(props) {
           High
           <br />
         </div>
-
+        
         <div className='energyQuestion surveySlider'>
           <p>What is your energy level? <em>(On a scale of 1-5)</em> </p>
           Tired/none
@@ -39,7 +34,7 @@ function Survey(props) {
           Alert and awake/high
           <br />
         </div>
-
+        
         <div className="sleepQuestions">
           <div className='surveyRadioButtons'>
             <p>What was your sleep quality last night?</p>
@@ -54,7 +49,7 @@ function Survey(props) {
             <input type='textarea' name='sleepElaborate' onChange={props.onSleepElaborateChange} /><br />
           </div>
         </div>
-
+        
         <div className="moodQuestions">
           <div className='surveyRadioButtons'>
             <p>Which of the following best describes your mood in this moment?</p>
@@ -69,7 +64,7 @@ function Survey(props) {
             <input type='textarea' name='moodElaborate' onChange={props.onMoodElaborateChange} /><br />
           </div>
         </div>
-
+        
         <div className="eventsQuestions">
           <div className='surveyRadioButtons'>
             <p>Have any significant or noteworthy events happened to you since your last check-in?</p>
@@ -85,27 +80,6 @@ function Survey(props) {
           <button className="surveySubmit" type="Submit" onClick={props.onSubmit}>Submit</button>
     </div>
   )
-}
-
-
-
-// Survey.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   onFeelingChange: PropTypes.func.isRequired,
-//   onAnxietyChange: PropTypes.func.isRequired,
-//   onEnergyChange: PropTypes.func.isRequired,
-//   onSleepChange: PropTypes.func.isRequired,
-//   onMoodChange: PropTypes.func.isRequired,
-//   onMajorEventChange: PropTypes.func.isRequired,
-//   onSleepElaborateChange: PropTypes.func.isRequired,
-//   onMoodElaborateChange: PropTypes.func.isRequired,
-//   onEventElaborateChange: PropTypes.func.isRequired,
-//   isLoading: PropTypes.bool.isRequired
-// };
-
-// Survey.propTypes = {
-
-
-// }
+} 
 
 module.exports = Survey;

@@ -4,21 +4,19 @@ var browserHistory = require('react-router').browserHistory;
 
 axios.defaults.headers.post['x-access-token'] = window.localStorage.token;
 
-module.exports = {
-  authRequest: function() {
-    return {type: actions.AUTH_REQUEST}
-  },
-  authorized: function() {
-    return {type: actions.AUTHORIZED}
-  },
-  notAuthorized: function() {
-    return {type: actions.NOT_AUTHORIZED}
-  },
-  checkAuth: function() {
+
+function authRequest() {
+  return {type: actions.AUTH_REQUEST}
+}
+function authorized() {
+  return {type: actions.AUTHORIZED}
+}
+function notAuthorized() {
+  return {type: actions.NOT_AUTHORIZED}
+}
+  
+exports.checkAuth = function() {
     console.log(window.localStorage.token);
-    var authRequest = this.authRequest;
-    var authorized = this.authorized;
-    var notAuthorized = this.notAuthorized;
     return function(dispatch) {
       dispatch(authRequest());
       axios.get('/user/signedIn', {headers: {'x-access-token': localStorage.token}})
@@ -33,4 +31,3 @@ module.exports = {
         })
     }
   }
-}

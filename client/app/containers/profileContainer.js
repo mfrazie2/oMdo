@@ -1,4 +1,9 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
+var Profile = require('../components/profile');
+
+var consoleLogSomething = require('../actions/profileActions').consoleLogSomething;
+var dispatch = require('../store/store').dispatch;
 var connect = require('react-redux').connect;
 var store = require('../store/store');
 var dispatch = store.dispatch;
