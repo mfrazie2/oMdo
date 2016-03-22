@@ -3,6 +3,7 @@ var PropTypes = React.PropTypes;
 var connect = require('react-redux').connect;
 var bindActionCreators = require('redux').bindActionCreators;
 var profileActions = require('../actions/profileActions');
+var homeActions = require('../actions/homeActions');
 var Profile = require('../components/profile');
 var Diary = require('../components/diary');
 var Visualization = require('../components/visualization');
@@ -14,7 +15,10 @@ var ProfileContainer = React.createClass({
     surveys: React.PropTypes.array
   },
   componentDidMount: function() {
-    this.props.actions.loadSurveys();
+    this.props.actions.checkAuth();
+    if(this.props.isLoggedIn) {
+      this.props.actions.loadSurveys();
+    }
   },
   render: function() {
     return (
@@ -37,13 +41,14 @@ var ProfileContainer = React.createClass({
 function mapStateToProps(state, ownProps) {
   return {
     surveys: state.profileReducer.surveys,
-    isLoading: state.profileReducer.isLoading
+    isLoading: state.profileReducer.isLoading,
+    isLoggedIn: state.authReducer.isLoggedIn
   }
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(profileActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, profileActions, homeActions), dispatch)
   }
 }
 
