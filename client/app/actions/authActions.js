@@ -37,9 +37,6 @@ module.exports = {
     }
   },
   signUpRequest: function(signUp) {
-    var authSubmit = this.authSubmit;
-    var authSuccess = this.authSuccess;
-    var authFailure = this.authFailure;
     return function(dispatch) {
       dispatch(authSubmit())
           axios.post('/user/signUp', signUp)
