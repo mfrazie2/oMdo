@@ -48,7 +48,6 @@ function Auth(props) {
       <Loading />
     )
   }
-  
 };
 
 module.exports = Auth;

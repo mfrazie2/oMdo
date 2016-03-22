@@ -3,8 +3,6 @@ var Link = require('react-router').Link;
 var styleable = require('react-styleable').default
 var css = require('../styles/navbar.css');
 
-console.log(typeof styleable)
-
 function Navbar(props) {
   console.log('navbar props ', props);
   return(
@@ -29,4 +27,5 @@ function Navbar(props) {
     </div>
   )
 }
+
 module.exports = styleable(css)(Navbar)
