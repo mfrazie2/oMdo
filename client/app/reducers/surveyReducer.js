@@ -1,12 +1,12 @@
 var actions = require('../actions/actions');
 
 var initialState = {
-  generalFeel: undefined,
-  anxietyLevel: undefined,
-  energyLevel: undefined,
-  sleepQuality: undefined,
-  currentMood: undefined,
-  majorEvent: undefined,
+  feeling: 3,
+  anxiety:3,
+  energy: 3,
+  sleep: 3,
+  mood: 3,
+  majorEvent: false,
   moodElaborate: '',
   sleepElaborate: '',
   eventElaborate: '',
@@ -21,12 +21,12 @@ function surveyReducer(state, action) {
   switch(action.type) {
     case actions.SURVEY_SUBMIT:
       return Object.assign({}, state, {
-        generalFeel: undefined,
-        anxietyLevel: undefined,
-        energyLevel: undefined,
-        sleepQuality: undefined,
-        currentMood: undefined,
-        majorEvent: undefined,
+        feeling:3,
+        anxiety:3,
+        energy: 3,
+        sleep: 3,
+        mood: 3,
+        majorEvent: false,
         moodElaborate: '',
         sleepElaborate: '',
         eventElaborate: '',
@@ -43,19 +43,19 @@ function surveyReducer(state, action) {
       })
     case actions.FEELING_CHANGE:
       return Object.assign({}, state, {
-        generalFeel: action.feeling
+        feeling: action.feeling
       })
     case actions.ANXIETY_CHANGE:
       return Object.assign({}, state, {
-        anxietyLevel: action.anxiety
+        anxiety: action.anxiety
       })
     case actions.SLEEP_CHANGE:
       return Object.assign({}, state, {
-        sleepQuality: action.sleep
+        sleep: action.sleep
       })
     case actions.MOOD_CHANGE:
       return Object.assign({}, state, {
-        currentMood: action.mood
+        mood: action.mood
       })
     case actions.MAJOR_EVENT_CHANGE:
       return Object.assign({}, state, {
@@ -67,7 +67,7 @@ function surveyReducer(state, action) {
       })
     case actions.ENERGY_CHANGE:
       return Object.assign({}, state, {
-        energyLevel: action.energy
+        energy: action.energy
       })
     case actions.SLEEP_ELABORATE_CHANGE:
       return Object.assign({}, state, {
