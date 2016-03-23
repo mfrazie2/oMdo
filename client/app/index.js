@@ -7,9 +7,6 @@ var routes = require('./config/routes');
 var css = require('./styles/main.css');
 var store = require('./store/store');
 
-console.log('index store ', store);
-console.log('index props ', this.props);
-
 var Root = React.createClass({
   render: function() {
     return (

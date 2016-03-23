@@ -2,13 +2,16 @@ var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
 var surveyActions = require('../actions/surveyActions');
-var checkAuth = require('../actions/authActions').checkAuth;
+var homeActions = require('../actions/homeActions');
 var bindActionCreators = require('redux').bindActionCreators;
 
 var SurveyContainer = React.createClass({
   contextTypes: {
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
+  },
+  componentDidMount: function() {
+    this.props.actions.checkAuth();
   },
   handleSurveySubmit: function(e) {
     e.preventDefault();
@@ -91,7 +94,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(surveyActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, surveyActions, homeActions), dispatch)
   }
 };
 
