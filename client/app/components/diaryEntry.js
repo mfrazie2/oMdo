@@ -11,6 +11,7 @@ var irrelevantFields = {
   'createdBy': true,
   'eventElaborate': true,
   'moodElaborate': true,
+  'majorEvent': true,
   'sleepElaborate': true
 };
 
@@ -23,13 +24,13 @@ function Entry (props) {
     labels: relevantLabels,
     datasets: [
       {
-        label: "My First dataset",
-        fillColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        label: 'User Data',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
         data: relevantLabels.map(function(field){
           return props.data[field];
         })
