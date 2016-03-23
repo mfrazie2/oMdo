@@ -8,24 +8,6 @@ var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 module.exports = {
-  /*
-    ========================================
-                     TESTS
-    ========================================
-  */
-
-  dataTest: function(req, res) {
-    res.send({test: 'Data about your feelings!'});
-  },
-  diaryTest: function(req, res) {
-    res.send({test: 'A diary of your feelings!'});
-  },
-  /*
-    ========================================
-                  USER CONTROLLER
-    ========================================
-  */
-
   signUp: function(req, res, next) {
     var username = req.body.username,
         password = req.body.password,
@@ -70,7 +52,7 @@ module.exports = {
         .then(function(foundUser) {
           if(foundUser) {
             var token =jwt.encode(user, process.env.JWT_SECRET);
-            res.send({token: token});
+            res.json({token: token});
           } else {
             return next(new Error('There is no user by that name'));
           }
@@ -124,7 +106,7 @@ module.exports = {
     }
   },
 
-  getUserSurvey: function(req,res,next) {
+  getUserSurveys: function(req,res,next) {
     var token = req.headers['x-access-token'];
     if (!token) {
       next(new Error('No token found!'));
@@ -138,7 +120,6 @@ module.exports = {
         .catch(function(error) {
           next(new Error(error));
         });
-
     }
   },
 
