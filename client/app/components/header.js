@@ -1,11 +1,14 @@
 var React = require('react');
+var Link = require('react-router').Link;
 var styleable = require('react-styleable').default
 var css = require('../styles/navbar.css');
 
 function Header (props) {
   return (
     <div className={props.css.root}>
-      <img src='/oMdo.png' width='150px' height='64px' alt={'oMdo'} />
+      <Link to='/'>
+        <img src='/oMdo.png' width='150px' height='64px' alt={'oMdo'} />
+      </Link>
       <ul className={props.css.ul}>
         {props.children}
       </ul>

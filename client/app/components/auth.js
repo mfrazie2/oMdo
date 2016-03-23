@@ -5,22 +5,35 @@ var css = require('../styles/question.css')
 
 function Auth(props) {
   return (
-    <div>
-      <h1>{props.text}</h1>
-      <form onSubmit={props.onSubmit} path={props.pathname}>
-        <input
-          type='text'
-          name='username'
-          onChange={props.onUpdateUsername}
-        />
-        <input
-          type='text'
-          name='password'
-          onChange={props.onUpdatePassword}
-        />
-
-      <button type='submit'>{props.text}</button>
-      </form>
+    <div className={props.css.root}>
+      <div className={props.css.form}>
+        {/*<div className={props.css.label}>
+        <h1>{props.text}</h1>
+        </div>*/}
+        <form onSubmit={props.onSubmit} path={props.pathname}>
+          <div>
+            <input
+              label='username'
+              className={props.css.input}
+              type='text'
+              name='username'
+              placeholder='username'
+              onChange={props.onUpdateUsername}
+              />
+          </div>
+          <div>
+            <input
+              label='password'
+              className={props.css.input}
+              type='text'
+              name='password'
+              placeholder='password'
+              onChange={props.onUpdatePassword}
+              />
+          </div>
+          <button className={props.css.submit} type='submit'>{props.text}</button>
+        </form>
+      </div>
     </div>
   )
 };
