@@ -1,5 +1,3 @@
-var jwt = require('jwt-simple');
-
 module.exports = {
   dbErrorHandler: function(next, message) {
     return function(error) {
