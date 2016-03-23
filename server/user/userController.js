@@ -27,9 +27,7 @@ module.exports = {
         return create(newUser);
       })
       .then(function(user) {
-        console.log('FUCKING A', process.env.JWT_SECRET);
         var token = jwt.encode(user, process.env.JWT_SECRET);
-        console.log(token);
         res.json({token:token});
       })
       .fail(function(error) {
@@ -74,9 +72,9 @@ module.exports = {
       findUser({username: user.username})
       .then(function(foundUser) {
         if(foundUser) {
-          res.send(200);
+          res.sendStatus(200);
         } else {
-          res.send(401);
+          res.sendStatus(401);
         }
       })
       .fail(function(error) {
@@ -97,7 +95,7 @@ module.exports = {
         if(foundUser) {
           res.send({username:foundUser.username});
         } else {
-          res.send(401);
+          res.sendStatus(401);
         }
       })
       .fail(function(error) {
@@ -115,6 +113,7 @@ module.exports = {
       User.findOne({username: user.username})
         .populate('surveys')
         .exec(function(err, result) {
+          if (err || result === null) next(new Error('Error finding surveys'));
           res.send(result.surveys);
         })
         .catch(function(error) {
@@ -139,9 +138,8 @@ module.exports = {
           if (err) {
             next(new Error('There is an error in posting the survey: ', err));
           }
-          console.log('DISDASURVEY', survey);
           alchemyapi.sentiment('text', survey.eventElaborate, {}, function(response){
-            console.log(JSON.stringify(response, null, 4));
+            // console.log(JSON.stringify(response, null, 4));
           })
           foundUser.surveys.push(survey);
           foundUser.save()

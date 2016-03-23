@@ -11,9 +11,7 @@ var Root = React.createClass({
   render: function() {
     return (
       <Provider store={this.props.store}>
-        <div>
-          <Router history={browserHistory} routes={routes} />
-        </div>
+        <Router history={browserHistory} routes={routes} />
       </Provider>
     )
   }

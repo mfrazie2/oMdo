@@ -49,12 +49,10 @@ module.exports = {
       axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
           axios.post('/user/userData', survey)
             .then(function(response) {
-              console.log('axios response ', response);
               dispatch(surveySuccess());
               browserHistory.push('/profile');
             })
             .catch(function(error) {
-              console.log('axios error ', error);
               dispatch(surveyFailure());
             });
     }
