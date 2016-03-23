@@ -22,15 +22,12 @@ var ProfileContainer = React.createClass({
   },
   render: function() {
     return (
+    this.props.isLoading
+    ? <Profile username={this.props.username}>
+        <Loading />
+      </Profile>
 
-
-    !!this.props.isLoading ? 
-
-    <Loading />
-    
-    :
-
-      <Profile username={this.props.username}>
+    : <Profile username={this.props.username}>
         <Visualization />
         <Diary surveys={this.props.surveys} />
       </Profile>
@@ -40,6 +37,7 @@ var ProfileContainer = React.createClass({
 
 function mapStateToProps(state, ownProps) {
   return {
+    username: state.authReducer.username,
     surveys: state.profileReducer.surveys,
     isLoading: state.profileReducer.isLoading,
     isLoggedIn: state.authReducer.isLoggedIn

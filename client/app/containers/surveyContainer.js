@@ -57,7 +57,6 @@ var SurveyContainer = React.createClass({
   },
 
   render: function() {
-    console.log('survey container props ', this.props);
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}

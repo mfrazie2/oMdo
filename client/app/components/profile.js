@@ -4,7 +4,7 @@ var PropTypes = React.PropTypes;
 function Profile(props) {
   return (
     <div>
-        <h1>{props.username}</h1>
+        <h1>{'Hello' + props.username}</h1>
         {props.children}
     </div>
   );
