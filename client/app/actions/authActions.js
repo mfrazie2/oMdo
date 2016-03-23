@@ -33,8 +33,14 @@ module.exports = {
               browserHistory.push('/');
             })
         .catch(function(error) {
+          var errMsg = error.data.slice(0, error.data.indexOf('<'))
           console.log('axios error ', error);
-          dispatch(authFailure());
+          if(errMsg === 'Error: Cannot find the user!') {
+            dispatch(authFailure());
+            browserHistory.push('/signup');
+          } else {
+            dispatch(authFailure());
+          }
         });
     }
   },

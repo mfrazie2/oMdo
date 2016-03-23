@@ -3,7 +3,6 @@ var PropTypes = React.PropTypes;
 var Question = require('./question');
 var store = require('../store/store');
 var Loading = require('../components/loading');
-// var store = this.context.store;
 var styleable = require('react-styleable').default;
 var css = require('../styles/survey.css');
 
