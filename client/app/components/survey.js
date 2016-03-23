@@ -5,6 +5,7 @@ var store = require('../store/store');
 var Loading = require('../components/loading');
 var styleable = require('react-styleable').default;
 var css = require('../styles/survey.css');
+var Loading = require('../components/loading');
 
 function Survey(props) {
   return (
@@ -83,22 +84,5 @@ function Survey(props) {
     </div>
   )
 }
-
-
-
-// Survey.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   onFeelingChange: PropTypes.func.isRequired,
-//   onAnxietyChange: PropTypes.func.isRequired,
-//   onEnergyChange: PropTypes.func.isRequired,
-//   onSleepChange: PropTypes.func.isRequired,
-//   onMoodChange: PropTypes.func.isRequired,
-//   onMajorEventChange: PropTypes.func.isRequired,
-//   onSleepElaborateChange: PropTypes.func.isRequired,
-//   onMoodElaborateChange: PropTypes.func.isRequired,
-//   onEventElaborateChange: PropTypes.func.isRequired,
-//   isLoading: PropTypes.bool.isRequired
-// };
-
 
 module.exports = styleable(css)(Survey);

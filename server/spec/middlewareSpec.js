@@ -2,7 +2,7 @@ var express = require('express');
 var expect = require('chai').expect;
 var middleware = require('../middleware');
 
-var port = 8000;
+var port = 10000;
 var app = express();
 
 
