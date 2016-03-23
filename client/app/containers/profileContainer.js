@@ -14,11 +14,12 @@ var ProfileContainer = React.createClass({
     username: React.PropTypes.string,
     surveys: React.PropTypes.array
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.actions.checkAuth();
-    if(this.props.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       this.props.actions.loadSurveys();
     }
+    return null;
   },
   render: function() {
     return (
