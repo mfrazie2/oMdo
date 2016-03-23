@@ -12,7 +12,7 @@ function Navbar(props) {
         <Link className={props.css.navItem} to='/signup'> Sign Up </Link>
         <Link className={props.css.navItem} to='/about'> What is oMdo? </Link>
       </Header>
-
+    )
     : (
       <Header>
         <Link className={props.css.navItem} to='/survey'> Talk about your Feelings </Link>

@@ -8,30 +8,7 @@ var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
 
 module.exports = {
-<<<<<<< 002b51901892f6165a5a0874fc9afc3764d6d106
   signUp: function(req, res, next) {
-||||||| merged common ancestors
-  /*
-    ========================================
-                     TESTS
-    ========================================
-  */
-
-  dataTest: function(req, res) {
-    res.send({test: 'Data about your feelings!'});
-  },
-  diaryTest: function(req, res) {
-    res.send({test: 'A diary of your feelings!'});
-  },
-  /*
-    ========================================
-                  USER CONTROLLER
-    ========================================
-  */
- function(req, res, next) {
-=======
- function(req, res, next) {
->>>>>>> (refactor)Adds db and token error handler helpers
     var username = req.body.username,
         password = req.body.password,
         newUser,
