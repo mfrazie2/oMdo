@@ -17,7 +17,6 @@ var Routes = (
         <IndexRoute component={HomeContainer} />
         <Route path='signin' component={AuthContainer} />
         <Route path='signup' component={AuthContainer} />
-        {/*<Route path='home' component={HomeContainer} />*/}
         <Route path='survey' component={SurveyContainer} />
         <Route path='profile' component={ProfileContainer} />
         <Route path='about' component={About} />

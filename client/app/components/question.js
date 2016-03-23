@@ -4,7 +4,6 @@ var Link = require('react-router').Link;
 var styleable = require('react-styleable').default
 var css = require('../styles/question.css');
 var dispatch = require('../store/store').dispatch;
-console.log(typeof styleable)
 var currentIndex = currentIndex || 0;
 
 
@@ -70,11 +69,10 @@ function nextChild(props, currentIndex) {
 }
 
 function testFunc() {
-  
+
 }
 
 function Question(props) {
-  console.log('question props ', props);
   return(
     <div className={props.css.root}>
       {/*<button className={props.css.prev} onClick={testFunc()}>last question</button>*/}
