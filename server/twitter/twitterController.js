@@ -1,6 +1,5 @@
 var dotenv = require('dotenv').config();
 var Twitter = require('twitter'); 
-// TO DO: npm i -S twitter
 
 // Configure Twitter instance
 var client = new Twitter({
@@ -13,14 +12,18 @@ var client = new Twitter({
 
 module.exports = {
   fetchTweets: function(req, res) {
-    var params = {screen_name: 'AFrazGuy', count: 25};
-    client.get('statuses/user_timeline', params, function(err, tweets, response) {
+    // var tweetTexts;
+    var params = {screen_name: req.body.handle, count: 25};
+    client.get('statuses/user_timeline', params, function(err, tweets, response) { 
+      // tweets returned as []
+      // response is raw object ==> of user's entire Twitter
       if(err) {
         return new Error(err);
       }
-      console.log('fetchTweets response: ', response); 
-      res.body.tweets = tweets;
+      var tweetTexts = tweets.map(function(tweet) {
+        return tweet.text;
+      });
+      res.send({tweets: tweetTexts});
     });
-    res.send();
   }
 };
