@@ -43,7 +43,6 @@
     "body-parser": "^1.15.0",
     "consolidate": "^0.14.0",
     "chart.js": "^1.0.2",
-    "chart.js": "^1.0.2",
     "css-loader": "^0.23.1",
     "cssnext-loader": "^1.0.1",
     "dotenv": "^2.0.0",
