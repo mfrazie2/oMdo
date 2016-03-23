@@ -62,6 +62,25 @@ function AlchemyAPI() {
 
   //Load the key from .env
   key = process.env.ALCHEMY_API;
+  if (key === undefined) {
+    try {
+      key = fs.readFileSync(__dirname + '/api_key.txt').toString().trim();
+    }
+    catch(err) {
+      //Create the file
+      fs.openSync(__dirname + '/api_key.txt', 'w');
+      console.log('API key not detected in api_key.txt, please run: node alchemyapi.js YOUR_KEY_HERE');
+      console.log('If you do not have a key, register for one at: http://www.alchemyapi.com/api/register.html');
+      process.exit(1);
+    }
+  }
+
+  //Make sure the key formating looks good
+  if (key.length != 40) {
+    console.log('The API key in api_key.txt does not appear to be valid. Make sure to run: node alchemyapi.js YOUR_KEY_HERE');
+    console.log('If you do not have a key, register for one at: http://www.alchemyapi.com/api/register.html');
+    process.exit(1);
+  }
 
   //Set the key
   this.apikey = key;
