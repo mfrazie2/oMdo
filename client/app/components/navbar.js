@@ -11,8 +11,8 @@ function Navbar(props) {
     <div className={props.css.root}>
       <ul className={props.css.ul}>
         <Link className={props.css.navItem} to='/signin'> Sign In </Link>
-        <Link className={props.css.navItem} to='/about'> What is this about? </Link>
         <Link className={props.css.navItem} to='/signup'> Sign Up </Link>
+        <Link className={props.css.navItem} to='/about'> What is oMdo? </Link>
       </ul>
     </div>
 
@@ -23,7 +23,7 @@ function Navbar(props) {
         <Link className={props.css.navItem} to='/survey'> Talk about your Feelings </Link>
         <Link className={props.css.navItem} to='/profile'> Look at your Feelings </Link>
         <Link className={props.css.navItem} to='/signin' onClick={props.onSignOut}> That's enough feelings for today </Link>
-        <Link className={props.css.navItem} to='/about'> What is this about? </Link>
+        <Link className={props.css.navItem} to='/about'> What is oMdo? </Link>      
       </ul>
     </div>
   )
