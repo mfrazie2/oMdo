@@ -65,7 +65,7 @@ module.exports = {
   checkAuth: function(req,res,next) {
     var token = req.headers['x-access-token'];
     if (!token) {
-      next(new Error('No token found!'));
+      res.sendStatus(401);
     } else {
       var user = jwt.decode(token, process.env.JWT_SECRET);
       var findUser = Q.nbind(User.findOne, User);
