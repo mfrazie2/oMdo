@@ -1,53 +1,28 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
-var Loading = require('../components/loading');
+var styleable = require('react-styleable').default;
+var css = require('../styles/question.css')
 
 function Auth(props) {
-  if(props.path === '/signin' && !props.isLoading) {
-    return (
-      <div>
-        <h1>Sign In</h1>
-        <form onSubmit={props.onSignInSubmit} path={props.pathname}>
-          <input
-            type='text'
-            name='username'
-            onChange={props.onUpdateUsername}
-          />
-          <input
-            type='text'
-            name='password'
-            onChange={props.onUpdatePassword}
-          />
+  return (
+    <div>
+      <h1>{props.text}</h1>
+      <form onSubmit={props.onSubmit} path={props.pathname}>
+        <input
+          type='text'
+          name='username'
+          onChange={props.onUpdateUsername}
+        />
+        <input
+          type='text'
+          name='password'
+          onChange={props.onUpdatePassword}
+        />
 
-          <button type='submit'>Sign in</button>
-        </form>
-      </div>
-    )
-  } else if(props.path === '/signup' && !props.isLoading) {
-    return (
-      <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={props.onSignUpSubmit} path={props.pathname}>
-          <input
-            type='text'
-            name='username'
-            onChange={props.onUpdateUsername}
-          />
-          <input
-            type='text'
-            name='password'
-            onChange={props.onUpdatePassword}
-          />
-
-          <button type='submit'>Sign in</button>
-        </form>
-      </div>
-    )
-  } else {
-    return (
-      <Loading />
-    )
-  }
+      <button type='submit'>{props.text}</button>
+      </form>
+    </div>
+  )
 };
 
-module.exports = Auth;
+module.exports = styleable(css)(Auth);

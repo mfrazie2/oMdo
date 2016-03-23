@@ -23,6 +23,6 @@ exports.checkAuth = function() {
         .catch(function(error) {
           dispatch(notAuthorized());
           browserHistory.push('/signin');
-        })
+        });
     }
   }
