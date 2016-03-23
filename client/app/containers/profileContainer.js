@@ -14,23 +14,21 @@ var ProfileContainer = React.createClass({
     username: React.PropTypes.string,
     surveys: React.PropTypes.array
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.actions.checkAuth();
-    if(this.props.isLoggedIn) {
+    if (this.props.isLoggedIn) {
       this.props.actions.loadSurveys();
     }
+    return null;
   },
   render: function() {
     return (
+    this.props.isLoading
+    ? <Profile username={this.props.username}>
+        <Loading />
+      </Profile>
 
-
-    !!this.props.isLoading ? 
-
-    <Loading />
-    
-    :
-
-      <Profile username={this.props.username}>
+    : <Profile username={this.props.username}>
         <Visualization />
         <Diary surveys={this.props.surveys} />
       </Profile>
@@ -40,6 +38,7 @@ var ProfileContainer = React.createClass({
 
 function mapStateToProps(state, ownProps) {
   return {
+    username: state.authReducer.username,
     surveys: state.profileReducer.surveys,
     isLoading: state.profileReducer.isLoading,
     isLoggedIn: state.authReducer.isLoggedIn

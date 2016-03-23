@@ -27,14 +27,12 @@ module.exports = {
       dispatch(authSubmit())
           axios.post('/user/signIn', login)
             .then(function(response) {
-              console.log('axios response ', response)
               window.localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
             })
         .catch(function(error) {
           var errMsg = error.data.slice(0, error.data.indexOf('<'))
-          console.log('axios error ', error);
           if(errMsg === 'Error: Cannot find the user!') {
             dispatch(authFailure());
             browserHistory.push('/signup');
@@ -49,13 +47,11 @@ module.exports = {
       dispatch(authSubmit())
           axios.post('/user/signUp', signUp)
             .then(function(response) {
-              console.log('axios response ', response);
               window.localStorage.setItem('token', response.data.token);
               dispatch(authSuccess());
               browserHistory.push('/');
             })
         .catch(function(error) {
-          console.log('axios error ', error);
           dispatch(authFailure());
         });
     }
