@@ -18,4 +18,4 @@ function Diary (props) {
   )
 }
 
-module.exports = Diary;
+module.exports = styleable(css)(Diary);

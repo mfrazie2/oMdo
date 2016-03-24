@@ -19,7 +19,6 @@ var ProfileContainer = React.createClass({
     if (this.props.isLoggedIn) {
       this.props.actions.loadSurveys();
     }
-    return null;
   },
   render: function() {
     return (
