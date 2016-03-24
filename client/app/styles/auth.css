@@ -26,7 +26,8 @@
 }
 
 .submit:hover {
-  background-color: #424B54;
+  background-color: #EDDDD4;
+  color: #424B54;
 }
 
 .label {
@@ -40,6 +41,7 @@
 }
 
 .form {
+  box-shadow: 5px 4px 5px #574A40;
   border-style: solid;
   background-color: #5CA4A9;
   border-radius: 15px;
@@ -57,7 +59,7 @@ form {
 
 .input {
   border-style: solid;
-  border: visible;
+  border: none;
   border-width: 1px;
   border-color: #283D3B;
   padding: 3px 3px;

@@ -22,6 +22,7 @@ function Auth(props) {
               label='password'
               className={props.css.input}
               type='password'
+              name='password'
               placeholder='password'
               onChange={props.onUpdatePassword}
               />

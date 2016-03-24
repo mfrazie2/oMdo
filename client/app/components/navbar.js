@@ -16,10 +16,10 @@ function Navbar(props) {
     : (
       <Header>
         <Link className={props.css.navItem} to='/twit'> Analyze Your Twitter Feed </Link>
-        <Link className={props.css.navItem} to='/survey'> Talk about your Feelings </Link>
-        <Link className={props.css.navItem} to='/profile'> Look at your Feelings </Link>
-        <Link className={props.css.navItem} to='/signin' onClick={props.onSignOut}> Log Out </Link>
+        <Link className={props.css.navItem} to='/survey'> Daily Meditations </Link>
+        <Link className={props.css.navItem} to='/profile'> The Breakdown </Link>
         <Link className={props.css.navItem} to='/about'> What is oMdo? </Link>
+        <Link className={props.css.navItem} to='/signin' onClick={props.onSignOut}> Log Out </Link>
       </Header>
     )
 }
