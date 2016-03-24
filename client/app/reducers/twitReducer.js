@@ -3,7 +3,8 @@ var actions = require('../actions/actions');
 var initialState = {
   isLoading: false,
   error: false,
-  handle: ''
+  handle: '',
+  tweets: []
 };
 
 function twitReducer(state, action) {
@@ -19,7 +20,8 @@ function twitReducer(state, action) {
       });
     case actions.TWIT_SUCCESS: 
       return Object.assign({}, state, {
-        isLoading: false
+        isLoading: false,
+        tweets: action.tweets
       });
     case actions.TWIT_FAILURE:
       return Object.assign({}, state, {
