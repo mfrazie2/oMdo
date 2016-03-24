@@ -7,9 +7,6 @@ function Auth(props) {
   return (
     <div className={props.css.root}>
       <div className={props.css.form}>
-        {/*<div className={props.css.label}>
-        <h1>{props.text}</h1>
-        </div>*/}
         <form onSubmit={props.onSubmit} path={props.pathname}>
           <div>
             <input

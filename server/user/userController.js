@@ -111,14 +111,14 @@ module.exports = {
     } else {
       var user =jwt.decode(token, process.env.JWT_SECRET);
       User.findOne({username: user.username})
-        .populate('surveys')
-        .exec(function(err, result) {
-          if (err || result === null) next(new Error('Error finding surveys'));
-          res.send(result.surveys);
-        })
-        .catch(function(error) {
-          next(new Error(error));
-        });
+      .populate('surveys')
+      .exec(function(err, result) {
+        if (err || result === null) next(new Error('Error finding surveys'));
+        res.send(result.surveys);
+      })
+      .catch(function(error) {
+        next(new Error(error));
+      });
     }
   },
 
@@ -156,7 +156,7 @@ module.exports = {
       })
       .catch(function(error){
         if (error) {
-          console.log('there is error adding to the users survey');
+          console.log('There was an error adding to the users survey');
           res.sendStatus(500);
         }
       });
