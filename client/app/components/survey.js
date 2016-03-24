@@ -1,4 +1,5 @@
 var React = require('react');
+var Form = require('./form');
 var SliderQuestion = require('./sliderQuestion');
 var SelectorQuestion = require('./selectorQuestion');
 var TextQuestion = require('./textQuestion');
@@ -14,7 +15,7 @@ function Survey(props) {
     <Loading />
   )
   : (
-    <div>
+    <Form onSubmit={props.onSubmit} text='Submit'>
       {props.questions.slider.map(function(question) {
         return (
           <SliderQuestion
@@ -28,36 +29,35 @@ function Survey(props) {
       })}
       {props.questions.selector.map(function(question) {
         return (
-            <SelectorQuestion
-              key={++key}
-              text={question.text}
-              options={question.options}
-              handleChange={props.handlers.selector[question.category]}
-            >
-              <TextQuestion
-                category={question.category}
-                handleChange={props.handlers.text[question.category]}
-                />
-            </SelectorQuestion>
-          )
-        })}
-        {props.questions.boolean.map(function(question) {
-          return (
-            <BooleanQuestion
-              key={++key}
-              text={question.text}
-              handleChange={props.handlers.boolean[question.category]}
-            >
-              <TextQuestion
-                category={question.category}
-                handleChange={props.handlers.text[question.category]}
+          <SelectorQuestion
+            key={++key}
+            text={question.text}
+            options={question.options}
+            handleChange={props.handlers.selector[question.category]}
+          >
+            <TextQuestion
+              category={question.category}
+              handleChange={props.handlers.text[question.category]}
               />
-            </BooleanQuestion>
-            )
-          })}
-        <button className="surveySubmit" type="Submit" onClick={props.onSubmit}>Submit</button>
-      </div>
-    )
+          </SelectorQuestion>
+        )
+      })}
+      {props.questions.boolean.map(function(question) {
+        return (
+          <BooleanQuestion
+            key={++key}
+            text={question.text}
+            handleChange={props.handlers.boolean[question.category]}
+          >
+            <TextQuestion
+              category={question.category}
+              handleChange={props.handlers.text[question.category]}
+              />
+          </BooleanQuestion>
+        )
+      })}
+    </Form>
+  )
 };
 
 module.exports = styleable(css)(Survey);

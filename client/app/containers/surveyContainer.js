@@ -34,19 +34,7 @@ var SurveyContainer = React.createClass({
 });
 
 function mapStateToProps(state, ownProps) {
-  return {
-    feeling: state.surveyReducer.feeling,
-    anxiety: state.surveyReducer.anxiety,
-    energy: state.surveyReducer.energy,
-    sleep: state.surveyReducer.sleep,
-    majorEvent: state.surveyReducer.majorEvent,
-    mood: state.surveyReducer.mood,
-    moodElaborate: state.surveyReducer.moodElaborate,
-    sleepElaborate: state.surveyReducer.sleepElaborate,
-    eventElaborate: state.surveyReducer.eventElaborate,
-    isLoading: state.surveyReducer.isLoading,
-    error: state.surveyReducer.error
-  };
+  return Object.assign({}, state.surveyReducer)
 };
 
 function mapDispatchToProps(dispatch) {
