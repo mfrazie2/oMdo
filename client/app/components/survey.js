@@ -1,56 +1,49 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
-var Question = require('./question');
-var store = require('../store/store');
+var SliderQuestion = require('./sliderQuestion');
+var SelectorQuestion = require('./selectorQuestion');
+var TextQuestion = require('./textQuestion');
 var Loading = require('../components/loading');
 var styleable = require('react-styleable').default;
 var css = require('../styles/survey.css');
-var Loading = require('../components/loading');
 
 function Survey(props) {
+  var key = 0;
   return props.isLoading === true
   ? (
     <Loading />
   )
   : (
     <div>
-      <div className='feelingQuestion surveySlider'>
-        <p>How are you feeling in this moment? <em>(On a scale of 1-5)</em> </p>
-        Sad
-        <input type='range' name='generalFeelingSlider' min="1" max="5" onChange={props.onFeelingChange} />
-        Happy
-        <br />
-      </div>
-
-      <div className='anxietyQuestion surveySlider'>
-        <p>What is your anxiety level right now? <em>(On a scale of 1-5)</em> </p>
-        Low/none
-        <input type='range' name='anxietySlider' min="1" max="5" onChange={props.onAnxietyChange} />
-        High
-        <br />
-      </div>
-
-      <div className='energyQuestion surveySlider'>
-        <p>What is your energy level? <em>(On a scale of 1-5)</em> </p>
-        Tired/none
-        <input type='range' name='energySlider' min="1" max="5" onChange={props.onEnergyChange} />
-        Alert and awake/high
-        <br />
-      </div>
+      <SliderQuestion
+        text='How are you feeling in this moment?'
+        minText='Sad'
+        maxText='Happy'
+        handleChange={props.onFeelingChange}
+        />
+      <SliderQuestion
+        text='How anxious are you right now?'
+        minText='Not at all'
+        maxText='Panicky'
+        handleChange={props.onAnxietyChange}
+      />
+      <SliderQuestion
+        text='How energetic are you right now?'
+        minText='Falling asleep'
+        maxText='Alert and awake'
+        handleChange={props.onEnergyChange}
+      />
 
       <div className="sleepQuestions">
-        <div className='surveyRadioButtons'>
-          <p>What was your sleep quality last night?</p>
-          <input type="radio" name="sleep" value="1" onChange={props.onSleepChange} />Insomnia<br />
-          <input type="radio" name="sleep" value="2" onChange={props.onSleepChange} />Tossed and turned<br />
-          <input type="radio" name="sleep" value="3" onChange={props.onSleepChange} />Difficulty falling asleep<br />
-          <input type="radio" name="sleep" value="4" onChange={props.onSleepChange} />Good/normal<br />
-          <input type="radio" name="sleep" value="5" onChange={props.onSleepChange} />Very restful<br />
-        </div>
-        <div className='surveyTextarea'>
-          <p>Care to elaborate on your sleep from last night?</p>
-          <input type='textarea' name='sleepElaborate' onChange={props.onSleepElaborateChange} /><br />
-        </div>
+        <SelectorQuestion
+          text='How did you sleep last night?'
+          options=['Insomnia!', 'Tossed and turned', 'Normally', 'Pretty well', 'Very restful']
+          handleChange={props.onSleepChange}
+        >
+          <div className='surveyTextarea'>
+            <p>Care to elaborate on your sleep from last night?</p>
+            <input type='textarea' name='sleepElaborate' onChange={props.onSleepElaborateChange} /><br />
+          </div>
+      </SelectorQuestion>
       </div>
 
       <div className="moodQuestions">
