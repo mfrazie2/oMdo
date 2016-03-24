@@ -1,6 +1,7 @@
 var actions = require('../actions/actions');
 
 var initialState = {
+  question: 0,
   feeling: 3,
   anxiety:3,
   energy: 3,
@@ -19,6 +20,14 @@ function surveyReducer(state, action) {
     state = initialState;
   }
   switch(action.type) {
+    case actions.PREV_QUESTION:
+      return Object.assign({}, state, {
+        question: question--
+      })
+    case actions.NEXT_QUESTION:
+      return Object.assign({}, state, {
+        question: question++
+      })
     case actions.SURVEY_SUBMIT:
       return Object.assign({}, state, {
         feeling:3,
