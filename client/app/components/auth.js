@@ -21,15 +21,8 @@ function Auth(props) {
             <input
               label='password'
               className={props.css.input}
-<<<<<<< 7f4c05a80a8932f02f3b317cce4841b126635ac2
-              type='password'
-||||||| merged common ancestors
-              type='text'
-              name='password'
-=======
               type='password'
               name='password'
->>>>>>> (style)Styles survey, some nave, and some auth
               placeholder='password'
               onChange={props.onUpdatePassword}
               />
