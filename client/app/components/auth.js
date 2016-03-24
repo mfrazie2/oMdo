@@ -10,6 +10,7 @@ function Auth(props) {
         <form onSubmit={props.onSubmit} path={props.pathname}>
           <div>
             <input
+              tabindex='1'
               label='username'
               className={props.css.input}
               type='text'
@@ -19,6 +20,7 @@ function Auth(props) {
           </div>
           <div>
             <input
+              tabindex='20'
               label='password'
               className={props.css.input}
               type='password'
@@ -27,7 +29,10 @@ function Auth(props) {
               onChange={props.onUpdatePassword}
               />
           </div>
-          <button className={props.css.submit} type='submit'>{props.text}</button>
+          <button
+            className={props.css.submit}
+            tabindex='20'
+            type='submit'>{props.text}</button>
         </form>
       </div>
     </div>
