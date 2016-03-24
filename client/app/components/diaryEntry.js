@@ -9,11 +9,6 @@ function Entry (props) {
     <li key={props.key} className={props.css.root}>
       <Radar
         data={format(props.data)}
-        options={{
-          scaleSteps: 5,
-          scaleStartValue: 0,
-          scaleStepWidth: 10
-        }}
         width='100%'
         height='100%' />
     </li>
