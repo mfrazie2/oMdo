@@ -1,9 +1,11 @@
 var React = require('react');
 var Entry = require('./diaryEntry');
+var styleable = require('react-styleable').default;
+var css = require('../styles/profile.css');
 
 function Diary (props) {
   return (
-    <ol>
+    <ol className={props.css.diary}>
       {props.surveys.map(function(survey, i) {
         return (
           <Entry
@@ -16,4 +18,4 @@ function Diary (props) {
   )
 }
 
-module.exports = Diary;
+module.exports = styleable(css)(Diary);

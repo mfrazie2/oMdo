@@ -22,10 +22,8 @@ module.exports = {
       axios.post('/twitter/fetch', name)
         .then(function(res) {
           dispatch(module.exports.twitSuccess(res.data.tweets));
-          // console.log('twitSubmit res: ', res.data.tweets);
         })
         .catch(function(err) {
-          console.log('twitErr: ', err);
           dispatch(module.exports.twitFailure());
         });
     };

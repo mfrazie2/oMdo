@@ -2,9 +2,8 @@ var React = require('react');
 var TweetEntry = require('./tweetEntry');
 
 function Tweet (props) {
-  console.log("This is the Tweet component saying sup broh");
   return (
-    <ol>
+    <ul>
       {props.tweets.map(function(tweet, i) {
         return (
           <TweetEntry
@@ -13,7 +12,7 @@ function Tweet (props) {
           />
         )
       })}
-    </ol>
+    </ul>
   )
 }
 
