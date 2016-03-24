@@ -14,6 +14,7 @@ function NumericalQuestion (props) {
         <option value="4" onChange={props.handleChange}>{props.options[3]}</option>
         <option value="5" onChange={props.handleChange}>{props.options[4]}</option>
       </select>
+      {props.children}
     </Question>
   )
 }
