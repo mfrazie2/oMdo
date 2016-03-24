@@ -2,7 +2,6 @@ var axios = require('axios');
 var actions = require('./actions')
 var browserHistory = require('react-router').browserHistory;
 
-
 module.exports = {
   authSubmit: function() {
     return {type: actions.AUTH_SUBMIT};
