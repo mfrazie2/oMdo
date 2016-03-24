@@ -5,12 +5,14 @@ var css = require('../styles/question.css');
 
 function BooleanQuestion (props) {
   return (
-    <div key={props.key} className='surveyRadioButtons'>
+    <Question key={props.key} className='surveyRadioButtons'>
       <p>{props.text}</p>
-      <input type="radio" value="yes" onChange={props.handleChange} /> Yes <br />
-      <input type="radio" value="no" onChange={props.handleChange} /> No
+      <ul className={props.css.radioList}>
+        <li><input type="radio" name='boolean' value="yes" onChange={props.handleChange} /> Yes</li>
+        <li><input type="radio" name='boolean' value="no" onChange={props.handleChange} /> No</li>
+      </ul>
       {props.children}
-    </div>
+    </Question>
   )
 }
 

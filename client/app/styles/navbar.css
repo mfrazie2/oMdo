@@ -1,10 +1,15 @@
 @import "./config.css";
 
 .root {
-  min-width: 99.9%;
+  box-shadow: 0 5px 5px grey;
+  min-width: 100%;
   padding: 10px;
-  display:table;
+  display: table;
   background-color: #424B54;
+}
+
+img {
+  float: left;
 }
 
 .ul {
@@ -13,21 +18,40 @@
 }
 
 .navItem {
+  box-shadow: 3px 2px 3px #272C31;
   resize: inherit;
   color: white;
-  padding: 5px;
-  margin: 5px;
+  padding: 3px 3px;
+  margin: 3px 5px;
   display: inline-block;
   background-color: #ED6A5A;
   border-style: solid;
   border-color: white;
   border-width: 1px;
   font-weight: 10;
-  font-size: 20px;
+  font-size: 10px;
   text-decoration: none;
   border-radius: 15px;
 }
 
 .navItem:hover {
   background-color: #cb2a16;
+}
+
+.signout {
+  float: right;
+  box-shadow: 3px 2px 3px #272C31;
+  resize: inherit;
+  color: white;
+  padding: 3px 3px;
+  margin: 3px 5px;
+  display: inline-block;
+  background-color: #ED6A5A;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  font-weight: 10;
+  font-size: 10px;
+  text-decoration: none;
+  border-radius: 15px;
 }
