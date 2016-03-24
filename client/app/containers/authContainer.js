@@ -59,13 +59,13 @@ function mapStateToProps(state) {
     password: state.authReducer.password,
     isLoading: state.authReducer.isLoading,
     error: state.authReducer.error
-  }
+  };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(authActions, dispatch)
-  }
-}
+  };
+};
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

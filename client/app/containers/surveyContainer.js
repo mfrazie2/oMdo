@@ -72,7 +72,7 @@ var SurveyContainer = React.createClass({
       />
     )
   }
-})
+});
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -93,7 +93,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(Object.assign({}, surveyActions, homeActions), dispatch)
-  }
+  };
 };
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(SurveyContainer);
