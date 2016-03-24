@@ -18,7 +18,6 @@ var SurveyContainer = React.createClass({
     var survey = this.context.store.getState().surveyReducer;
     this.props.actions.submitSurvey(survey);
   },
-
   handleFeelingChange: function(e) {
     var feeling = e.target.value;
     this.props.actions.feelingChange(feeling);
