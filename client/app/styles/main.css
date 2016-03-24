@@ -17,7 +17,40 @@ body {
   margin: 0;
 }
 
+input:focus {
+  outline: none;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
 .form {
   color: #283D3B;
-  background-image: url('/beachfog.jpg');
+  background-color: #E6EBE0;
+  padding: 2% 15% 5% 15%;
+  width: 100%;
+}
+
+.form button {
+  box-shadow: 5px 4px 5px #424B54;
+  margin-top: 5%;
+  font-size: 20px;
+  padding: 10px 10px;
+  border: visible;
+  border-style: solid;
+  border-color: #283D3B;
+  border-radius: 15px;
+  background-color: #E6EBE0;
+}
+
+.form button:hover {
+  cursor: pointer;
+  color: #E6EBE0;
+  background-color: #C44536;
+  border-color: #E6EBE0;
 }

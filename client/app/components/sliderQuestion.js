@@ -6,10 +6,8 @@ var css = require('../styles/survey.css');
 function NumericalQuestion (props) {
   return (
     <Question key={props.key}>
-      <p>{props.text} <em>(On a scale of 1-5)</em> </p>
-      {props.minText}
-      <input type='range' min="1" max="5" onChange={props.handleChange} />
-      {props.maxText}
+      <p>{props.text} <br/><em><small>(On a scale from {props.minText} to {props.maxText})</small></em></p>
+      <input type='range' min='1' max='5' step='.01' onChange={props.handleChange} />
       <br />
     </Question>
   )
