@@ -1,15 +1,14 @@
 var actions = require('./actions')
 var browserHistory = require('react-router').browserHistory;
 
-function signOut() {
-    return {type: actions.SIGN_OUT}
-  }
-
 module.exports = {
+  signOut: function() {
+    return {type: actions.SIGN_OUT};
+  },
   requestSignOut: function() {
     return function(dispatch) {
-      dispatch(signOut());
+      dispatch(module.exports.signOut());
       localStorage.setItem('token', '');
-    }
+    };
   }
-}
+};
