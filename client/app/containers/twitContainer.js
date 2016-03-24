@@ -1,5 +1,6 @@
 var React = require('react');
 var Twit = require('../components/twit');
+var Tweet = require('../components/tweet');
 var connect = require('react-redux').connect;
 var twitActions = require('../actions/twitActions');
 var homeActions = require('../actions/homeActions');
@@ -23,11 +24,16 @@ var TwitContainer = React.createClass({
   },
   render: function() {
     return (
-      <Twit 
-        onSubmit={this.handleTwitSubmit}
-        onTwitterChange={this.handleTwitterChange}
-        isLoading={this.props.isLoading}
-      />
+      <div>
+        <Twit 
+          onSubmit={this.handleTwitSubmit}
+          onTwitterChange={this.handleTwitterChange}
+          isLoading={this.props.isLoading}
+        />
+        <Tweet
+          tweets={this.props.tweets}
+         />
+       </div>
     )
   }
 });
@@ -36,7 +42,8 @@ function mapStateToProps(state, ownProps) {
   return {
     twitterHandle: state.twitReducer.twitterHandle,
     isLoading: state.twitReducer.isLoading,
-    error: state.twitReducer.error
+    error: state.twitReducer.error,
+    tweets: state.twitReducer.tweets
   }
 }
 
