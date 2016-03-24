@@ -1,18 +1,6 @@
 @import "./config.css";
 
 .root {
-
-}
-
-.questionSpace {
-  text-align: center;
-}
-
-.currentQuestion {
-  padding: 50px;
-  display: inline-block;
-}
-
-.navItem:hover {
-  background-color: #2D423A;
+  color: #283D3B;
+  background-image: url('/beachfog.jpg');
 }

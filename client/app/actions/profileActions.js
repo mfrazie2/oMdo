@@ -25,6 +25,6 @@ module.exports = {
         .catch(function(error) {
           dispatch(module.exports.surveysNotLoaded());
         });
-    }
+    };
   }
-}
+};

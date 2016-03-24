@@ -4,7 +4,7 @@ var initialState = {
   surveys: [],
   viz: undefined,
   isLoading: true
-}
+};
 
 function profileReducer(state, action) {
   if (state === undefined) {
@@ -16,20 +16,17 @@ function profileReducer(state, action) {
         isLoading: false,
         surveys: action.surveys
       });
-      break;
     case actions.SURVEYS_NOT_LOADED:
       return Object.assign({}, state, {
         isLoading: true
       });
-      break;
     case actions.SURVEYS_LOADING:
       return Object.assign({}, state, {
         isLoading: true
-      })
-      break;
+      });
     default:
       return state;
   }
-}
+};
 
 module.exports = profileReducer;

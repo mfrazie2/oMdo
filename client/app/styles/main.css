@@ -10,3 +10,14 @@ html {
   line-height: 1.4em;
   background-color: #E6EBE0;
 }
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.form {
+  color: #283D3B;
+  background-image: url('/beachfog.jpg');
+}
