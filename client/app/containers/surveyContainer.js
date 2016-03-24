@@ -1,16 +1,18 @@
 var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
+var handlersMixin = require('./mixins/surveyHandlers');
 var surveyActions = require('../actions/surveyActions');
 var homeActions = require('../actions/homeActions');
 var bindActionCreators = require('redux').bindActionCreators;
 
 var SurveyContainer = React.createClass({
+  mixins: [handlersMixin],
   contextTypes: {
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.actions.checkAuth();
   },
   handleSurveySubmit: function(e) {
@@ -18,56 +20,19 @@ var SurveyContainer = React.createClass({
     var survey = this.context.store.getState().surveyReducer;
     this.props.actions.submitSurvey(survey);
   },
-  handleFeelingChange: function(e) {
-    var feeling = e.target.value;
-    this.props.actions.feelingChange(feeling);
-  },
-  handleAnxietyChange: function(e) {
-    var anxiety = e.target.value;
-    this.props.actions.anxietyChange(anxiety);
-  },
-  handleEnergyChange: function(e) {
-    var energy = e.target.value;
-    this.props.actions.energyChange(energy);
-  },
-  handleSleepChange: function(e) {
-    var sleep = e.target.value;
-    this.props.actions.sleepChange(sleep);
-  },
-  handleSleepElaborateChange: function(e) {
-    var sleepDetail = e.target.value;
-    this.props.actions.sleepElaborateChange(sleepDetail);
-  },
-  handleMoodChange: function(e) {
-    var mood = e.target.value;
-    this.props.actions.moodChange(mood);
-  },
-  handleMoodElaborateChange: function(e) {
-    var moodDetail = e.target.value;
-    this.props.actions.moodElaborateChange(moodDetail);
-  },
-  handleMajorEventChange: function(e) {
-    var eventChange = e.target.value;
-    this.props.actions.majorEventChange(eventChange);
-  },
-  handleEventElaborateChange: function(e) {
-    var eventDetail = e.target.value;
-    this.props.actions.eventElaborateChange(eventDetail);
-  },
-
   render: function() {
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}
-        onFeelingChange={this.handleFeelingChange}
-        onAnxietyChange={this.handleAnxietyChange}
-        onEnergyChange={this.handleEnergyChange}
-        onSleepChange={this.handleSleepChange}
-        onMoodChange={this.handleMoodChange}
-        onMajorEventChange={this.handleMajorEventChange}
-        onSleepElaborateChange={this.handleSleepElaborateChange}
-        onMoodElaborateChange={this.handleMoodElaborateChange}
-        onEventElaborateChange={this.handleEventElaborateChange}
+        onFeelingChange={this.handlers.feelingChange}
+        onAnxietyChange={this.handlers.anxietyChange}
+        onEnergyChange={this.handlers.energyChange}
+        onSleepChange={this.handlers.sleepChange}
+        onMoodChange={this.handlers.moodChange}
+        onMajorEventChange={this.handlers.majorEventChange}
+        onSleepElaborateChange={this.handlers.sleepElaborateChange}
+        onMoodElaborateChange={this.handlers.moodElaborateChange}
+        onEventElaborateChange={this.handlers.eventElaborateChange}
         isLoading={this.props.isLoading}
       />
     )
@@ -92,7 +57,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, surveyActions, homeActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, surveyActions, homeActions), dispatch),
   };
 };
 
