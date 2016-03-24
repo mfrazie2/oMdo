@@ -1,13 +1,14 @@
 var React = require('react');
-var styleable = require('react-styleable');
+var Question = require('./question');
+var styleable = require('react-styleable').default;
 var css = require('../styles/survey.css');
 
 function TextQuestion (props) {
   return (
-    <div className='surveyTextarea'>
-      <p>Care to elaborate on your {props.category} from last night?</p>
+    <Question>
+      <p>Care to elaborate on your {props.category}?</p>
       <input type='textarea' onChange={props.handleChange} /><br />
-    </div>
+    </Question>
   )
 };
 
