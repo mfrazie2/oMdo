@@ -1,7 +1,7 @@
 var React = require('react');
 var PropTypes = require('react').PropTypes;
 var styleable = require('react-styleable').default;
-var css = require('../styles/question.css')
+var css = require('../styles/auth.css')
 
 function Auth(props) {
   return (

@@ -1,18 +1,7 @@
 @import "./config.css";
 
 .root {
+  color: #283D3B;
+  border: visible;
 
-}
-
-.questionSpace {
-  text-align: center;
-}
-
-.currentQuestion {
-  padding: 50px;
-  display: inline-block;
-}
-
-.navItem:hover {
-  background-color: #2D423A;
 }

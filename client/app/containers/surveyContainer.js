@@ -2,12 +2,13 @@ var React = require('react');
 var Survey = require('../components/survey');
 var connect = require('react-redux').connect;
 var handlersMixin = require('./mixins/surveyHandlers');
+var questionsMixin = require('./mixins/questions');
 var surveyActions = require('../actions/surveyActions');
 var homeActions = require('../actions/homeActions');
 var bindActionCreators = require('redux').bindActionCreators;
 
 var SurveyContainer = React.createClass({
-  mixins: [handlersMixin],
+  mixins: [handlersMixin, questionsMixin],
   contextTypes: {
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
@@ -24,15 +25,8 @@ var SurveyContainer = React.createClass({
     return (
       <Survey
         onSubmit={this.handleSurveySubmit}
-        onFeelingChange={this.handlers.feelingChange}
-        onAnxietyChange={this.handlers.anxietyChange}
-        onEnergyChange={this.handlers.energyChange}
-        onSleepChange={this.handlers.sleepChange}
-        onMoodChange={this.handlers.moodChange}
-        onMajorEventChange={this.handlers.majorEventChange}
-        onSleepElaborateChange={this.handlers.sleepElaborateChange}
-        onMoodElaborateChange={this.handlers.moodElaborateChange}
-        onEventElaborateChange={this.handlers.eventElaborateChange}
+        handlers={this.handlers}
+        questions={this.questions}
         isLoading={this.props.isLoading}
       />
     )
