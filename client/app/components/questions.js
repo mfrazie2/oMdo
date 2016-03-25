@@ -11,7 +11,8 @@ function Questions (props) {
       {props.questions.slider.map(function(question) {
         return (
           <SliderQuestion
-            key ={++key}
+            key={++key}
+            tabIndex={key === 0 ? 1 : key + 1}
             text={question.text}
             minText={question.minText}
             maxText={question.maxText}
@@ -23,11 +24,13 @@ function Questions (props) {
         return (
           <SelectorQuestion
             key={++key}
+            tabIndex={key +1}
             text={question.text}
             options={question.options}
             handleChange={props.handlers.selector[question.category]}
             >
             <TextQuestion
+              tabIndex={key +1}
               category={question.category}
               handleChange={props.handlers.text[question.category]}
               />
@@ -38,10 +41,12 @@ function Questions (props) {
         return (
           <BooleanQuestion
             key={++key}
+            tabIndex={key +1}
             text={question.text}
             handleChange={props.handlers.boolean[question.category]}
             >
             <TextQuestion
+              tabIndex={key +1}
               category={question.category}
               handleChange={props.handlers.text[question.category]}
               />
