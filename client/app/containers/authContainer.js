@@ -54,12 +54,7 @@ var AuthContainer = React.createClass({
 });
 
 function mapStateToProps(state) {
-  return {
-    username: state.authReducer.username,
-    password: state.authReducer.password,
-    isLoading: state.authReducer.isLoading,
-    error: state.authReducer.error
-  };
+  return Object.assign({}, state.authReducer);
 };
 
 function mapDispatchToProps(dispatch) {
