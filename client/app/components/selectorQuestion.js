@@ -1,7 +1,5 @@
 var React = require('react');
 var Question = require('./question');
-var styleable = require('react-styleable').default;
-var css = require('../styles/survey.css');
 
 function NumericalQuestion (props) {
   return (
@@ -19,4 +17,4 @@ function NumericalQuestion (props) {
   )
 }
 
-module.exports = styleable(css)(NumericalQuestion);
+module.exports = NumericalQuestion;
