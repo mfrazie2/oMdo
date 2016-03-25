@@ -16,8 +16,8 @@ function DiaryEntry (props) {
           scaleStepWidth: 10,
           scaleStartValue: 0,
         }}
-        width='300'
-        height='300' />
+        width='500'
+        height='500' />
     </li>
   )
 };
