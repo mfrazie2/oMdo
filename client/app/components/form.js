@@ -5,7 +5,7 @@ var css = require('../styles/main.css');
 function Form (props) {
   return (
     <div className={props.css.form}>
-      <div className={props.className}>
+      <div className={props.className || ''}>
         {props.children}
         <button onClick={props.onSubmit}>{props.text}</button>
       </div>
