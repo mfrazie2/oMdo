@@ -30,6 +30,12 @@ module.exports = function(data){
           return data[data.length-1][field] * 10;
         })
       },
+
+      /*
+          data comes in if datalen === 3
+          set var check to see if len is min # things we want
+
+      */
       {
         label: 'User Data',
         fillColor: 'rgba(192,192,192,0.2)',
