@@ -4,7 +4,18 @@ var initialState = {
   isLoading: false,
   error: false,
   handle: '',
-  tweets: []
+  emotional: [],
+  writing: [],
+  social: [],
+  chartOptions: {
+    scaleOverride: true,
+    scaleSteps: 10,
+    scaleStepWidth: 10,
+    scaleStartValue: 0,
+    tooltipTemplate: function(chartData) {
+      console.log(chartData);
+    }
+  }
 };
 
 function twitReducer(state, action) {
@@ -21,7 +32,9 @@ function twitReducer(state, action) {
     case actions.TWIT_SUCCESS: 
       return Object.assign({}, state, {
         isLoading: false,
-        tweets: action.tweets
+        emotional: action.tweets[0].tones,
+        writing: action.tweets[1].tones,
+        social: action.tweets[2].tones
       });
     case actions.TWIT_FAILURE:
       return Object.assign({}, state, {

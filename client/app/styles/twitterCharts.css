@@ -1,0 +1,9 @@
+@import "./config.css";
+
+.chartContainer {
+  display: inline-block;
+}
+
+.chart {
+  float: left;
+}

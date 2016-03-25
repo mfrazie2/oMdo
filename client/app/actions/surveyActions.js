@@ -11,7 +11,7 @@ module.exports = {
   },
   surveyFailure: function() {
     return {type: actions.SURVEY_FAILURE};
-
+  },
   // prevQuestion: function() {
   //   return {type: actions.PREV_QUESTION}
   // },

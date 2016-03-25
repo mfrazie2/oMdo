@@ -31,7 +31,10 @@ var TwitContainer = React.createClass({
           isLoading={this.props.isLoading}
         />
         <Tweet
-          tweets={this.props.tweets}
+          emotional={this.props.emotional}
+          writing={this.props.writing}
+          social={this.props.social}
+          chartOptions={this.props.chartOptions}
          />
        </div>
     )
@@ -43,7 +46,12 @@ function mapStateToProps(state, ownProps) {
     twitterHandle: state.twitReducer.twitterHandle,
     isLoading: state.twitReducer.isLoading,
     error: state.twitReducer.error,
-    tweets: state.twitReducer.tweets
+    // tones: state.twitReducer.tones
+    emotional: state.twitReducer.emotional,
+    writing: state.twitReducer.writing,
+    social: state.twitReducer.social,
+    chartOptions: state.twitReducer.chartOptions
+    // tweets: state.twitReducer.tweets
   }
 }
 

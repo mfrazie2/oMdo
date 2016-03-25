@@ -1,5 +1,6 @@
 var dotenv = require('dotenv').config();
-var Twitter = require('twitter'); 
+var Twitter = require('twitter');
+var watson = require('watson-developer-cloud');
 
 // Configure Twitter instance
 var client = new Twitter({
@@ -9,11 +10,18 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+var tone_analyzer = watson.tone_analyzer({
+  username: process.env.BLUEMIX_USERNAME,
+  password: process.env.BLUEMIX_PASSWORD,
+  version: 'v3-beta',
+  version_date: '2016-02-11'
+}); 
 
 module.exports = {
   fetchTweets: function(req, res) {
     // var tweetTexts;
     var params = {screen_name: req.body.handle, count: 25};
+    var tweetTone;
     client.get('statuses/user_timeline', params, function(err, tweets, response) { 
       // tweets returned as []
       // response is raw object ==> of user's entire Twitter
@@ -23,7 +31,25 @@ module.exports = {
       var tweetTexts = tweets.map(function(tweet) {
         return tweet.text;
       });
-      res.send({tweets: tweetTexts});
+
+      var tweetBlock = tweetTexts.reduce(function (a, b) {
+        return a.concat(' ', b);
+      });
+
+      tone_analyzer.tone({ text: tweetBlock },
+        function(err, tone) {
+          if (err)
+            console.log(err);
+          else
+            // console.log('HIIIIIIIIIII', Object.keys(tone));
+            // console.log(JSON.stringify(tone['document_tone']));
+            res.send(JSON.stringify(tone['document_tone']));
+            // console.log('inside the tone function ', res.body);
+            // res.body['tone'] = tone['document_tone'];
+            // console.log(JSON.stringify(tone, null, 2));
+      });
+      // console.log('Logging the tweetTone ', tweetBlock);
+      // res.send({tweets: tweetTexts});
     });
   }
 };
