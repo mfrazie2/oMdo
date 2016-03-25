@@ -5,9 +5,11 @@ var css = require('../styles/home.css');
 
 function Home (props) {
   return (
-    <Tile className={props.css.root}>
-      <h1>oMdo welcomes you!</h1>
-    </Tile>
+    <div className={props.css.root}>
+      <Tile>
+        <h1>oMdo welcomes you!</h1>
+      </Tile>
+    </div>
   )
 };
 

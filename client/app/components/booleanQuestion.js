@@ -5,7 +5,7 @@ var css = require('../styles/tile.css');
 
 function BooleanQuestion (props) {
   return (
-    <Tile key={props.key} className='surveyRadioButtons'>
+    <Tile key={props.key}>
       <p>{props.text}</p>
       <ul className={props.css.radioList}>
         <li><input type="radio" name='boolean' value="yes" tabIndex={props.tabIndex} onChange={props.handleChange} /> Yes</li>
