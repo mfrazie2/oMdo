@@ -1,5 +1,5 @@
 var React = require('react');
-var Tile = require('./tile');
+var Tile = require('../tile');
 
 function NumericalQuestion (props) {
   return (

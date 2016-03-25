@@ -1,6 +1,6 @@
 var React = require('react');
-var Twit = require('../components/twit');
-var Tweet = require('../components/tweet');
+var Twit = require('../components/twitter/twit');
+var Tweet = require('../components/twitter/tweet');
 var connect = require('react-redux').connect;
 var twitActions = require('../actions/twitActions');
 var homeActions = require('../actions/homeActions');
@@ -11,7 +11,6 @@ var TwitContainer = React.createClass({
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
   },
-  // To Do: Authenticate user before letting her access this page
   handleTwitterChange: function(e) {
     e.preventDefault();
     var twitterHandle = e.target.value;
@@ -25,7 +24,7 @@ var TwitContainer = React.createClass({
   render: function() {
     return (
       <div>
-        <Twit 
+        <Twit
           onSubmit={this.handleTwitSubmit}
           onTwitterChange={this.handleTwitterChange}
           isLoading={this.props.isLoading}
@@ -43,17 +42,7 @@ var TwitContainer = React.createClass({
 });
 
 function mapStateToProps(state, ownProps) {
-  return {
-    twitterHandle: state.twitReducer.twitterHandle,
-    isLoading: state.twitReducer.isLoading,
-    error: state.twitReducer.error,
-    tones: state.twitReducer.tones,
-    emotional: state.twitReducer.emotional,
-    writing: state.twitReducer.writing,
-    social: state.twitReducer.social,
-    chartOptions: state.twitReducer.chartOptions
-    // tweets: state.twitReducer.tweets
-  }
+  return Object.assign({}, state.twitReducer);
 }
 
 function mapDispatchToProps(dispatch) {
@@ -63,7 +52,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(TwitContainer);
-
-{/*emotional={this.props.emotional}
-          writing={this.props.writing}
-          social={this.props.social}*/}

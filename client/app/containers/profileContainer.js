@@ -4,9 +4,9 @@ var connect = require('react-redux').connect;
 var bindActionCreators = require('redux').bindActionCreators;
 var profileActions = require('../actions/profileActions');
 var homeActions = require('../actions/homeActions');
-var Profile = require('../components/profile');
-var Diary = require('../components/diary');
-var Visualization = require('../components/visualization');
+var Profile = require('../components/profile/profile');
+var Diary = require('../components/profile/diary');
+var Visualization = require('../components/profile/visualization');
 var Loading = require('../components/loading');
 
 var ProfileContainer = React.createClass({
