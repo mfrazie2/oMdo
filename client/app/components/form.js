@@ -6,8 +6,10 @@ function Form (props) {
   return (
     <div className={props.css.form}>
       <div className={props.className || ''}>
-        {props.children}
-        <button onClick={props.onSubmit}>{props.text}</button>
+        <form>
+          {props.children}
+          <button onClick={props.onSubmit}>{props.text}</button>
+        </form>
       </div>
     </div>
   )
