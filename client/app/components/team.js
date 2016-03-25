@@ -10,17 +10,17 @@ function Team (props) {
       <table className={props.css.list}>
         <tbody>
           <tr>
-            <TeamMember name={'Sanford Bradshaw'} title={'Full-Stack Engineer'} imgFilename={'/sbradshaw.jpg'} />
-            <TeamMember name={'Liz Sciortino'} title={'Full-Stack Engineer'} imgFilename={'/esciortino.jpg'} />
-            <TeamMember name={'Chris Patton'} title={'Full-Stack Engineer'} imgFilename={'/cpatton.jpg'} />
+            <TeamMember name={'Sanford Bradshaw'} title={'Full-Stack Engineer'} imgFilename={require('../../assets/sbradshaw.jpg')} />
+            <TeamMember name={'Liz Sciortino'} title={'Full-Stack Engineer'} imgFilename={require('../../assets/esciortino.jpg')} />
+            <TeamMember name={'Chris Patton'} title={'Full-Stack Engineer'} imgFilename={require('../../assets/cpatton.jpg')} />
           </tr>
         </tbody>
       </table>
       <table>
         <tbody>
           <tr>
-            <TeamMember name={'Mike Frazier'} title={'Product Owner'} imgFilename={'/mfrazier.jpg'} />
-            <TeamMember name={'John Soo'} title={'Scrum Master'} imgFilename={'/jsoo.jpg'} />
+            <TeamMember name={'Mike Frazier'} title={'Product Owner'} imgFilename={require('../../assets/mfrazier.jpg')} />
+            <TeamMember name={'John Soo'} title={'Scrum Master'} imgFilename={require('../../assets/jsoo.jpg')} />
           </tr>
         </tbody>
       </table>

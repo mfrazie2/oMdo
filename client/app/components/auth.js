@@ -1,35 +1,38 @@
 var React = require('react');
-var PropTypes = require('react').PropTypes;
+var Form = require('./form');
 var styleable = require('react-styleable').default;
 var css = require('../styles/auth.css')
 
 function Auth(props) {
   return (
     <div className={props.css.root}>
-      <div className={props.css.form}>
-        <form onSubmit={props.onSubmit} path={props.pathname}>
-          <div>
-            <input
-              label='username'
-              className={props.css.input}
-              type='text'
-              placeholder='username'
-              onChange={props.onUpdateUsername}
-              />
-          </div>
-          <div>
-            <input
-              label='password'
-              className={props.css.input}
-              type='password'
-              name='password'
-              placeholder='password'
-              onChange={props.onUpdatePassword}
-              />
-          </div>
-          <button className={props.css.submit} type='submit'>{props.text}</button>
-        </form>
-      </div>
+      <Form
+        className={props.css.form}
+        onSubmit={props.onSubmit}
+        text={props.text}
+        >
+        <div>
+          <input
+            tabIndex='1'
+            label='username'
+            className={props.css.input}
+            type='text'
+            placeholder='username'
+            onChange={props.onUpdateUsername}
+            />
+        </div>
+        <div>
+          <input
+            tabIndex='20'
+            label='password'
+            className={props.css.input}
+            type='password'
+            name='password'
+            placeholder='password'
+            onChange={props.onUpdatePassword}
+            />
+        </div>
+      </Form>
     </div>
   )
 };

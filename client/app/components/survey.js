@@ -3,7 +3,6 @@ var Form = require('./form');
 var Loading = require('../components/loading');
 var Questions = require('./questions');
 var styleable = require('react-styleable').default;
-var css = require('../styles/survey.css');
 
 function Survey(props) {
   var key = -1;
@@ -18,4 +17,4 @@ function Survey(props) {
   )
 };
 
-module.exports = styleable(css)(Survey);
+module.exports = Survey;
