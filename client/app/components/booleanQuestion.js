@@ -8,7 +8,7 @@ function BooleanQuestion (props) {
     <Question key={props.key} className='surveyRadioButtons'>
       <p>{props.text}</p>
       <ul className={props.css.radioList}>
-        <li><input type="radio" name='boolean' value="yes" onChange={props.handleChange} /> Yes</li>
+        <li><input type="radio" name='boolean' value="yes" tabIndex={props.tabIndex} onChange={props.handleChange} /> Yes</li>
         <li><input type="radio" name='boolean' value="no" onChange={props.handleChange} /> No</li>
       </ul>
       {props.children}

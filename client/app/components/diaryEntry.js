@@ -10,6 +10,12 @@ function DiaryEntry (props) {
     <li className={props.css.root}>
       <Radar
         data={format(props.data)}
+        options={{
+          scaleOverride: true,
+          scaleSteps: 5,
+          scaleStepWidth: 10,
+          scaleStartValue: 0,
+        }}
         width='300'
         height='300' />
     </li>

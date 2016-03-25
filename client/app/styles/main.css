@@ -34,9 +34,9 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .form {
+  background: transparent;
   color: #283D3B;
-  background-color: #E6EBE0;
-  padding: 2% 15% 5% 15%;
+  padding: 0;
   width: 100%;
 }
 

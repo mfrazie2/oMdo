@@ -7,7 +7,7 @@ function Header (props) {
   return (
     <div className={props.css.root}>
       <Link to='/'>
-        <img src='/oMdo.png' width='150px' height='64px' alt={'oMdo'} />
+        <img src={require('../../assets/oMdo.png')} width='150px' height='64px' alt={'oMdo'} />
       </Link>
       <ul className={props.css.ul}>
         {props.children}
