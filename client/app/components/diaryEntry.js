@@ -2,7 +2,7 @@ var React = require('react');
 var Radar = require('react-chartjs').Radar;
 var format = require('../utilities/formatEntryRadarData');
 var styleable = require('react-styleable').default;
-var css = require('../styles/question.css');
+var css = require('../styles/tile.css');
 
 function DiaryEntry (props) {
   console.log(props)

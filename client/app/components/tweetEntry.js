@@ -14,4 +14,3 @@
 // }
 
 // module.exports = styleable(css)(TweetEntry);
-
