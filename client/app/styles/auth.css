@@ -1,11 +1,15 @@
 @import "./config.css";
 
 .root {
-  background-image: @import '../../assets/beachfog.jpg';
+  background-image: url('../../assets/beachfog.jpg');
   background-size: cover;
   padding: 10% 25% 25% 25%;
   height: 85%;
   width: 100%;
+}
+
+.root img {
+
 }
 
 .submit {
@@ -43,6 +47,7 @@
 .form {
   box-shadow: 5px 4px 5px #574A40;
   border-style: solid;
+  opacity: 1;
   background-color: #5CA4A9;
   border-radius: 15px;
   border: visible;
