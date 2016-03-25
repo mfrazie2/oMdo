@@ -2,7 +2,7 @@
 
 .root {
   box-shadow: 5px 4px 5px #424B54;
-  background-color: #E6EBE0;
+  background-color: white;
   color: #424B54;
   width: 65%;
   padding: 5px 5px 5px 10px;
@@ -64,7 +64,6 @@ textarea:focus {
 }
 
 .textQuestion {
-  background-color: #E6EBE0;
   color: #424B54;
   width: 65%;
   padding: 5px 5px 5px 5px;
