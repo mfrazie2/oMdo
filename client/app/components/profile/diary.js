@@ -1,7 +1,7 @@
 var React = require('react');
 var DiaryEntry = require('./diaryEntry');
 var styleable = require('react-styleable').default;
-var css = require('../styles/profile.css');
+var css = require('../../styles/profile.css');
 
 function Diary (props) {
   return (

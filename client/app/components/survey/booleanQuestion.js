@@ -1,7 +1,7 @@
 var React = require('react');
-var Tile = require('./tile');
+var Tile = require('../tile');
 var styleable = require('react-styleable').default;
-var css = require('../styles/tile.css');
+var css = require('../../styles/tile.css');
 
 function BooleanQuestion (props) {
   return (

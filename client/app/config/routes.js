@@ -10,7 +10,7 @@ var AuthContainer = require('../containers/authContainer');
 var HomeContainer = require('../containers/homeContainer');
 var SurveyContainer = require('../containers/surveyContainer');
 var ProfileContainer = require('../containers/profileContainer');
-var About = require('../components/about');
+var About = require('../components/about/about');
 var TwitContainer = require('../containers/twitContainer');
 
 var Routes = (

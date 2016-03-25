@@ -1,6 +1,6 @@
 var React = require('react');
 var styleable = require('react-styleable').default;
-var css = require('../styles/about.css');
+var css = require('../../styles/about.css');
 
 function TeamMember (props) {
   return (
