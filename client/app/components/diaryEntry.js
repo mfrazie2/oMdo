@@ -19,6 +19,8 @@ function DiaryEntry (props) {
           scaleSteps: 5,
           scaleStepWidth: 10,
           scaleStartValue: 0,
+          scaleShowLabels: true,
+          multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
         }}
         width='500'
         height='500' />
