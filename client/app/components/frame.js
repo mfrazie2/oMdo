@@ -1,11 +1,11 @@
 var React = require('react');
-var styleable = require('react-styleable');
+var styleable = require('react-styleable').default;
 var css = require('../styles/main.css');
 
 function Frame (props) {
   return (
-    <div className='frame'>
-
+    <div key={props.key} className='frame'>
+      {props.children}
     </div>
   )
 };

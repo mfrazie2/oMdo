@@ -5,7 +5,7 @@ function NumericalQuestion (props) {
   return (
     <Tile key={props.key}>
       <p>{props.text}</p>
-      <select type='select' onChange={props.handleChange} tabIndex={props.tabIndex}>
+      <select onChange={props.handleChange} tabIndex={props.tabIndex}>
         <option value="1" >{props.options[0]}</option>
         <option value="2" >{props.options[1]}</option>
         <option defaultValue="3" >{props.options[2]}</option>

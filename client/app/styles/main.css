@@ -25,6 +25,10 @@ ul {
   list-style-type: none;
 }
 
+li {
+  margin-left: 0;
+}
+
 input:focus {
   outline: none;
 }
@@ -38,7 +42,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 .frame {
-  
+
 }
 
 .form {
