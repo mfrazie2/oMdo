@@ -11,10 +11,7 @@ var initialState = {
     scaleOverride: true,
     scaleSteps: 10,
     scaleStepWidth: 10,
-    scaleStartValue: 0,
-    tooltipTemplate: function(chartData) {
-      console.log(chartData);
-    }
+    scaleStartValue: 0
   }
 };
 

@@ -34,7 +34,9 @@ module.exports = function(data){
         strokeColor: 'rgba(220,220,220,1)',
         highlightFill: '#fff',
         highlightStroke: 'rgba(220,220,220,1)',
-        data: scores
+        data: scores,
+        customTooltip: true,
+        tooltipTemplate: '<%= value %>'
       }
     ]
   }
