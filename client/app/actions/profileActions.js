@@ -20,7 +20,11 @@ module.exports = {
       axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
       axios.get('/user/userData')
         .then(function(response) {
-          dispatch(module.exports.surveysLoaded(response.data));
+          var graphData = response.data;
+          if (graphData.length > 7) {
+            graphData = graphData.slice(graphData.length-7);
+          }
+          dispatch(module.exports.surveysLoaded(graphData));
         })
         .catch(function(error) {
           dispatch(module.exports.surveysNotLoaded());

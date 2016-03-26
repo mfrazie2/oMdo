@@ -11,27 +11,41 @@ module.exports = function(data){
     'sleepElaborate': true
   };
 
-  var relevantLabels = Object.keys(data).filter(function(field) {
+  var relevantLabels = Object.keys(data[0]).filter(function(field) {
     return !irrelevantFields[field];
   });
 
+  var dataPlots = [];
+  var i = data.length-1;
+  var setsToGo  = (data.length >= 7) ? 7 : data.length;
+
+  while (setsToGo > 0 ) {
+    dataPlots[i] = [];
+    for (var k = 0; k < relevantLabels.length; k++) {
+      var field = relevantLabels[k];
+      dataPlots[i].push(data[i][field] * 10);
+    }
+    setsToGo -= 1;
+    i -= 1;
+  }
+  var radarPlots = [];
+  var fillColors = ['rgba(102,0,204,0.4)', 'rgba(255,0,0,0.4)', 'rgba(255,153,51,0.4)','rgba(255,255,0,0.4)','rgba(0,204,0,0.4)','rgba(51,153,255,0.4)','rgba(0,0,255,0.4)'];
+  for (var j = 0; j < dataPlots.length; j++) {
+    radarPlots.push({
+      label: 'User Data',
+      strokeColor: fillColors[j],
+      pointColor: fillColors[j],
+      pointStrokeColor: '#fff',
+      pointHighlightFill: '#fff',
+      pointHighlightStroke: fillColors[j],
+      fillColor: fillColors[j],
+      data: dataPlots[j]
+    });
+  }
   var radarData = {
     labels: relevantLabels,
-    datasets: [
-      {
-        label: 'User Data',
-        fillColor: 'rgba(220,220,220,0.2)',
-        strokeColor: 'rgba(220,220,220,1)',
-        pointColor: 'rgba(220,220,220,1)',
-        pointStrokeColor: '#fff',
-        pointHighlightFill: '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: relevantLabels.map(function(field){
-          return data[field] * 10;
-        })
-      }
-    ]
+    datasets: radarPlots
   }
-  
+
   return radarData;
 }

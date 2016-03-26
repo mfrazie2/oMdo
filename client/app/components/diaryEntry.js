@@ -4,9 +4,14 @@ var format = require('../utilities/formatEntryRadarData');
 var styleable = require('react-styleable').default;
 var css = require('../styles/question.css');
 
-function Entry (props) {
+function DiaryEntry (props) {
+  console.log(props)
+    if(props.data.length === 0) {
+      return (<div><h2>You need to submit a survey</h2></div>)
+    } else {
   return (
-    <li key={props.key} className={props.css.root}>
+
+    <li className={props.css.root}>
       <Radar
         data={format(props.data)}
         options={{
@@ -15,10 +20,11 @@ function Entry (props) {
           scaleStepWidth: 10,
           scaleStartValue: 0,
         }}
-        width='100%'
-        height='100%' />
+        width='500'
+        height='500' />
     </li>
   )
+  }
 };
 
-module.exports = styleable(css)(Entry);
+module.exports = styleable(css)(DiaryEntry);
