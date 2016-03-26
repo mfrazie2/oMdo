@@ -1,5 +1,5 @@
 var axios = require('axios');
-var actions = require('./actions')
+var actions = require('./actions');
 var browserHistory = require('react-router').browserHistory;
 
 module.exports = {
@@ -13,10 +13,10 @@ module.exports = {
     return {type: actions.AUTH_FAILURE};
   },
   updateUsername: function(username) {
-    return {type: actions.USERNAME, username};
+    return {type: actions.USERNAME, username: username};
   },
   updatePassword: function(password) {
-    return {type: actions.PASSWORD, password};
+    return {type: actions.PASSWORD, password: password};
   },
   signInRequest: function(login) {
     return function(dispatch) {

@@ -4,12 +4,17 @@ var Tweet = require('../components/twitter/tweet');
 var connect = require('react-redux').connect;
 var twitActions = require('../actions/twitActions');
 var homeActions = require('../actions/homeActions');
+var authActions = require('../actions/authActions');
 var bindActionCreators = require('redux').bindActionCreators;
 
 var TwitContainer = React.createClass({
   contextTypes: {
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
+  },
+  // Adds auth but not sure if works
+  componentWillMount: function () {
+    this.props.actions.checkAuth();
   },
   handleTwitterChange: function(e) {
     e.preventDefault();
@@ -47,7 +52,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(Object.assign({}, twitActions, homeActions), dispatch)
+    actions: bindActionCreators(Object.assign({}, twitActions, homeActions, authActions), dispatch)
   }
 }
 

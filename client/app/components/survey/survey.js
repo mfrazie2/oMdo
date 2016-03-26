@@ -6,7 +6,6 @@ var styleable = require('react-styleable').default;
 var css = require('../../styles/survey.css');
 
 function Survey(props) {
-  var key = -1;
   return props.isLoading === true
   ? (
     <Loading />

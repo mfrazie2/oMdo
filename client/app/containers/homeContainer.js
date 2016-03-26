@@ -16,10 +16,7 @@ var HomeContainer = React.createClass({
 });
 
 function mapStateToProps(state, ownProps) {
-  return {
-    isLoggedIn: state.authReducer.isLoggedIn,
-    isLoading: state.authReducer.isLoading
-  };
+  return Object.assign({}, state.authReducer);
 };
 
 function mapDispatchToProps(dispatch) {

@@ -5,7 +5,7 @@ var css = require('../styles/navbar.css');
 
 function Header (props) {
   return (
-    <div className={props.css.root}>
+    <div className={props.className || props.css.root}>
       <Link to='/'>
         <img src={require('../../assets/oMdo.png')} width='150px' height='64px' alt={'oMdo'} />
       </Link>
