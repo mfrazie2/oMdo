@@ -13,7 +13,7 @@ var SurveyContainer = React.createClass({
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.props.actions.checkAuth();
   },
   handleSurveySubmit: function(e) {
