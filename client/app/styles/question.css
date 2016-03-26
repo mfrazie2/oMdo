@@ -50,7 +50,7 @@ option {
  }
 
  input[type=radio] {
-    -webkit-border-radius: 2em; /* Make radios round */
+    -webkit-border-radius: 2em;
   }
 
 textarea {

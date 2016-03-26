@@ -10,7 +10,7 @@ function Form (props) {
           {props.children}
           <button onClick={props.onSubmit}>{props.text}</button>
         </form>
-    </div>
+      </div>
     </div>
   )
 };
