@@ -29,15 +29,15 @@ module.exports = function(data){
     i -= 1;
   }
   var radarPlots = [];
-  var fillColors = ['rgba(0,191,255,0.1)', 'rgba(192,192,192,0.1)', 'rgba(255,192,203,0.1)','rgba(255,16,31,0.1)','rgba(32,191,85,0.1)','rgba(247,179,43,0.1)','rgba(241,250,238,0.1)'];
+  var fillColors = ['rgba(102,0,204,0.4)', 'rgba(255,0,0,0.4)', 'rgba(255,153,51,0.4)','rgba(255,255,0,0.4)','rgba(0,204,0,0.4)','rgba(51,153,255,0.4)','rgba(0,0,255,0.4)'];
   for (var j = 0; j < dataPlots.length; j++) {
     radarPlots.push({
       label: 'User Data',
-      strokeColor: 'rgba(220,220,220,1)',
-      pointColor: 'rgba(220,220,220,1)',
+      strokeColor: fillColors[j],
+      pointColor: fillColors[j],
       pointStrokeColor: '#fff',
       pointHighlightFill: '#fff',
-      pointHighlightStroke: 'rgba(220,220,220,1)',
+      pointHighlightStroke: fillColors[j],
       fillColor: fillColors[j],
       data: dataPlots[j]
     });

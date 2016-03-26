@@ -12,6 +12,7 @@ module.exports = {
       }.bind(this),
       energy: function(e) {
         var energy = e.target.value;
+        console.log(energy);
         this.props.actions.energyChange(energy);
       }.bind(this),
     };
@@ -19,10 +20,13 @@ module.exports = {
     this.handlers.selector = {
       sleep: function(e) {
         var sleep = e.target.value;
+        console.log(sleep);
+        console.log(e);
         this.props.actions.sleepChange(sleep);
       }.bind(this),
       mood: function(e) {
         var mood = e.target.value;
+        console.log(mood);
         this.props.actions.moodChange(mood);
       }.bind(this),
     };

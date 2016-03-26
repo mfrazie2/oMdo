@@ -6,7 +6,11 @@ var css = require('../styles/question.css');
 
 function DiaryEntry (props) {
   console.log(props)
+    if(props.data.length === 0) {
+      return (<div><h2>You need to submit a survey</h2></div>)
+    } else {
   return (
+
     <li className={props.css.root}>
       <Radar
         data={format(props.data)}
@@ -20,6 +24,7 @@ function DiaryEntry (props) {
         height='500' />
     </li>
   )
+  }
 };
 
 module.exports = styleable(css)(DiaryEntry);
