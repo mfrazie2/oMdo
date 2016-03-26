@@ -27,9 +27,10 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 select {
-  border: none;
+  border: solid 1px;
   background-color: white;
   color: #424B54;
+  font-size: 20px;
 }
 
 select:checked {
@@ -54,7 +55,7 @@ option {
   }
 
 textarea {
-  border: none;
+  border: solid 1px;
   resize: none;
   width: 90%
 }

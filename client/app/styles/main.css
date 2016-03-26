@@ -4,8 +4,8 @@
 html {
   text-align: center;
   font-family: "Helvetica Neue", "Helvetica Neue", "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  font-weight: 100;
+  font-size: 20px;
+  font-weight: 200;
   color: white;
   line-height: 1.4em;
   background-color: #E6EBE0;
@@ -15,6 +15,10 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+}
+
+p {
+  margin: 30px;
 }
 
 ul {
@@ -42,7 +46,7 @@ input[type=range]::-webkit-slider-thumb {
 
 .form button {
   box-shadow: 5px 4px 5px #424B54;
-  margin-top: 5%;
+  margin-bottom: 30px;
   font-size: 20px;
   padding: 10px 10px;
   border: visible;
@@ -54,7 +58,7 @@ input[type=range]::-webkit-slider-thumb {
 
 .form button:hover {
   cursor: pointer;
-  color: #E6EBE0;
-  background-color: #C44536;
-  border-color: #E6EBE0;
+  color: #283D3B;
+  background-color: #F5D547;
+  border-color: #283D3B;
 }
