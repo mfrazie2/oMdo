@@ -1,4 +1,6 @@
 var React = require('react');
+var Greeting = require('../components/greeting');
+var Container = require('./allPurposeContainer');
 var Home = require('../components/home');
 var connect = require('react-redux').connect;
 var bindActionCreators = require('redux').bindActionCreators
@@ -9,8 +11,12 @@ var HomeContainer = React.createClass({
     this.props.actions.checkAuth();
   },
   render: function() {
+    var pathname = this.props.location.pathname;
     return (
-      <Home />
+      <Container>
+        <Greeting text='oMdo Welcomes You' username={this.props.username} />
+        <Home text='Home' />
+      </Container>
     )
   }
 });
