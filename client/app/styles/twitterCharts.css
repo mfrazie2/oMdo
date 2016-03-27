@@ -1,9 +1,9 @@
 @import "./config.css";
 
-.chartContainer {
+.breakdown {
+  background-color: rgba(0,0,255,0.4);
   display: inline-block;
-}
-
-.chart {
   float: left;
+  margin: 5px;
+  padding: 5px;
 }

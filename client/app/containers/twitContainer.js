@@ -31,6 +31,7 @@ var TwitContainer = React.createClass({
           isLoading={this.props.isLoading}
         />
         <Tweet
+          tones={this.props.tones}
           emotional={this.props.emotional}
           writing={this.props.writing}
           social={this.props.social}
@@ -46,7 +47,7 @@ function mapStateToProps(state, ownProps) {
     twitterHandle: state.twitReducer.twitterHandle,
     isLoading: state.twitReducer.isLoading,
     error: state.twitReducer.error,
-    // tones: state.twitReducer.tones
+    tones: state.twitReducer.tones,
     emotional: state.twitReducer.emotional,
     writing: state.twitReducer.writing,
     social: state.twitReducer.social,
@@ -62,3 +63,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(TwitContainer);
+
+{/*emotional={this.props.emotional}
+          writing={this.props.writing}
+          social={this.props.social}*/}

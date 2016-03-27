@@ -46,7 +46,7 @@ module.exports = function(data){
   var radarData = {
     labels: relevantLabels,
     datasets: radarPlots
-  }
+  };
 
   return radarData;
-}
+};
