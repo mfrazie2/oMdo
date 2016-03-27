@@ -6,8 +6,8 @@ module.exports = {
   twitSubmit: function() {
     return {type: actions.TWIT_SUBMIT};
   },
-  twitSuccess: function(tweets) {
-    return {type: actions.TWIT_SUCCESS, tweets: tweets};
+  twitSuccess: function(tones) {
+    return {type: actions.TWIT_SUCCESS, tweets: tones};
   },
   twitFailure: function() {
     return {type: actions.TWIT_FAILURE};
@@ -21,7 +21,9 @@ module.exports = {
       axios.defaults.headers.common['x-access-token'] = window.localStorage.getItem('x-access-token');
       axios.post('/twitter/fetch', name)
         .then(function(res) {
-          dispatch(module.exports.twitSuccess(res.data.tweets));
+          console.log('res from success ', res.data.tone_categories);
+          dispatch(module.exports.twitSuccess(res.data.tone_categories));
+          // console.log('twitSubmit res: ', res.data.tweets);
         })
         .catch(function(err) {
           dispatch(module.exports.twitFailure());
