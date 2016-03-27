@@ -3,15 +3,13 @@ var Container = require('../containers/allPurposeContainer');
 var Survey = require('../containers/surveyContainer');
 var Twitter = require('../containers/twitContainer');
 
-var Meditations = React.createClass({
-  render: function() {
-    return (
-      <Container>
-        <Survey text='Take a Quick Survey' />
-        <Twitter text='Meditate on your public state' />
-      </Container>
-    )
-  }
-});
+function Meditations (props) {
+  return (
+    <Container>
+      <Survey text='Take a Quick Survey' />
+      <Twitter text='Meditate on Your Public State' />
+    </Container>
+  )
+};
 
 module.exports = Meditations;

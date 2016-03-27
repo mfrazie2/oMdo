@@ -2,7 +2,7 @@ var actions = require('../actions/actions');
 
 function meditationsReducer (state, action) {
   var initialState = {
-    displayed: 0,
+    displayed: '0',
     isLoading: false
   };
 
@@ -11,7 +11,7 @@ function meditationsReducer (state, action) {
   switch(action.type) {
     case actions.SWITCHING_VIEW:
       return Object.assign({}, state, {
-        displayed: action.key,
+        displayed: String(action.key),
         isLoading: true
       });
     case actions.SWITCHED_VIEW:
