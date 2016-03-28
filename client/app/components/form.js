@@ -1,6 +1,7 @@
 var React = require('react')
 var styleable = require('react-styleable').default;
 var css = require('../styles/main.css');
+var Link = require('react-router').Link;
 
 function Form (props) {
   return (
@@ -10,6 +11,20 @@ function Form (props) {
           {props.children}
           <button className={props.buttonClassName || ''} onClick={props.onSubmit}>{props.text}</button>
         </form>
+        {
+            props.pathname === '/signin' ?
+                <div>
+                    New User? <Link to='/signup'>Sign Up Here</Link>
+                </div>
+            : null
+        }
+        {
+            props.pathname === '/signup' ?
+                <div>
+                    Already signed up? <Link to='/signin'>Sign In Here</Link>
+                </div>
+            : null
+        }
       </div>
     </div>
   )
