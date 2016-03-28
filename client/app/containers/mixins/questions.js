@@ -11,8 +11,8 @@ module.exports = {
         {
           category: 'anxiety',
           text: 'How anxious are you right now?',
-          minText: 'Not at all',
-          maxText: 'Panicky'
+          minText: 'Panicky',
+          maxText: 'Not at all'
         },
         {
           category: 'energy',
@@ -25,12 +25,12 @@ module.exports = {
         {
           category: 'sleep',
           text: 'How did you sleep last night?',
-          options: ['Insomnia!', 'Tossed and turned', 'Normally', 'Pretty well', 'Very restful']
+          options: ['Insomnia', 'Tossed and turned', 'Normally', 'Pretty well', 'Very restful']
         },
         {
           category: 'mood',
           text: 'Which of the following best describes your mood in this moment?',
-          options: ['Sad', 'Aggravated', 'Normal', 'Agreeable', 'Sparkling']
+          options: ['Sad', 'Aggravated', 'Normal', 'Agreeable', 'High spirits']
         }
       ],
       boolean: [
