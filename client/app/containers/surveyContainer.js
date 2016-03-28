@@ -1,5 +1,5 @@
 var React = require('react');
-var Survey = require('../components/survey');
+var Survey = require('../components/survey/survey');
 var connect = require('react-redux').connect;
 var handlersMixin = require('./mixins/surveyHandlers');
 var questionsMixin = require('./mixins/questions');

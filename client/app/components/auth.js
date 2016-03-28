@@ -7,7 +7,8 @@ function Auth(props) {
   return (
     <div className={props.css.root}>
       <Form
-        className={props.css.form}
+        formClassName={props.css.form}
+        buttonClassName={props.css.submit}
         onSubmit={props.onSubmit}
         text={props.text}
         >

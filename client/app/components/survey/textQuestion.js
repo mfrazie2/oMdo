@@ -1,14 +1,14 @@
 var React = require('react');
-var Question = require('./question');
+var Tile = require('../tile')
 var styleable = require('react-styleable').default;
-var css = require('../styles/question.css');
+var css = require('../../styles/tile.css');
 
 function TextQuestion (props) {
   return (
-    <div className={props.css.textQuestion}>
+    <Tile className={props.css.textQuestion}>
       <p>Care to elaborate on your {props.category}?</p>
       <textarea rows='4' cols='50' tabIndex={props.tabIndex} onChange={props.handleChange} />
-    </div>
+    </Tile>
   )
 };
 

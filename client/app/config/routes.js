@@ -8,9 +8,9 @@ var browserHistory = ReactRouter.browserHistory;
 var Main = require('../components/main');
 var AuthContainer = require('../containers/authContainer');
 var HomeContainer = require('../containers/homeContainer');
-var SurveyContainer = require('../containers/surveyContainer');
+var Meditations = require('../components/meditations');
 var ProfileContainer = require('../containers/profileContainer');
-var About = require('../components/about');
+var About = require('../components/about/about');
 var TwitContainer = require('../containers/twitContainer');
 
 var Routes = (
@@ -18,8 +18,7 @@ var Routes = (
     <IndexRoute component={HomeContainer} />
     <Route path='signin' component={AuthContainer} />
     <Route path='signup' component={AuthContainer} />
-    {/*<Route path='home' component={HomeContainer} />*/}
-    <Route path='survey' component={SurveyContainer} />
+    <Route path='meditations' component={Meditations} />
     <Route path='profile' component={ProfileContainer} />
     <Route path='twit' component={TwitContainer} />
     <Route path='about' component={About} />

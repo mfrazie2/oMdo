@@ -1,11 +1,11 @@
 var React = require('react');
-var Question = require('./question');
+var Tile = require('../tile');
 
 function NumericalQuestion (props) {
   return (
-    <Question key={props.key}>
+    <Tile key={props.key}>
       <p>{props.text}</p>
-      <select type='select' onChange={props.handleChange} tabIndex={props.tabIndex}>
+      <select onChange={props.handleChange} tabIndex={props.tabIndex}>
         <option value="1" >{props.options[0]}</option>
         <option value="2" >{props.options[1]}</option>
         <option defaultValue="3" >{props.options[2]}</option>
@@ -13,7 +13,7 @@ function NumericalQuestion (props) {
         <option value="5" >{props.options[4]}</option>
       </select>
       {props.children}
-    </Question>
+    </Tile>
   )
 }
 

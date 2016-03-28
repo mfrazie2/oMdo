@@ -15,7 +15,6 @@ function authReducer(state, action) {
   switch(action.type) {
     case actions.AUTH_SUBMIT:
       return Object.assign({}, state, {
-        username: '',
         password: '',
         isLoading: true
       });
