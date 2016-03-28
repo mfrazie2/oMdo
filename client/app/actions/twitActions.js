@@ -29,5 +29,23 @@ module.exports = {
           dispatch(module.exports.twitFailure());
         });
     };
+  },
+  displayEmotion: function() {
+    return {type: actions.DISPLAY_EMOTION};
+  },
+  hideEmotion: function() {
+    return {type: actions.HIDE_EMOTION};
+  },
+  displayLanguage: function() {
+    return {type: actions.DISPLAY_LANGUAGE};
+  },
+  hideLanguage: function() {
+    return {type: actions.HIDE_LANGUAGE};
+  },
+  displaySocial: function() {
+    return {type: actions.DISPLAY_SOCIAL};
+  },
+  hideSocial: function() {
+    return {type: actions.HIDE_SOCIAL};
   }
 };

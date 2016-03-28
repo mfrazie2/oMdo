@@ -5,6 +5,7 @@ var styleable = require('react-styleable').default;
 var css = require('../../styles/twitterCharts.css');
 
 function Tweet (props) {
+  console.log('the props of a tweet ', props);
   if(props.tones.length) {
     return (
     <div className={props.css.chartContainer}>
@@ -14,8 +15,11 @@ function Tweet (props) {
           <BarChart data={format(props.tones)} options={props.chartOptions} width='400' height='290' />
       </div>
       <div className={props.css.breakdown}>
-        <h3>Emotional Tone</h3>
-          <ul>
+      <h3 onClick={props.onEmotionDisplay}>Emotional Tone</h3>
+          {
+            props.emotionDisplay ?
+
+            <ul>
             <li>Emotional tone is inferred from different types of emotions and feelings expressed in your writing.</li>
             <li>
               <h5>Your Anger Score is {Math.round(props.emotional[0].score*10000)/100}%</h5>
@@ -62,107 +66,125 @@ function Tweet (props) {
                 </ul>
             </li>
           </ul>
+          :
+          null
+          }
+          
       </div>
       <div className={props.css.breakdown}>
-        <h3>Language Tone</h3>
-          <ul>
-            <li>Language tone describes how your writing style is perceived.</li>
-            <li>
-              <h5>Your Analytic score is {Math.round(props.writing[0].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the reasoning and analytical attitude conveyed in your
-                  writing.</li>
-                  <li>An analytic score below 25% indicates your writing tone is more likely to
-                  be perceived as reckless, unmethodical, laid back, or spontaneous.</li>
-                  <li>An analytic score above 75% indicates your writing tone is more likely to
-                  be perceived as intellectual, rational, systematic, emotionless, or impersonal.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Confidence Score is {Math.round(props.writing[1].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the degree of certainty conveyed in your writing.</li>
-                  <li>A confidence score below 25% indicates your writing tone is more likely to be
-                  perceived as nervous, humble, unassertive, or self-critical.</li>
-                  <li>A confidence score above 75% indicates your writing is more likely to be
-                  perceived as assured, collected, hopeful, or egotistical.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Tentativeness Score is {Math.round(props.writing[2].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the degree of inhibition conveyed in your writing.</li>
-                  <li>A tentativeness score below 25% indicates your writing tone is more likely
-                  to be perceived as confident, independent, or sure.</li>
-                  <li>A tentativeness score above 75% indicates your writing tone is more likely
-                  to be perceived as questionable, doubtful, limited, or debatable.</li>
-                </ul>
-            </li>
-          </ul>
+        <h3 onClick={props.onLanguageDisplay}>Language Tone</h3>
+          {
+            props.languageDisplay ?
+            
+            <ul>
+              <li>Language tone describes how your writing style is perceived.</li>
+              <li>
+                <h5>Your Analytic score is {Math.round(props.writing[0].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the reasoning and analytical attitude conveyed in your
+                    writing.</li>
+                    <li>An analytic score below 25% indicates your writing tone is more likely to
+                    be perceived as reckless, unmethodical, laid back, or spontaneous.</li>
+                    <li>An analytic score above 75% indicates your writing tone is more likely to
+                    be perceived as intellectual, rational, systematic, emotionless, or impersonal.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Confidence Score is {Math.round(props.writing[1].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the degree of certainty conveyed in your writing.</li>
+                    <li>A confidence score below 25% indicates your writing tone is more likely to be
+                    perceived as nervous, humble, unassertive, or self-critical.</li>
+                    <li>A confidence score above 75% indicates your writing is more likely to be
+                    perceived as assured, collected, hopeful, or egotistical.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Tentativeness Score is {Math.round(props.writing[2].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the degree of inhibition conveyed in your writing.</li>
+                    <li>A tentativeness score below 25% indicates your writing tone is more likely
+                    to be perceived as confident, independent, or sure.</li>
+                    <li>A tentativeness score above 75% indicates your writing tone is more likely
+                    to be perceived as questionable, doubtful, limited, or debatable.</li>
+                  </ul>
+              </li>
+            </ul>
+
+          :
+          null
+          }
       </div>
       <div className={props.css.breakdown}>
-        <h3>Social Tone</h3>
-          <ul>
-            <li>Social tone describes the social tendencies in your writing.</li>
-            <li>
-              <h5>Your Openness Score is {Math.round(props.social[0].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the extent to which your writing conveys an openness
-                  to experience a variety of activities.</li>
-                  <li>An openness score below 25% indicates your tone is more likely to be perceived as
-                  no-nonsense, straightforward, blunt, or preferring tradition and the obvious over
-                  complexity, ambiguity, and subtlety.</li>
-                  <li>An openness score above 75% indicates your tone is more likely to be perceived as
-                  intellectual, curious, emotionally aware, imaginative, willing to try new things,
-                  appreciative of beauty, or open to change.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Conscientiousness Score is {Math.round(props.social[1].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the tendency conveyed in your writing to act in an organized
-                  or thoughtful way.</li>
-                  <li>A conscientiousness score below 25% indicates your tone is more likely to be
-                  perceived as spontaneous, laid back, reckless, unmethodical, remiss, or disorganized.</li>
-                  <li>A conscientiousness score above 75% indicates your tone is more likely to be
-                  perceived as disciplined, dutiful, achievement-oriented, confident, driven, or organized.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Extraversion Score is {Math.round(props.social[2].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the tendency conveyed in your writing to seek stimulation in
-                  the company of others.</li>
-                  <li>An extraversion score below 25% indicates your tone is more likely to be perceived as
-                  independent, timid, introverted, restrained, boring, or dreary.</li>
-                  <li>An extraversion score above 75% indicates your tone is more likely to be perceived as
-                  engaging, seeking attention, needy, assertive, outgoing, sociable, cheerful, excitement-
-                  seeking, or busy.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Agreeableness Score is {Math.round(props.social[3].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the tendency conveyed in your writing to be compassionate and
-                  cooperative towards others.</li>
-                  <li>An agreeableness score below 25% indicates your tone is more likely to be perceived as
-                  selfish, uncaring, uncooperative, self-interested, confrontational, skeptical, or arrogant.</li>
-                  <li>An agreeableness score above 75% indicates your tone is more likely to be perceived as
-                  caring, sympathetic, cooperative, compromising, trustworthy, or humble.</li>
-                </ul>
-            </li>
-            <li>
-              <h5>Your Emotional Range Score is {Math.round(props.social[4].score*10000)/100}%</h5>
-                <ul>
-                  <li>This score describes the extent to which your writing conveys sensitivity to your
-                  environment.</li>
-                  <li>An emotional range score below 25% indicates your tone is more likely to be perceived as
-                  calm, bland, content, relaxed, unconcerned, or careful.</li>
-                  <li>An emotional range score above 75% indicates your tone is more likely to be perceived as
-                  concerned, frustrated, angry, passionate, upset, stressed, insecure, or impulsive.</li>
-                </ul>
-            </li>
-          </ul>
+        <h3 onClick={props.onSocialDisplay}>Social Tone</h3>
+        {
+            props.socialDisplay ?
+
+            <ul>
+              <li>Social tone describes the social tendencies in your writing.</li>
+              <li>
+                <h5>Your Openness Score is {Math.round(props.social[0].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the extent to which your writing conveys an openness
+                    to experience a variety of activities.</li>
+                    <li>An openness score below 25% indicates your tone is more likely to be perceived as
+                    no-nonsense, straightforward, blunt, or preferring tradition and the obvious over
+                    complexity, ambiguity, and subtlety.</li>
+                    <li>An openness score above 75% indicates your tone is more likely to be perceived as
+                    intellectual, curious, emotionally aware, imaginative, willing to try new things,
+                    appreciative of beauty, or open to change.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Conscientiousness Score is {Math.round(props.social[1].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the tendency conveyed in your writing to act in an organized
+                    or thoughtful way.</li>
+                    <li>A conscientiousness score below 25% indicates your tone is more likely to be
+                    perceived as spontaneous, laid back, reckless, unmethodical, remiss, or disorganized.</li>
+                    <li>A conscientiousness score above 75% indicates your tone is more likely to be
+                    perceived as disciplined, dutiful, achievement-oriented, confident, driven, or organized.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Extraversion Score is {Math.round(props.social[2].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the tendency conveyed in your writing to seek stimulation in
+                    the company of others.</li>
+                    <li>An extraversion score below 25% indicates your tone is more likely to be perceived as
+                    independent, timid, introverted, restrained, boring, or dreary.</li>
+                    <li>An extraversion score above 75% indicates your tone is more likely to be perceived as
+                    engaging, seeking attention, needy, assertive, outgoing, sociable, cheerful, excitement-
+                    seeking, or busy.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Agreeableness Score is {Math.round(props.social[3].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the tendency conveyed in your writing to be compassionate and
+                    cooperative towards others.</li>
+                    <li>An agreeableness score below 25% indicates your tone is more likely to be perceived as
+                    selfish, uncaring, uncooperative, self-interested, confrontational, skeptical, or arrogant.</li>
+                    <li>An agreeableness score above 75% indicates your tone is more likely to be perceived as
+                    caring, sympathetic, cooperative, compromising, trustworthy, or humble.</li>
+                  </ul>
+              </li>
+              <li>
+                <h5>Your Emotional Range Score is {Math.round(props.social[4].score*10000)/100}%</h5>
+                  <ul>
+                    <li>This score describes the extent to which your writing conveys sensitivity to your
+                    environment.</li>
+                    <li>An emotional range score below 25% indicates your tone is more likely to be perceived as
+                    calm, bland, content, relaxed, unconcerned, or careful.</li>
+                    <li>An emotional range score above 75% indicates your tone is more likely to be perceived as
+                    concerned, frustrated, angry, passionate, upset, stressed, insecure, or impulsive.</li>
+                  </ul>
+              </li>
+            </ul>
+
+          :
+          null
+          }
       </div>
 
     </div>

@@ -13,7 +13,10 @@ var initialState = {
     scaleSteps: 10,
     scaleStepWidth: 10,
     scaleStartValue: 0
-  }
+  },
+  emotionDisplay: false,
+  languageDisplay: false,
+  socialDisplay: false
 };
 
 function twitReducer(state, action) {
@@ -45,6 +48,32 @@ function twitReducer(state, action) {
       return Object.assign({}, state, {
         handle: action.handle
       });
+    case actions.DISPLAY_EMOTION:
+      console.log('emotional display in the reducer!');
+      return Object.assign({}, state, {
+        emotionDisplay: true
+      });
+    case actions.HIDE_EMOTION:
+      console.log('hiding emotions in the reducer!');
+      return Object.assign({}, state, {
+        emotionDisplay: false
+      });
+    case actions.DISPLAY_LANGUAGE:
+      return Object.assign({}, state, {
+        languageDisplay: true
+      });
+    case actions.HIDE_LANGUAGE:
+      return Object.assign({}, state, {
+        languageDisplay: false
+      });
+    case actions.DISPLAY_SOCIAL:
+      return Object.assign({}, state, {
+        socialDisplay: true
+      });
+    case actions.HIDE_SOCIAL:
+      return Object.assign({}, state, {
+        socialDisplay: false
+      });  
     default:
       return state;
   }
