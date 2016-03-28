@@ -3,7 +3,7 @@ var Greeting = require('../components/greeting');
 var Container = require('./allPurposeContainer');
 var Home = require('../components/home');
 var connect = require('react-redux').connect;
-var bindActionCreators = require('redux').bindActionCreators
+var bindActionCreators = require('redux').bindActionCreators;
 var homeActions = require('../actions/homeActions');
 
 var HomeContainer = React.createClass({
@@ -14,7 +14,7 @@ var HomeContainer = React.createClass({
     var pathname = this.props.location.pathname;
     return (
       <Container>
-        <Greeting text='oMdo Welcomes You' username={this.props.username} />
+        <Greeting text='oMdo Welcomes You' username={this.props.username} location={this.props.location.pathname} />
         <Home text='Home' />
       </Container>
     )
