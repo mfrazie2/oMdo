@@ -21,7 +21,7 @@ var ProfileContainer = React.createClass({
   render: function() {
     return (
       <div>
-        <Profile username={this.props.username} />
+        <Greeting username={this.props.username} />
         <Container>
           <Visualization text='Get An Overview'/>
           <Diary text='Check Out All Your Data' surveys={this.props.surveys} />

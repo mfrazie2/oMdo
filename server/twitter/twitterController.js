@@ -15,13 +15,13 @@ var tone_analyzer = watson.tone_analyzer({
   password: process.env.BLUEMIX_PASSWORD,
   version: 'v3-beta',
   version_date: '2016-02-11'
-}); 
+});
 
 module.exports = {
   fetchTweets: function(req, res) {
     // var tweetTexts;
     var params = {screen_name: req.body.handle, count: 25};
-    client.get('statuses/user_timeline', params, function(err, tweets, response) { 
+    client.get('statuses/user_timeline', params, function(err, tweets, response) {
       // tweets returned as []
       // response is raw object ==> of user's entire Twitter
       if(err) {
@@ -40,15 +40,8 @@ module.exports = {
           if (err)
             console.log(err);
           else
-            // console.log('HIIIIIIIIIII', Object.keys(tone));
-            // console.log(JSON.stringify(tone['document_tone']));
             res.send(JSON.stringify(tone['document_tone']));
-            // console.log('inside the tone function ', res.body);
-            // res.body['tone'] = tone['document_tone'];
-            // console.log(JSON.stringify(tone, null, 2));
       });
-      // console.log('Logging the tweetTone ', tweetBlock);
-      // res.send({tweets: tweetTexts});
     });
   }
 };

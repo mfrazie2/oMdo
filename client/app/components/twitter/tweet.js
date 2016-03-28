@@ -2,15 +2,10 @@ var React = require('react');
 var BarChart = require('react-chartjs').Bar;
 var format = require('../utilities/formatTwitterData');
 var styleable = require('react-styleable').default;
-var css = require('../styles/twitterCharts.css');
-// var TweetEntry = require('./tweetEntry');
+var css = require('../../styles/twitterCharts.css');
 
 function Tweet (props) {
-  console.log('This is the Tweet component saying sup broh');
-  console.log('options ', props.chartOptions);
-  console.log('tones ', props.emotional);
   if(props.tones.length) {
-    console.log('anger? ', props.tones[0]['tones'][0]['score']);
     return (
     <div className={props.css.chartContainer}>
       <h2>What Are Your Tweets Really Saying?</h2>
@@ -22,7 +17,7 @@ function Tweet (props) {
         <h3>Emotional Tone</h3>
           <ul>
             <li>Emotional tone is inferred from different types of emotions and feelings expressed in your writing.</li>
-            <li> 
+            <li>
               <h5>Your Anger Score is {Math.round(props.emotional[0].score*10000)/100}%</h5>
               <ul>
                 <li>Anger is an emotion characterized by antagonism toward someone or something you feel
@@ -31,7 +26,7 @@ function Tweet (props) {
                 <li>An anger score above 75% indicates your tone is highly likely to be perceived as angry.</li>
               </ul>
             </li>
-            <li> 
+            <li>
               <h5>Your Disgust Score is {Math.round(props.emotional[1].score*10000)/100}%</h5>
                 <ul>
                   <li>Disgust is a strong negative feeling of aversion or disapproval.</li>
@@ -42,7 +37,7 @@ function Tweet (props) {
             <li>
               <h5>Your Fear Score is {Math.round(props.emotional[2].score*10000)/100}%</h5>
                 <ul>
-                  <li>Fear is an emotion caused by the belief that someone or something is dangerous, 
+                  <li>Fear is an emotion caused by the belief that someone or something is dangerous,
                   likely to cause pain, or a threat.</li>
                   <li>A fear score below 50% indicates your tone is less likely to be perceived as scared.</li>
                   <li>A fear score above 75% indicates your tone is highly likely to be perceived as scared.</li>
@@ -51,7 +46,7 @@ function Tweet (props) {
             <li>
               <h5>Your Joy Score is {Math.round(props.emotional[3].score*10000)/100}%</h5>
                 <ul>
-                  <li>Joy, or happiness, is an emotion evoked by well-being, success, or the prospect of 
+                  <li>Joy, or happiness, is an emotion evoked by well-being, success, or the prospect of
                   possessing what one desires.</li>
                   <li>A joy score below 50% indicates your tone is less likely to be perceived as joyful.</li>
                   <li>A joy score above 75% indicates your tone is highly likely to be perceived as joyful.</li>
@@ -118,25 +113,25 @@ function Tweet (props) {
                   no-nonsense, straightforward, blunt, or preferring tradition and the obvious over
                   complexity, ambiguity, and subtlety.</li>
                   <li>An openness score above 75% indicates your tone is more likely to be perceived as
-                  intellectual, curious, emotionally aware, imaginative, willing to try new things, 
+                  intellectual, curious, emotionally aware, imaginative, willing to try new things,
                   appreciative of beauty, or open to change.</li>
                 </ul>
             </li>
-            <li>  
+            <li>
               <h5>Your Conscientiousness Score is {Math.round(props.social[1].score*10000)/100}%</h5>
                 <ul>
-                  <li>This score describes the tendency conveyed in your writing to act in an organized 
+                  <li>This score describes the tendency conveyed in your writing to act in an organized
                   or thoughtful way.</li>
-                  <li>A conscientiousness score below 25% indicates your tone is more likely to be 
+                  <li>A conscientiousness score below 25% indicates your tone is more likely to be
                   perceived as spontaneous, laid back, reckless, unmethodical, remiss, or disorganized.</li>
-                  <li>A conscientiousness score above 75% indicates your tone is more likely to be 
+                  <li>A conscientiousness score above 75% indicates your tone is more likely to be
                   perceived as disciplined, dutiful, achievement-oriented, confident, driven, or organized.</li>
                 </ul>
             </li>
             <li>
               <h5>Your Extraversion Score is {Math.round(props.social[2].score*10000)/100}%</h5>
                 <ul>
-                  <li>This score describes the tendency conveyed in your writing to seek stimulation in 
+                  <li>This score describes the tendency conveyed in your writing to seek stimulation in
                   the company of others.</li>
                   <li>An extraversion score below 25% indicates your tone is more likely to be perceived as
                   independent, timid, introverted, restrained, boring, or dreary.</li>
@@ -148,11 +143,11 @@ function Tweet (props) {
             <li>
               <h5>Your Agreeableness Score is {Math.round(props.social[3].score*10000)/100}%</h5>
                 <ul>
-                  <li>This score describes the tendency conveyed in your writing to be compassionate and 
+                  <li>This score describes the tendency conveyed in your writing to be compassionate and
                   cooperative towards others.</li>
-                  <li>An agreeableness score below 25% indicates your tone is more likely to be perceived as 
+                  <li>An agreeableness score below 25% indicates your tone is more likely to be perceived as
                   selfish, uncaring, uncooperative, self-interested, confrontational, skeptical, or arrogant.</li>
-                  <li>An agreeableness score above 75% indicates your tone is more likely to be perceived as 
+                  <li>An agreeableness score above 75% indicates your tone is more likely to be perceived as
                   caring, sympathetic, cooperative, compromising, trustworthy, or humble.</li>
                 </ul>
             </li>
@@ -169,7 +164,7 @@ function Tweet (props) {
             </li>
           </ul>
       </div>
-      
+
     </div>
     )
   } else {
@@ -180,37 +175,3 @@ function Tweet (props) {
 }
 
 module.exports = styleable(css)(Tweet);
-
-
-
-{/*<div className={props.css.chart}>
-      <h3>Emotional Tone</h3> 
-      <BarChart data={format(props.emotional)} options={props.chartOptions} width='200' height='290' />
-    </div>
-    
-    <div className={props.css.chart}>
-      <h3>Writing Tone</h3>
-      <BarChart data={format(props.writing)} options={props.chartOptions} width='200' height='281.5' />
-    </div>
-    
-    <div className={props.css.chart}>
-      <h3>Social Tone</h3>
-      <BarChart data={format(props.social)} options={props.chartOptions} width='200' height='350' />
-    </div>*/}
-
-{/*<ol>
-      {props.tones.map(function(tweet, i) {
-        return (
-          <TweetEntry
-            data={tweet}
-            key={i}
-          />
-        )
-      })}
-    </ul>
-  )
-}
-
-module.exports = Tweet;
-    </ol>*/}
-
