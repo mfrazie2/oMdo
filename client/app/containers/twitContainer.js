@@ -26,6 +26,28 @@ var TwitContainer = React.createClass({
     var twitterHandle = this.context.store.getState().twitReducer;
     this.props.actions.submitTwit(twitterHandle);
   },
+  handleEmotionDisplay: function(e) {
+    console.log('container for your emotions!');
+    if(!this.props.emotionDisplay) {
+      this.props.actions.displayEmotion();
+    } else {
+      this.props.actions.hideEmotion();
+    }
+  },
+  handleLanguageDisplay: function(e) {
+    if(!this.props.languageDisplay) {
+      this.props.actions.displayLanguage();
+    } else {
+      this.props.actions.hideLanguage();
+    }
+  },
+  handleSocialDisplay: function(e) {
+    if(!this.props.socialDisplay) {
+      this.props.actions.displaySocial();
+    } else {
+      this.props.actions.hideSocial();
+    }
+  },
   render: function() {
     return (
       <div>
@@ -40,6 +62,12 @@ var TwitContainer = React.createClass({
           writing={this.props.writing}
           social={this.props.social}
           chartOptions={this.props.chartOptions}
+          onEmotionDisplay={this.handleEmotionDisplay}
+          emotionDisplay={this.props.emotionDisplay}
+          onLanguageDisplay={this.handleLanguageDisplay}
+          languageDisplay={this.props.languageDisplay}
+          onSocialDisplay={this.handleSocialDisplay}
+          socialDisplay={this.props.socialDisplay}
          />
        </div>
     )
