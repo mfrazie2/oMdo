@@ -4,33 +4,29 @@ var connect = require('react-redux').connect;
 var bindActionCreators = require('redux').bindActionCreators;
 var profileActions = require('../actions/profileActions');
 var homeActions = require('../actions/homeActions');
-var Profile = require('../components/profile');
-var Diary = require('../components/diary');
-var Visualization = require('../components/visualization');
-var Loading = require('../components/loading');
+var Container = require('./allPurposeContainer');
+var Greeting = require('../components/greeting');
+var Diary = require('../components/profile/diary');
+var Visualization = require('../components/profile/visualization');
 
 var ProfileContainer = React.createClass({
   propTypes: {
-    username: React.PropTypes.string,
-    surveys: React.PropTypes.array
+    username: PropTypes.string,
+    surveys: PropTypes.array
   },
   componentWillMount: function() {
     this.props.actions.checkAuth();
-    if (this.props.isLoggedIn) {
-      this.props.actions.loadSurveys();
-    }
+    this.props.actions.loadSurveys();
   },
   render: function() {
     return (
-    this.props.isLoading
-    ? <Profile username={this.props.username}>
-        <Loading />
-      </Profile>
-
-    : <Profile username={this.props.username}>
-        <Visualization />
-        <Diary surveys={this.props.surveys} />
-      </Profile>
+      <div>
+        <Greeting username={this.props.username} />
+        <Container>
+          <Visualization text='Get An Overview'/>
+          <Diary text='Check Out All Your Data' surveys={this.props.surveys} />
+        </Container>
+      </div>
     )
   }
 });

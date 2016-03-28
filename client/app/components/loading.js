@@ -1,16 +1,16 @@
 var React = require('react');
+var Tile = require('./tile');
 var styleable = require('react-styleable').default;
-var css = require('../styles/about.css');
+var css = require('../styles/home.css');
 
-var Loading
- = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <p>Let Mike dream...  Your feelings will be here shortly...</p>
-      </div>
-    )
-  }
-})
+function Loading (props) {
+  return (
+    <div className={props.css.root}>
+      <Tile>
+        <h1>Let Mike dream...  Your feelings will be here shortly...</h1>
+      </Tile>
+    </div>
+  )
+};
 
-module.exports = Loading;
+module.exports = styleable(css)(Loading);
