@@ -3,6 +3,7 @@ var Frame = require('./frame');
 var styleable = require('react-styleable').default;
 var css = require('../styles/main.css');
 
+//Don't touch this it's a subcomponent of the allPurposeContainer
 function GeneralNav (props) {
   return (
     <Frame className={props.css.nav}>
