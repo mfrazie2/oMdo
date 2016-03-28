@@ -12,21 +12,9 @@ function Auth(props) {
         buttonClassName={props.css.submit}
         onSubmit={props.onSubmit}
         text={props.text}
+        pathname={props.pathname}
         >
-        {
-            props.pathname === '/signin' ?
-                <div>
-                    New User? <Link to='/signup'>Sign Up Here</Link>
-                </div>
-            : null
-        }
-        {
-            props.pathname === '/signup' ?
-                <div>
-                    Already signed up? <Link to='/signin'>Sign In Here</Link>
-                </div>
-            : null
-        }
+        
         <div>
           <input
             tabIndex='1'
