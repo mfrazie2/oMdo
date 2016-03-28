@@ -1,7 +1,8 @@
 var React = require('react');
 var Form = require('./form');
 var styleable = require('react-styleable').default;
-var css = require('../styles/auth.css')
+var css = require('../styles/auth.css');
+var Link = require('react-router').Link;
 
 function Auth(props) {
   return (
@@ -12,6 +13,20 @@ function Auth(props) {
         onSubmit={props.onSubmit}
         text={props.text}
         >
+        {
+            props.pathname === '/signin' ?
+                <div>
+                    New User? <Link to='/signup'>Sign Up Here</Link>
+                </div>
+            : null
+        }
+        {
+            props.pathname === '/signup' ?
+                <div>
+                    Already signed up? <Link to='/signin'>Sign In Here</Link>
+                </div>
+            : null
+        }
         <div>
           <input
             tabIndex='1'
