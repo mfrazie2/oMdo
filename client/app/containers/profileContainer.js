@@ -8,6 +8,7 @@ var Container = require('./allPurposeContainer');
 var Greeting = require('../components/greeting');
 var Diary = require('../components/profile/diary');
 var Visualization = require('../components/profile/visualization');
+var Journal = require('../components/profile/journal');
 
 var ProfileContainer = React.createClass({
   propTypes: {
@@ -25,6 +26,7 @@ var ProfileContainer = React.createClass({
         <Container>
           <Visualization text='Get An Overview'/>
           <Diary text='Check Out All Your Data' surveys={this.props.surveys} />
+          <Journal entries={this.props.surveys} />
         </Container>
       </div>
     )
