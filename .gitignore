@@ -8,6 +8,9 @@ dist/
 # forever pids
 server/pid
 
+# quote data
+**/quote.json
+
 # keys
 api_key.txt
 server/api_key.txt
@@ -20,6 +23,9 @@ client/.DS_Store
 
 # Assets
 **/.dropbox
+
+# bundled tests
+__bundled_tests__/
 
 # Floobits related stuff
 .floo

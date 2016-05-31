@@ -12,7 +12,6 @@ var TwitContainer = React.createClass({
     store: React.PropTypes.object.isRequired,
     router: React.PropTypes.object.isRequired
   },
-  // Adds auth but not sure if works
   componentWillMount: function () {
     this.props.actions.checkAuth();
   },
@@ -27,7 +26,6 @@ var TwitContainer = React.createClass({
     this.props.actions.submitTwit(twitterHandle);
   },
   handleEmotionDisplay: function(e) {
-    console.log('container for your emotions!');
     if(!this.props.emotionDisplay) {
       this.props.actions.displayEmotion();
     } else {

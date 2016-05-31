@@ -1,7 +1,8 @@
 var React = require('react');
 var Form = require('./form');
 var styleable = require('react-styleable').default;
-var css = require('../styles/auth.css')
+var css = require('../styles/auth.css');
+var Link = require('react-router').Link;
 
 function Auth(props) {
   return (
@@ -11,7 +12,11 @@ function Auth(props) {
         buttonClassName={props.css.submit}
         onSubmit={props.onSubmit}
         text={props.text}
+        pathname={props.pathname}
+        authReroute={props.css.authReroute}
+        authLink={props.css.authLink}
         >
+        
         <div>
           <input
             tabIndex='1'
